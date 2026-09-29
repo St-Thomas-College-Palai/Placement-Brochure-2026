@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BCA Placement Dossier - St. Thomas College Palai</title>
 
-  <!-- Typography & Icons -->
+  <!-- Typography: Stylish fonts for Covers & Formal clean fonts for Inner content -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- StPageFlip Physics Engine -->
@@ -16,14 +16,16 @@
 
   <style>
     :root {
-      --paper-cream: #faf9f5;
+      --desk-gradient: radial-gradient(circle at 50% 20%, #f9fafb 0%, #d8e0ea 100%);
+      --paper-ivory: #faf8f5;
       --paper-pure: #ffffff;
-      --paper-border: #e8e4db;
-      --ink-navy: #0c1a2e;
-      --ink-subtle: #576577;
-      --luxury-gold: #9e7326;
-      --gold-soft: #ebdcb9;
-      --desk-bg: #eceff4;
+      --paper-border: #e6dfd5;
+      --ink-midnight: #0b1728;
+      --ink-formal: #1e293b;
+      --ink-muted: #576577;
+      --gold-metallic: #997327;
+      --gold-border: #e2cca0;
+      --gold-subtle: #fbf7ee;
     }
 
     * {
@@ -39,14 +41,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 50% 25%, #f8fafc 0%, #cbd5e1 100%);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--desk-gradient);
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-      color: var(--ink-navy);
+      color: var(--ink-formal);
       padding: 20px;
     }
 
-    /* Ambient Warmth */
+    /* Ambient Warm Floor Glow */
     body::before {
       content: '';
       position: fixed;
@@ -55,32 +57,33 @@
       width: 1400px;
       height: 900px;
       transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse at center, rgba(158, 115, 38, 0.05) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(153, 115, 39, 0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Minimalist Navigation */
+    /* Minimalist Floating Controls */
     .top-toolbar {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 22px;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       padding: 8px 24px;
       border-radius: 40px;
       border: 1px solid var(--paper-border);
-      box-shadow: 0 10px 30px rgba(12, 26, 46, 0.06);
+      box-shadow: 0 10px 30px rgba(11, 23, 40, 0.08);
       z-index: 100;
     }
 
     .ctrl-btn {
       background: transparent;
-      border: 1px solid #d1d5db;
-      color: var(--ink-navy);
+      border: 1px solid #cbd5e1;
+      color: var(--ink-midnight);
+      font-family: 'Inter', sans-serif;
       font-size: 12.5px;
-      font-weight: 700;
+      font-weight: 600;
       padding: 7px 18px;
       border-radius: 20px;
       cursor: pointer;
@@ -91,41 +94,41 @@
     }
 
     .ctrl-btn:hover {
-      background: var(--ink-navy);
+      background: var(--ink-midnight);
       color: #ffffff;
-      border-color: var(--ink-navy);
+      border-color: var(--ink-midnight);
     }
 
     .page-index-label {
+      font-family: 'Inter', sans-serif;
       font-size: 13px;
-      color: var(--ink-subtle);
+      color: var(--ink-muted);
       font-weight: 600;
-      padding: 0 12px;
+      padding: 0 14px;
       border-left: 1px solid #e2e8f0;
       border-right: 1px solid #e2e8f0;
-      letter-spacing: 0.5px;
     }
 
     /* 3D Canvas Stage */
     .book-stage {
       position: relative;
       z-index: 10;
-      filter: drop-shadow(0 35px 65px rgba(12, 26, 46, 0.16));
+      filter: drop-shadow(0 35px 65px rgba(11, 23, 40, 0.18));
     }
 
     .page-sheet {
       width: 550px;
       height: 760px;
-      background-color: var(--paper-cream);
+      background-color: var(--paper-ivory);
       overflow: hidden;
       position: relative;
     }
 
     /* =========================================================
-       1. FRONT COVER: EDITORIAL MASTHEAD DESIGN
+       1. FRONT COVER: ULTRA-PREMIUM STYLISH TYPOGRAPHY
        ========================================================= */
     .cover-front {
-      background: var(--paper-cream);
+      background: var(--paper-ivory);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -134,11 +137,20 @@
       position: relative;
     }
 
+    /* Double Royal Filigree Border */
     .cover-front::after {
       content: '';
       position: absolute;
       top: 12px; left: 12px; right: 12px; bottom: 12px;
-      border: 1px solid var(--gold-soft);
+      border: 1px solid var(--gold-border);
+      pointer-events: none;
+    }
+
+    .cover-front::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px; right: 16px; bottom: 16px;
+      border: 0.5px dashed rgba(153, 115, 39, 0.35);
       pointer-events: none;
     }
 
@@ -148,7 +160,8 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 12px;
-      border-bottom: 1px solid #eee9e0;
+      border-bottom: 1px solid #eee7dc;
+      z-index: 2;
     }
 
     .brand-logo-slot {
@@ -164,30 +177,29 @@
       object-fit: contain;
     }
 
-    .center-tagline {
-      text-align: center;
-    }
-
     .pill-badge {
+      font-family: 'Cinzel', serif;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
-      color: var(--luxury-gold);
+      color: var(--gold-metallic);
       text-transform: uppercase;
-      border: 1px solid var(--luxury-gold);
-      padding: 4px 10px;
+      border: 1px solid var(--gold-metallic);
+      padding: 4px 12px;
       border-radius: 20px;
+      background: var(--gold-subtle);
     }
 
-    /* Architectural Image Frame */
+    /* Architectural Image Showcase */
     .architectural-frame {
       width: 100%;
-      height: 250px;
+      height: 245px;
       border-radius: 4px;
       overflow: hidden;
-      border: 1px solid #dfd9ce;
-      margin: 16px 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border: 1px solid #ded6c8;
+      margin: 14px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      z-index: 2;
     }
 
     .architectural-frame img {
@@ -197,70 +209,79 @@
       display: block;
     }
 
-    /* Institutional Typography */
+    /* Stylish Cover Typography */
     .cover-titles {
       text-align: center;
+      z-index: 2;
     }
 
     .college-name-styled {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 700;
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 900;
       letter-spacing: 2px;
-      color: var(--ink-navy);
-      line-height: 1.15;
+      color: var(--ink-midnight);
+      line-height: 1.25;
       text-transform: uppercase;
     }
 
     .college-sub-meta {
-      font-size: 11.5px;
-      color: var(--luxury-gold);
-      letter-spacing: 4px;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gold-metallic);
+      letter-spacing: 2px;
+      font-weight: 600;
       margin-top: 4px;
     }
 
     .dossier-headline {
       margin: 16px 0;
-      border-top: 1px solid #e5e0d6;
-      border-bottom: 1px solid #e5e0d6;
+      border-top: 1.5px solid var(--gold-border);
+      border-bottom: 1.5px solid var(--gold-border);
       padding: 10px 0;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(153, 115, 39, 0.04);
     }
 
     .dossier-headline h2 {
-      font-size: 17px;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: 3px;
-      color: var(--ink-navy);
+      letter-spacing: 3.5px;
+      color: var(--ink-midnight);
       text-transform: uppercase;
     }
 
     .dossier-headline span {
-      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5px;
       font-weight: 600;
-      color: var(--ink-subtle);
+      color: var(--ink-muted);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .cover-bottom-bar {
       text-align: center;
-      border-top: 1px solid #eee9e0;
+      border-top: 1px solid #eee7dc;
       padding-top: 12px;
+      z-index: 2;
     }
 
     .department-caption {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--ink-navy);
+      font-family: 'Playfair Display', serif;
+      font-size: 18.5px;
+      font-weight: 700;
+      color: var(--ink-midnight);
+      letter-spacing: 0.5px;
     }
 
     .flip-direction {
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
-      color: var(--luxury-gold);
-      margin-top: 4px;
+      color: var(--gold-metallic);
+      margin-top: 5px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -281,27 +302,29 @@
     }
 
     .page-lead-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--ink-navy);
-      border-bottom: 1.5px solid var(--gold-soft);
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink-midnight);
+      border-bottom: 2px solid var(--gold-border);
       padding-bottom: 10px;
       margin-bottom: 20px;
+      letter-spacing: 1px;
     }
 
     .quote-box {
       background: #ffffff;
-      border: 1px solid #e5e0d6;
+      border: 1px solid var(--paper-border);
       padding: 18px;
       border-radius: 4px;
       margin-bottom: 16px;
-      border-left: 3px solid var(--luxury-gold);
+      border-left: 3px solid var(--gold-metallic);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
     .quote-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14.5px;
       font-style: italic;
       color: #334155;
       line-height: 1.6;
@@ -309,23 +332,25 @@
 
     .sign-info {
       margin-top: 8px;
+      font-family: 'Cinzel', serif;
       font-size: 12px;
       font-weight: 800;
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .sign-info span {
       display: block;
+      font-family: 'Inter', sans-serif;
       font-weight: 500;
-      color: var(--luxury-gold);
+      color: var(--gold-metallic);
       text-transform: none;
       font-size: 11.5px;
     }
 
     /* =========================================================
-       3. CANDIDATE PROFILE DOSSIER (PAGE 3 & 4)
+       3. CANDIDATE PROFILE: FORMAL BUSINESS DOSSIER (PAGE 3 & 4)
        ========================================================= */
     .profile-page-content {
       padding: 34px 30px;
@@ -334,31 +359,32 @@
       flex-direction: column;
       justify-content: space-between;
       background: var(--paper-pure);
+      font-family: 'Inter', sans-serif;
     }
 
     .masthead-row {
-      border-bottom: 2px solid var(--ink-navy);
-      padding-bottom: 10px;
-      margin-bottom: 14px;
+      border-bottom: 2px solid var(--ink-midnight);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
 
     .inst-signature {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink-navy);
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink-midnight);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .cohort-badge {
       font-size: 10.5px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 1px;
-      color: var(--luxury-gold);
+      color: var(--gold-metallic);
       text-transform: uppercase;
     }
 
@@ -366,7 +392,7 @@
       display: flex;
       gap: 16px;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       background: #faf9f6;
       padding: 12px;
       border: 1px solid var(--paper-border);
@@ -396,19 +422,18 @@
     }
 
     .name-title-box h2 {
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--ink-navy);
+      letter-spacing: 0.5px;
+      color: var(--ink-midnight);
       text-transform: uppercase;
     }
 
     .role-badge {
       font-size: 12px;
-      color: var(--luxury-gold);
-      font-weight: 700;
+      color: var(--gold-metallic);
+      font-weight: 600;
       margin-bottom: 6px;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
@@ -417,32 +442,32 @@
       flex-wrap: wrap;
       gap: 4px 10px;
       font-size: 11px;
-      color: var(--ink-subtle);
+      color: var(--ink-muted);
     }
 
     .link-row a {
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
       text-decoration: none;
       font-weight: 600;
     }
 
     .ribbon-head {
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 1px;
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
       text-transform: uppercase;
       border-bottom: 1px solid #e5e0d6;
       padding-bottom: 3px;
-      margin-top: 8px;
-      margin-bottom: 6px;
+      margin-top: 6px;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
     .ribbon-head i {
-      color: var(--luxury-gold);
+      color: var(--gold-metallic);
       font-size: 10px;
     }
 
@@ -462,21 +487,21 @@
       align-items: center;
       gap: 8px;
       font-size: 11px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .matrix-lbl {
-      font-weight: 700;
+      font-weight: 600;
       min-width: 85px;
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
     }
 
     .skill-capsule {
       background: #f1eee7;
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
       border: 1px solid #ddd7c9;
       font-size: 10.5px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 1px 6px;
       border-radius: 3px;
       display: inline-block;
@@ -495,8 +520,8 @@
       display: flex;
       justify-content: space-between;
       font-size: 11.5px;
-      font-weight: 700;
-      color: var(--ink-navy);
+      font-weight: 600;
+      color: var(--ink-midnight);
     }
 
     .clean-table {
@@ -514,32 +539,32 @@
 
     .clean-table th {
       background-color: #f7f4ed;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 10px;
-      color: var(--ink-navy);
+      color: var(--ink-midnight);
       text-transform: uppercase;
     }
 
     .score-gold {
-      font-weight: 800;
-      color: var(--luxury-gold);
+      font-weight: 700;
+      color: var(--gold-metallic);
     }
 
     .cert-strip {
       font-size: 11px;
       background: #fbf9f4;
-      border: 1px solid var(--gold-soft);
+      border: 1px solid var(--gold-border);
       padding: 6px 10px;
       border-radius: 4px;
       color: #7b5922;
-      margin-top: 6px;
+      margin-top: 5px;
     }
 
     /* =========================================================
-       4. BACK COVER (SECRETARIAT)
+       4. BACK COVER: STYLISH EDITORIAL SECRETARIAT
        ========================================================= */
     .cover-back {
-      background: #faf8f5;
+      background: var(--paper-ivory);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -552,23 +577,82 @@
       content: '';
       position: absolute;
       top: 12px; left: 12px; right: 12px; bottom: 12px;
-      border: 1px solid var(--gold-soft);
+      border: 1px solid var(--gold-border);
       pointer-events: none;
+    }
+
+    .cover-back::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px; right: 16px; bottom: 16px;
+      border: 0.5px dashed rgba(153, 115, 39, 0.35);
+      pointer-events: none;
+    }
+
+    .back-header-box {
+      z-index: 2;
+    }
+
+    .secretariat-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--gold-metallic);
+      text-transform: uppercase;
+      border: 1px solid var(--gold-metallic);
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 16px;
+      background: var(--gold-subtle);
+    }
+
+    .back-main-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink-midnight);
+      letter-spacing: 1px;
+    }
+
+    .back-sub-heading {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gold-metallic);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .contact-details-box {
+      margin: 25px 0;
+      z-index: 2;
     }
 
     .contact-item-row {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       font-size: 13px;
       color: #334155;
     }
 
     .contact-item-row i {
-      color: var(--luxury-gold);
+      color: var(--gold-metallic);
       width: 18px;
-      font-size: 14px;
+      font-size: 15px;
+    }
+
+    .back-footer-imprint {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      color: #64748b;
+      text-align: center;
+      border-top: 1px solid #eee7dc;
+      padding-top: 16px;
+      z-index: 2;
     }
   </style>
 </head>
@@ -594,15 +678,13 @@
         <!-- Header with Logos -->
         <div class="logo-masthead">
           <div class="brand-logo-slot">
-            <!-- കോളേജ് ലോഗോ: ഫയൽ ഉണ്ടെങ്കിൽ കാണിക്കും -->
             <img src="college-logo.png" alt="College Logo" onerror="this.src='college_logo.png'; this.onerror=function(){this.style.display='none';};">
           </div>
-          <div class="center-tagline">
+          <div>
             <span class="pill-badge">Autonomous • NAAC A++</span>
           </div>
           <div class="brand-logo-slot" style="justify-content: flex-end;">
-            <!-- ഡിപ്പാർട്ട്മെന്റ് ലോഗോ: ഫയൽ ഉണ്ടെങ്കിൽ കാണിക്കും -->
-            <img src="Department-Logo-Full-Transperant .png" alt="Department Logo" onerror="this.src='dept_logo.png'; this.onerror=function(){this.style.display='none';};">
+            <img src="dept-logo.png" alt="Department Logo" onerror="this.src='dept_logo.png'; this.onerror=function(){this.style.display='none';};">
           </div>
         </div>
 
@@ -655,7 +737,7 @@
           </div>
         </div>
 
-        <div style="font-size:11px; color:var(--luxury-gold); letter-spacing:1px; text-transform:uppercase; text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-metallic); text-align:center;">
           Excellence in Technology Education
         </div>
       </div>
@@ -771,7 +853,7 @@
             <div class="experience-tile">
               <div class="tile-top">
                 <span>Placement Portal System</span>
-                <span style="font-weight:600; font-size:10.5px; color:var(--luxury-gold);">Spring Boot | React</span>
+                <span style="font-weight:600; font-size:10.5px; color:var(--gold-metallic);">Spring Boot | React</span>
               </div>
               <p style="font-size:11px; color:#475569; margin-top:2px;">Built end-to-end recruitment management system with resume screening.</p>
             </div>
@@ -798,20 +880,20 @@
 
       <!-- ================= PAGE 5: BACK COVER ================= -->
       <div class="page-sheet cover-back" data-density="hard">
-        <div>
-          <span class="pill-badge" style="display:inline-block; margin-bottom:18px;">Secretariat</span>
-          <h2 style="font-family:'Cormorant Garamond', serif; font-size:26px; color:var(--ink-navy);">Placement Coordination Cell</h2>
-          <p style="font-size:13px; color:var(--luxury-gold); font-weight:700; margin-top:4px;">Department of Computer Applications</p>
+        <div class="back-header-box">
+          <span class="secretariat-tag">Placement Secretariat</span>
+          <h2 class="back-main-heading">Recruitment Cell</h2>
+          <p class="back-sub-heading">Department of Computer Applications</p>
         </div>
 
-        <div style="margin:25px 0;">
+        <div class="contact-details-box">
           <div class="contact-item-row"><i class="fas fa-map-marker-alt"></i> St. Thomas College, Arunapuram P.O, Palai, Kerala 686574</div>
           <div class="contact-item-row"><i class="fas fa-envelope"></i> placement@stcp.ac.in</div>
           <div class="contact-item-row"><i class="fas fa-globe"></i> www.stcp.ac.in</div>
           <div class="contact-item-row"><i class="fas fa-phone-alt"></i> +91 4822 212316</div>
         </div>
 
-        <div style="font-size:11.5px; color:#64748b; text-align:center; border-top:1px solid var(--paper-border); padding-top:16px;">
+        <div class="back-footer-imprint">
           St. Thomas College Palai (Autonomous) • Official Placement Dossier
         </div>
       </div>
@@ -833,7 +915,7 @@
         maxWidth: 620,
         minHeight: 500,
         maxHeight: 850,
-        maxShadowOpacity: 0.3,
+        maxShadowOpacity: 0.28, /* മൃദുവായ മാഗസിൻ നിഴൽ */
         showCover: true,
         usePortrait: false,
         mobileScrollSupport: false,
