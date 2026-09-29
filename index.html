@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive Placement Dossier - St. Thomas College Palai</title>
+  <title>BCA Placement Dossier | St. Thomas College Palai</title>
 
-  <!-- Luxury Typography Suite -->
+  <!-- Typography Suite -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- StPageFlip Physics Engine -->
+  <!-- StPageFlip Engine -->
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
   <style>
+    /* Root Design Tokens */
     :root {
-      --bg-ambient: radial-gradient(circle at 50% 25%, #f6f8fc 0%, #cbd6e2 100%);
+      --bg-ambient: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
       --paper-sheet: #fbf9f4;
       --paper-pure: #ffffff;
       --paper-border: #e8e1d5;
@@ -63,7 +64,7 @@
       z-index: 0;
     }
 
-    /* Minimalist Glass Navigation Toolbar */
+    /* Floating Navigation Controls */
     .top-toolbar {
       display: flex;
       align-items: center;
@@ -128,7 +129,7 @@
     }
 
     /* =========================================================
-       1. FRONT COVER: ULTRA-LUXURY EXECUTIVE DESIGN
+       1. FRONT COVER: EDITORIAL MASTHEAD DESIGN
        ========================================================= */
     .cover-front {
       background: var(--paper-sheet);
@@ -231,6 +232,10 @@
       transition: transform 0.8s ease;
     }
 
+    .architectural-frame:hover img {
+      transform: scale(1.03);
+    }
+
     .cover-titles {
       text-align: center;
       z-index: 2;
@@ -290,7 +295,7 @@
       z-index: 2;
     }
 
-    .-caption {
+    .department-caption {
       font-family: 'Playfair Display', serif;
       font-size: 19px;
       font-weight: 700;
@@ -353,7 +358,6 @@
       text-transform: uppercase;
     }
 
-    /* Leadership Message Box with Official Portrait */
     .leader-message-card {
       background: #ffffff;
       border: 1px solid var(--paper-border);
@@ -421,7 +425,6 @@
       margin-top: 2px;
     }
 
-    /* Faculty Grid with Photos */
     .faculty-grid-rich {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -825,7 +828,7 @@
 </head>
 <body>
 
-  <!-- Floating Minimal Toolbar -->
+  <!-- Floating Navigation Toolbar -->
   <div class="top-toolbar">
     <button class="ctrl-btn" onclick="flipBook.flipPrev()">
       <i class="fas fa-chevron-left"></i> Previous
@@ -846,13 +849,13 @@
         <!-- Header with Dual Logos -->
         <div class="logo-masthead">
           <div class="brand-logo-slot">
-            <img src="CollegeLogo.png" alt="College Crest" onerror="this.src='college_logo.png'; this.onerror=function(){this.style.display='none';};">
+            <img src="college-logo.png" alt="College Crest" onerror="this.src='college_logo.png'; this.onerror=function(){this.style.display='none';};">
           </div>
           <div>
             <span class="pill-badge">Autonomous • NAAC A++</span>
           </div>
           <div class="brand-logo-slot" style="justify-content: flex-end;">
-            <img src="Department-Logo-Full-Transperant .png" alt="Dept Crest" onerror="this.src='dept_logo.png'; this.onerror=function(){this.style.display='none';};">
+            <img src="dept-logo.png" alt="Dept Crest" onerror="this.src='dept_logo.png'; this.onerror=function(){this.style.display='none';};">
           </div>
         </div>
 
@@ -879,7 +882,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP DESK (PRINCIPAL & VICE PRINCIPAL WITH PHOTOS) ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP DESK ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
@@ -925,7 +928,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 3: HOD & FACULTY DESK (WITH PHOTOS) ================= -->
+      <!-- ================= PAGE 3: HOD & FACULTY DESK ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -978,7 +981,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 4: INFRASTRUCTURE & LAB GALLERY (WITH PHOTOS) ================= -->
+      <!-- ================= PAGE 4: INFRASTRUCTURE & LAB GALLERY ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1026,10 +1029,10 @@
 
             <div class="candidate-card-top">
               <div class="candidate-photo-frame">
-                <img src="photos/Judena-Mary-Bino.JPG" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+                <img src="photos/24BCA01.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
               <div class="name-title-box">
-                <h2>JUDNA MARY BINO</h2>
+                <h2>ALEN JOSE</h2>
                 <div class="role-badge">Aspiring Software Developer</div>
                 <div class="link-row">
                   <span><i class="fa-solid fa-envelope"></i> alenjose@email.com</span>
@@ -1094,10 +1097,10 @@
 
             <div class="candidate-card-top">
               <div class="candidate-photo-frame">
-                <img src="photos/Adon-Sabu.jpeg" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+                <img src="photos/23BCA14.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
               <div class="name-title-box">
-                <h2>ADON SABU</h2>
+                <h2>RAHUL K</h2>
                 <div class="role-badge">Full Stack Web Engineer</div>
                 <div class="link-row">
                   <span><i class="fa-solid fa-envelope"></i> rahulk@email.com</span>
@@ -1151,7 +1154,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 7: RECRUITER PROTOCOL & PLACEMENT HIGHLIGHTS ================= -->
+      <!-- ================= PAGE 7: PLACEMENT SECRETARIAT GUIDELINES ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1167,14 +1170,18 @@
           </div>
 
           <div class="ribbon-head"><i class="fa-solid fa-star"></i> Department Accolades</div>
-          <div class="faculty-grid-rich" style="grid-template-columns: 1fr 1fr;">
-            <div class="faculty-tile" style="padding:10px;">
-              <h4 style="font-size:12px; color:var(--ink-midnight); font-weight:800;">Top Tier Placements</h4>
-              <p style="font-size:10.5px; color:var(--gold-foil); font-weight:600;">MNCs & Product Labs</p>
+          <div class="faculty-grid-rich">
+            <div class="faculty-card-item">
+              <div class="faculty-info">
+                <h4>Top Tier Placements</h4>
+                <p>MNCs & Product Labs</p>
+              </div>
             </div>
-            <div class="faculty-tile" style="padding:10px;">
-              <h4 style="font-size:12px; color:var(--ink-midnight); font-weight:800;">Active Repositories</h4>
-              <p style="font-size:10.5px; color:var(--gold-foil); font-weight:600;">Verified Student Work</p>
+            <div class="faculty-card-item">
+              <div class="faculty-info">
+                <h4>Active Repositories</h4>
+                <p>Verified Student Work</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1217,6 +1224,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       const bookElem = document.getElementById('flipbook');
 
+      // Initialize StPageFlip with Smooth Paper Physics
       flipBook = new St.PageFlip(bookElem, {
         width: 550,
         height: 775,
@@ -1241,6 +1249,7 @@
       });
     });
 
+    // Keyboard Arrow Keys Support
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') flipBook.flipNext();
       if (e.key === 'ArrowLeft') flipBook.flipPrev();
