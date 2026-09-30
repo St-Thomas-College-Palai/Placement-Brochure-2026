@@ -299,10 +299,10 @@
     }
 
     /* =========================================================
-       2. EDITORIAL LEADERSHIP & DEPARTMENT
+       2. LEADERSHIP & DEPARTMENT CARDS (HORIZONTAL SPLIT THEME)
        ========================================================= */
     .editorial-page {
-      padding: 36px 30px;
+      padding: 34px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -320,12 +320,12 @@
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
       padding-bottom: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -341,93 +341,35 @@
       text-transform: uppercase;
     }
 
-    .leadership-quad-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 14px;
-      flex-grow: 1;
-      margin-bottom: 10px;
-    }
-
-    .leader-quad-card {
-      background: #ffffff;
-      border: 1px solid #e8e1d5;
-      padding: 14px;
-      border-radius: 6px;
-      border-top: 4px solid var(--gold-foil);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    .leadership-stack {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      justify-content: space-between;
-    }
-
-    .leader-quad-portrait {
-      width: 100px;
-      height: 122px;
-      border-radius: 4px;
-      border: 1.5px solid var(--gold-filigree);
-      background-color: #f4efe6;
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      color: #94a3b8;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      gap: 12px;
+      flex-grow: 1;
+      justify-content: space-around;
       margin-bottom: 6px;
     }
 
-    .leader-quad-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .leader-quad-card h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1.2;
-    }
-
-    .leader-quad-card span.designation {
-      display: block;
-      font-size: 11px;
-      color: var(--gold-foil);
-      font-weight: 700;
-      margin: 2px 0 6px 0;
-    }
-
-    .leader-quad-card p.quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      font-style: italic;
-      color: #334155;
-      line-height: 1.45;
-    }
-
-    .hod-feature-row {
+    /* Common Horizontal Row Card for Leadership & Department */
+    .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 16px;
+      padding: 12px 16px;
       border-radius: 6px;
-      margin-bottom: 14px;
-      border-left: 5px solid var(--primary);
+      border-left: 5px solid var(--gold-foil);
       box-shadow: 0 4px 14px rgba(0,0,0,0.03);
       display: flex;
       gap: 16px;
       align-items: center;
     }
 
-    .hod-portrait-frame {
-      width: 110px;
-      height: 135px;
+    .leader-row-card.primary-accent {
+      border-left-color: var(--primary);
+    }
+
+    .leader-row-portrait {
+      width: 85px;
+      height: 105px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -436,49 +378,46 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 42px;
+      font-size: 36px;
       color: #94a3b8;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
 
-    .hod-portrait-frame img {
+    .leader-row-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .faculty-single-card {
-      background: #ffffff;
-      border: 1px solid #e8e1d5;
-      padding: 12px 14px;
-      border-radius: 6px;
-      border-left: 4px solid var(--gold-foil);
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+    .leader-row-body {
+      flex: 1;
+      min-width: 0;
     }
 
-    .faculty-portrait-frame {
-      width: 80px;
-      height: 98px;
-      border-radius: 4px;
-      border: 1.5px solid var(--gold-filigree);
-      background: #f4efe6;
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      color: #94a3b8;
+    .leader-row-body h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
     }
 
-    .faculty-portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .leader-row-body span.designation {
       display: block;
+      font-size: 11px;
+      color: var(--gold-foil);
+      font-weight: 700;
+      margin: 2px 0 5px 0;
+    }
+
+    .leader-row-body p.quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13.5px;
+      font-style: italic;
+      color: #334155;
+      line-height: 1.45;
+      text-align: justify;
     }
 
     .infra-photo-grid {
@@ -516,7 +455,7 @@
     }
 
     /* =========================================================
-       3. STUDENT PROFILE EMBEDDED STYLES
+       3. STUDENT PROFILE CARDS
        ========================================================= */
     .profile-card-page {
       padding: 24px 20px;
@@ -965,29 +904,22 @@
         height: 190px !important;
       }
 
-      .leadership-quad-grid {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto !important;
-        gap: 10px !important;
-      }
-
-      .leader-quad-card {
-        flex-direction: row !important;
-        text-align: left !important;
-        gap: 12px !important;
-        padding: 10px !important;
-      }
-
-      .leader-quad-portrait {
-        width: 65px !important;
-        height: 80px !important;
-        margin-bottom: 0 !important;
-      }
-
-      .hod-feature-row, .faculty-single-card {
+      .leader-row-card {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
+        gap: 8px !important;
+        padding: 10px !important;
+      }
+
+      .leader-row-portrait {
+        width: 75px !important;
+        height: 95px !important;
+      }
+
+      .leader-row-body p.quote {
+        text-align: center !important;
+        font-size: 12.5px !important;
       }
 
       .profile-card-page {
@@ -1058,7 +990,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION (2x2 BALANCED QUAD GRID) ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION (HORIZONTAL SPLIT THEME) ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
@@ -1066,13 +998,13 @@
             <span class="lead-tag">Governing Council</span>
           </div>
 
-          <div class="leadership-quad-grid">
+          <div class="leadership-stack">
             <!-- 1. Principal -->
-            <div class="leader-quad-card">
-              <div class="leader-quad-portrait">
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
                 <img src="Principal.png" alt="Prof. (Dr.) Toji Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
-              <div>
+              <div class="leader-row-body">
                 <h3>Prof. (Dr.) Toji Thomas</h3>
                 <span class="designation">Principal, St. Thomas College Palai</span>
                 <p class="quote">
@@ -1082,11 +1014,11 @@
             </div>
 
             <!-- 2. Vice Principal -->
-            <div class="leader-quad-card">
-              <div class="leader-quad-portrait">
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
                 <img src="VicePrincipal.jpeg" alt="Rev. Dr. Salvin Kappiliparampil Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
-              <div>
+              <div class="leader-row-body">
                 <h3>Rev. Dr. Salvin Kappiliparampil Thomas</h3>
                 <span class="designation">Vice Principal, St. Thomas College Palai</span>
                 <p class="quote">
@@ -1096,11 +1028,11 @@
             </div>
 
             <!-- 3. Bursar -->
-            <div class="leader-quad-card">
-              <div class="leader-quad-portrait">
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
                 <img src="Mathew.png" alt="Rev. Fr. Mathew Allapattumedayil" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
-              <div>
+              <div class="leader-row-body">
                 <h3>Rev. Fr. Mathew Allapattumedayil</h3>
                 <span class="designation">Bursar, St. Thomas College Palai</span>
                 <p class="quote">
@@ -1110,11 +1042,11 @@
             </div>
 
             <!-- 4. Course Coordinator -->
-            <div class="leader-quad-card">
-              <div class="leader-quad-portrait">
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
                 <img src="Roshan.jpeg" alt="Rev. Fr. Roshan Chacko" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
-              <div>
+              <div class="leader-row-body">
                 <h3>Rev. Fr. Roshan Chacko</h3>
                 <span class="designation">Course Coordinator, BCA Department</span>
                 <p class="quote">
@@ -1138,37 +1070,31 @@
             <span class="lead-tag">Academic Leadership</span>
           </div>
 
-          <!-- Head of the Department: Arjun Ram Sankar (Arjun.jpeg) -->
-          <div class="hod-feature-row">
-            <div class="hod-portrait-frame">
-              <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+          <div class="leadership-stack">
+            <!-- Head of the Department: Arjun Ram Sankar (Arjun.jpeg) -->
+            <div class="leader-row-card primary-accent">
+              <div class="leader-row-portrait">
+                <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              </div>
+              <div class="leader-row-body">
+                <h3>Arjun Ram Sankar</h3>
+                <span class="designation">Head of the Department, Department of Computer Applications</span>
+                <p class="quote">
+                  "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures, full-stack stacks, and modern software development pipelines."
+                </p>
+              </div>
             </div>
-            <div style="flex:1;">
-              <h3 style="font-family:'Cinzel', serif; font-size:15.5px; font-weight:800; color:var(--primary);">Arjun Ram Sankar</h3>
-              <span style="display:block; font-size:11px; color:var(--gold-foil); font-weight:700; margin:2px 0 6px 0;">Head of the Department, Department of Computer Applications</span>
-              <p style="font-family:'Cormorant Garamond', serif; font-size:14px; font-style:italic; color:#334155; line-height:1.55;">
-                "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures, full-stack stacks, and modern software development pipelines."
-              </p>
-            </div>
-          </div>
 
-          <!-- Faculty Members Section -->
-          <div class="page-lead-title" style="font-size:14px; margin-bottom:8px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
-            <span>Faculty Members</span>
-            <span class="lead-tag">Teaching Faculty</span>
-          </div>
-
-          <div class="faculty-members-list">
             <!-- Faculty: Jikki Jose (Jikki.jpeg) -->
-            <div class="faculty-single-card">
-              <div class="faculty-portrait-frame">
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
                 <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <div style="flex:1;">
-                <h4 style="font-size:13.5px; color:var(--primary); font-weight:800;">Jikki Jose</h4>
-                <p style="font-size:11px; color:var(--gold-foil); font-weight:600; margin-bottom:3px;">Assistant Professor, Department of Computer Applications</p>
-                <p style="font-size:12px; color:#475569; line-height:1.45;">
-                  Specialized in web architectures, software project guidance, and practical technical skill development.
+              <div class="leader-row-body">
+                <h3>Jikki Jose</h3>
+                <span class="designation">Assistant Professor, Department of Computer Applications</span>
+                <p class="quote">
+                  "Dedicated to hands-on practical lab guidance, project reviews, and competitive skill training in modern programming frameworks."
                 </p>
               </div>
             </div>
@@ -1203,7 +1129,7 @@
             </div>
           </div>
 
-          <div class="faculty-single-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--gold-foil);">
+          <div class="leader-row-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--gold-foil);">
             <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:3px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
             <p style="font-size:11.5px; color:#475569; line-height:1.5;">
               Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
@@ -1217,7 +1143,6 @@
       </div>
 
       <!-- ================= PLACEHOLDER: DYNAMIC STUDENT PROFILES CONTAINER ================= -->
-      <!-- ഇവിടെയാണ് students/ ഫോൾഡറിലെ ഫയലുകൾ ഓട്ടോമാറ്റിക് ആയി ഇൻജക്റ്റ് ചെയ്യപ്പെടുന്നത് -->
       <div id="dynamic-student-pages" style="display:contents;"></div>
 
       <!-- ================= RECRUITER PROTOCOL & PLACEMENT DRIVE ================= -->
@@ -1228,7 +1153,7 @@
             <span class="lead-tag">Placement Drive</span>
           </div>
 
-          <div class="faculty-single-card" style="margin-bottom:14px; border-left-color:var(--gold-foil);">
+          <div class="leader-row-card" style="margin-bottom:14px; border-left-color:var(--gold-foil);">
             <div style="font-size:13.5px; font-weight:800; color:var(--primary); margin-bottom:4px;">Hiring Framework</div>
             <p style="font-size:12px; color:#475569; line-height:1.6;">
               Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
@@ -1333,6 +1258,24 @@
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
+            // ഫോട്ടോ പാത്ത് കൃത്യമായി photos/ ഫോൾഡറിലേക്ക് റീ-റൂട്ട് ചെയ്യുന്നു:
+            const imgElem = profileCard.querySelector('.photo-slot img');
+            if (imgElem) {
+              let src = imgElem.getAttribute('src') || '';
+              // src-ൽ നിന്ന് ഫയലിന്റെ പേര് മാത്രം എടുക്കുന്നു
+              const filename = src.split('/').pop().split('\\').pop();
+              if (filename) {
+                imgElem.src = 'photos/' + filename;
+              }
+              // ഫോട്ടോ ഇല്ലെങ്കിൽ തനിയെ ഡിഫോൾട്ട് ഐക്കൺ വരാൻ
+              imgElem.onerror = function() {
+                this.style.display = 'none';
+                if (this.parentElement) {
+                  this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:34px; color:#94a3b8;"></i>';
+                }
+              };
+            }
+
             const pageDiv = document.createElement('div');
             pageDiv.className = 'page-sheet';
             
