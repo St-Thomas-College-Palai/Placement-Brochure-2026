@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>BCA Placement Dossier | St. Thomas College Palai</title>
 
   <!-- Typography Suite -->
@@ -34,7 +34,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -47,7 +47,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       color: var(--text-main);
-      padding: 15px;
+      padding: 10px;
     }
 
     /* Ambient Warm Glow */
@@ -56,10 +56,10 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 1500px;
-      height: 950px;
+      width: 100vw;
+      height: 100vh;
       transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse at center, rgba(148, 108, 36, 0.08) 0%, transparent 68%);
+      background: radial-gradient(ellipse at center, rgba(148, 108, 36, 0.08) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -68,32 +68,51 @@
     .book-stage {
       position: relative;
       z-index: 10;
-      filter: drop-shadow(0 42px 85px rgba(7, 19, 38, 0.24));
+      max-width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      filter: drop-shadow(0 25px 50px rgba(7, 19, 38, 0.2));
     }
 
+    /* Base Page Sheet */
     .page-sheet {
-      width: 600px;
-      height: 870px;
+      width: 550px;
+      height: 820px;
       background-color: var(--paper-sheet);
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
       position: relative;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
     }
 
-    /* Subtle Navigation Guides */
+    .page-sheet::-webkit-scrollbar {
+      width: 4px;
+    }
+    .page-sheet::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    /* Floating Turn Helper Indicator */
     .turn-guide {
       position: absolute;
-      bottom: 14px;
-      font-size: 11.5px;
+      bottom: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--gold-foil);
       display: flex;
       align-items: center;
       gap: 6px;
-      z-index: 15;
+      z-index: 20;
       opacity: 0.85;
+      background: rgba(251, 249, 244, 0.85);
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
     }
-    .turn-guide.right { right: 28px; }
-    .turn-guide.left { left: 28px; }
+    .turn-guide.right { right: 18px; }
+    .turn-guide.left { left: 18px; }
 
     /* =========================================================
        1. COVER PAGE
@@ -103,42 +122,23 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 46px 42px;
+      padding: 36px 30px;
       border: 1px solid #e8e1d5;
       position: relative;
-      overflow: hidden;
       cursor: pointer;
-    }
-
-    .cover-front::before {
-      content: '';
-      position: absolute;
-      top: -60%;
-      left: -60%;
-      width: 220%;
-      height: 220%;
-      background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
-      transform: rotate(25deg);
-      pointer-events: none;
-      animation: goldSweep 8s infinite ease-in-out;
-    }
-
-    @keyframes goldSweep {
-      0% { transform: translateX(-100%) rotate(25deg); }
-      30%, 100% { transform: translateX(100%) rotate(25deg); }
     }
 
     .cover-front::after {
       content: '';
       position: absolute;
-      top: 14px; left: 14px; right: 14px; bottom: 14px;
+      top: 12px; left: 12px; right: 12px; bottom: 12px;
       border: 1.5px solid var(--gold-filigree);
       pointer-events: none;
     }
 
     .inner-gold-frame {
       position: absolute;
-      top: 18px; left: 18px; right: 18px; bottom: 18px;
+      top: 16px; left: 16px; right: 16px; bottom: 16px;
       border: 0.5px dashed rgba(148, 108, 36, 0.4);
       pointer-events: none;
     }
@@ -147,14 +147,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 1.5px solid #ede6da;
       z-index: 2;
     }
 
     .brand-logo-slot {
-      height: 60px;
-      max-width: 150px;
+      height: 52px;
+      max-width: 120px;
       display: flex;
       align-items: center;
     }
@@ -163,30 +163,29 @@
       max-height: 100%;
       max-width: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
     }
 
     .pill-badge {
       font-family: 'Cinzel', serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--gold-foil);
       text-transform: uppercase;
-      border: 1.5px solid var(--gold-foil);
-      padding: 5px 16px;
+      border: 1px solid var(--gold-foil);
+      padding: 4px 12px;
       border-radius: 20px;
       background: var(--gold-tint);
     }
 
     .architectural-frame {
       width: 100%;
-      height: 290px;
+      height: 250px;
       border-radius: 4px;
       overflow: hidden;
       border: 1px solid #ded6c7;
-      margin: 16px 0;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+      margin: 14px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
       position: relative;
       z-index: 2;
     }
@@ -196,11 +195,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.8s ease;
-    }
-
-    .architectural-frame:hover img {
-      transform: scale(1.03);
     }
 
     .cover-titles {
@@ -210,9 +204,9 @@
 
     .college-name-styled {
       font-family: 'Cinzel Decorative', 'Cinzel', serif;
-      font-size: 29px;
+      font-size: 24px;
       font-weight: 900;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       color: var(--primary);
       line-height: 1.25;
       text-transform: uppercase;
@@ -221,60 +215,60 @@
     .college-sub-meta {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 16px;
+      font-size: 14.5px;
       color: var(--gold-foil);
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       font-weight: 600;
-      margin-top: 5px;
+      margin-top: 4px;
     }
 
     .dossier-headline {
-      margin: 18px 0;
+      margin: 14px 0;
       border-top: 1.5px solid var(--gold-filigree);
       border-bottom: 1.5px solid var(--gold-filigree);
-      padding: 14px 0;
+      padding: 10px 0;
       background: #ffffff;
       box-shadow: 0 4px 15px rgba(148, 108, 36, 0.05);
     }
 
     .dossier-headline h2 {
       font-family: 'Cinzel', serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       color: var(--primary);
       text-transform: uppercase;
     }
 
     .dossier-headline span {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--text-muted);
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .cover-bottom-bar {
       text-align: center;
       border-top: 1.5px solid #ede6da;
-      padding-top: 14px;
+      padding-top: 12px;
       z-index: 2;
     }
 
     .department-caption {
       font-family: 'Playfair Display', serif;
-      font-size: 21px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: 0.5px;
     }
 
     /* =========================================================
-       2. LEADERSHIP & DEPARTMENT DESK SPECIFIC STYLES
+       2. EDITORIAL PAGES (LEADERSHIP & DESK)
        ========================================================= */
     .editorial-page {
-      padding: 44px 38px;
+      padding: 36px 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -285,19 +279,19 @@
     .editorial-page::after {
       content: '';
       position: absolute;
-      top: 14px; left: 14px; right: 14px; bottom: 14px;
+      top: 12px; left: 12px; right: 12px; bottom: 12px;
       border: 1px solid rgba(214, 190, 140, 0.45);
       pointer-events: none;
     }
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--primary);
-      border-bottom: 2px solid var(--gold-filigree);
-      padding-bottom: 8px;
-      margin-bottom: 16px;
+      border-bottom: 1.5px solid var(--gold-filigree);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -306,174 +300,106 @@
 
     .lead-tag {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       color: var(--gold-foil);
       text-transform: uppercase;
     }
 
-    /* 4-Leader Grid (Principal, VP, Bursar, Coordinator) */
-    .leaders-quad-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-
-    .leader-box-compact {
+    .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 14px;
+      padding: 16px;
       border-radius: 6px;
-      border-top: 3px solid var(--gold-foil);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 14px;
+      border-left: 4px solid var(--gold-foil);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
       display: flex;
-      flex-direction: column;
+      gap: 16px;
       align-items: center;
-      text-align: center;
     }
 
-    .leader-portrait-lg {
-      width: 100px;
-      height: 125px;
+    .leader-row-portrait {
+      width: 105px;
+      height: 130px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
       overflow: hidden;
-      margin-bottom: 10px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 42px;
+      font-size: 40px;
       color: #94a3b8;
     }
 
-    .leader-portrait-lg img {
+    .leader-row-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .leader-box-compact h4 {
+    .leader-row-body {
+      flex: 1;
+    }
+
+    .leader-row-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 13.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.2;
     }
 
-    .leader-box-compact span.role {
+    .leader-row-body span.designation {
       display: block;
       font-size: 11px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin-top: 2px;
-      margin-bottom: 6px;
+      margin: 2px 0 6px 0;
     }
 
-    .leader-box-compact p.msg {
+    .leader-row-body p.quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13.5px;
+      font-size: 14px;
       font-style: italic;
       color: #334155;
-      line-height: 1.45;
-      text-align: center;
+      line-height: 1.5;
     }
 
-    /* HOD Feature Card */
-    .hod-feature-card {
-      background: #ffffff;
-      border: 1px solid #e8e1d5;
-      padding: 18px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-      border-left: 5px solid var(--primary);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .hod-portrait {
-      width: 110px;
-      height: 135px;
-      border-radius: 4px;
-      border: 1.5px solid var(--gold-filigree);
-      background-color: #f4efe6;
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 44px;
-      color: #94a3b8;
-    }
-
-    .hod-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hod-info h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 15.5px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .hod-info span.role {
-      display: block;
-      font-size: 11.5px;
-      color: var(--gold-foil);
-      font-weight: 700;
-      margin: 2px 0 8px 0;
-    }
-
-    .hod-info p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14.5px;
-      font-style: italic;
-      color: #334155;
-      line-height: 1.55;
-    }
-
-    /* Faculty Members 3-Column Grid */
     .faculty-trio-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 8px;
     }
 
     .faculty-col-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 12px 8px;
+      padding: 10px 6px;
       border-radius: 6px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
     .faculty-col-avatar {
-      width: 75px;
-      height: 90px;
+      width: 65px;
+      height: 80px;
       border-radius: 4px;
       border: 1px solid var(--gold-filigree);
       background: #f4efe6;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 26px;
       color: #94a3b8;
     }
 
@@ -485,32 +411,31 @@
     }
 
     .faculty-col-card h4 {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--primary);
       font-weight: 800;
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     .faculty-col-card p {
-      font-size: 10.5px;
+      font-size: 9.5px;
       color: var(--gold-foil);
       font-weight: 600;
       margin-top: 2px;
     }
 
-    /* Infrastructure Gallery Grid */
     .infra-photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin: 14px 0;
+      gap: 12px;
+      margin: 12px 0;
     }
 
     .infra-photo-box {
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
-      height: 140px;
+      height: 125px;
       position: relative;
       background: #f4efe6;
     }
@@ -524,23 +449,20 @@
 
     .infra-photo-caption {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: rgba(11, 25, 44, 0.88);
       color: #ffffff;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      padding: 6px 8px;
+      padding: 4px 6px;
       text-align: center;
-      letter-spacing: 0.5px;
     }
 
     /* =========================================================
-       3. STUDENT PROFILE CARDS
+       3. STUDENT PROFILE CARDS (AUTHENTIC ADAPTIVE DESIGN)
        ========================================================= */
     .profile-card-page {
-      padding: 30px 26px;
+      padding: 24px 20px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -555,63 +477,54 @@
       border-radius: 8px;
       border: 1px solid var(--border-color);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-      overflow-y: auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .profile-card::-webkit-scrollbar {
-      width: 5px;
-    }
-    .profile-card::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-
     .institution-header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      padding: 12px 18px;
+      padding: 10px 16px;
       color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
     }
 
     .inst-name {
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #bfdbfe;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .batch-tag {
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       color: #fef08a;
     }
 
     .profile-top {
-      padding: 16px 18px;
+      padding: 14px 16px;
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: center;
       border-bottom: 1px solid #e2e8f0;
       flex-shrink: 0;
     }
 
     .photo-slot {
-      width: 100px;
-      height: 120px;
+      width: 90px;
+      height: 110px;
       border-radius: 6px;
       border: 2px solid var(--secondary);
       background-color: #e2e8f0;
@@ -620,7 +533,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 38px;
+      font-size: 34px;
       color: #94a3b8;
     }
 
@@ -637,29 +550,29 @@
     }
 
     .student-name {
-      font-size: 21px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--primary);
       text-transform: uppercase;
       line-height: 1.2;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .target-role {
-      font-size: 13.5px;
+      font-size: 12.5px;
       color: var(--accent);
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 12px;
-      font-size: 12px;
+      gap: 4px 10px;
+      font-size: 11.5px;
       color: var(--text-main);
     }
 
@@ -675,20 +588,16 @@
       font-weight: 600;
     }
 
-    .contact-item a:hover {
-      text-decoration: underline;
-    }
-
     .profile-body {
-      padding: 16px 18px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       flex-grow: 1;
     }
 
     .section-title {
-      font-size: 12.5px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
@@ -696,21 +605,17 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
       border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 6px;
-    }
-
-    .section-title i {
-      color: var(--accent);
+      margin-bottom: 5px;
     }
 
     .objective-text {
-      font-size: 12.5px;
-      line-height: 1.55;
+      font-size: 12px;
+      line-height: 1.5;
       color: var(--text-main);
       background: #fafaf9;
-      padding: 8px 12px;
+      padding: 7px 10px;
       border-radius: 6px;
       border-left: 3px solid var(--accent);
       text-align: justify;
@@ -719,27 +624,27 @@
     .skills-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .skill-category {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 11.5px;
       flex-wrap: wrap;
     }
 
     .skill-label {
       font-weight: 700;
       color: var(--text-main);
-      min-width: 95px;
+      min-width: 85px;
     }
 
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
+      gap: 4px;
       flex: 1;
     }
 
@@ -747,9 +652,9 @@
       background: #f1f5f9;
       color: #0f172a;
       border: 1px solid #cbd5e1;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 500;
-      padding: 2px 7px;
+      padding: 1px 6px;
       border-radius: 4px;
     }
 
@@ -757,15 +662,15 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
-      padding: 8px 12px;
-      margin-bottom: 4px;
+      padding: 7px 10px;
+      margin-bottom: 3px;
     }
 
     .timeline-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--primary);
       flex-wrap: wrap;
@@ -773,36 +678,36 @@
     }
 
     .timeline-duration {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--text-muted);
       font-weight: normal;
     }
 
     .timeline-company {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--accent);
       font-weight: 600;
-      margin: 1px 0 4px 0;
+      margin: 1px 0 3px 0;
     }
 
     .summary-points {
-      padding-left: 16px;
-      font-size: 12px;
+      padding-left: 14px;
+      font-size: 11.5px;
       color: var(--text-main);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     .academic-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
+      font-size: 11.5px;
       margin-top: 2px;
     }
 
     .academic-table th, 
     .academic-table td {
       border: 1px solid #e2e8f0;
-      padding: 6px 8px;
+      padding: 5px 6px;
       text-align: left;
     }
 
@@ -810,21 +715,20 @@
       background-color: #f8fafc;
       font-weight: 700;
       color: var(--primary);
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
     }
 
     .score-highlight {
       font-weight: 700;
       color: var(--accent);
-      white-space: nowrap;
     }
 
     .cert-section {
-      font-size: 12px;
+      font-size: 11px;
       background: #faf5ff;
       border: 1px solid #e9d5ff;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       color: #581c87;
       line-height: 1.4;
@@ -832,16 +736,16 @@
 
     .profile-footer {
       border-top: 1px solid #e2e8f0;
-      padding: 10px 18px;
+      padding: 8px 14px;
       background: #f8fafc;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--text-muted);
       font-weight: 500;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 4px;
       flex-shrink: 0;
     }
 
@@ -853,7 +757,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 46px 42px;
+      padding: 36px 30px;
       border: 1px solid #e8e1d5;
       position: relative;
     }
@@ -861,18 +765,18 @@
     .cover-back::after {
       content: '';
       position: absolute;
-      top: 14px; left: 14px; right: 14px; bottom: 14px;
+      top: 12px; left: 12px; right: 12px; bottom: 12px;
       border: 1.5px solid var(--gold-filigree);
       pointer-events: none;
     }
 
     .back-image-frame {
       width: 100%;
-      height: 220px;
+      height: 200px;
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
-      margin: 16px 0;
+      margin: 14px 0;
       box-shadow: 0 10px 24px rgba(0,0,0,0.06);
     }
 
@@ -885,22 +789,22 @@
 
     .secretariat-tag {
       font-family: 'Cinzel', serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
       color: var(--gold-foil);
       text-transform: uppercase;
       border: 1.5px solid var(--gold-foil);
-      padding: 5px 16px;
+      padding: 4px 14px;
       border-radius: 20px;
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       background: var(--gold-tint);
     }
 
     .back-main-heading {
       font-family: 'Cinzel', serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--primary);
       letter-spacing: 1px;
@@ -909,40 +813,113 @@
     .back-sub-heading {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--gold-foil);
       font-weight: 600;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .contact-details-box {
-      margin: 16px 0;
+      margin: 14px 0;
       z-index: 2;
     }
 
     .contact-item-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-      font-size: 13.5px;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 12.5px;
       color: #334155;
     }
 
     .contact-item-row i {
       color: var(--gold-foil);
-      width: 20px;
-      font-size: 15px;
+      width: 18px;
+      font-size: 14px;
     }
 
     .back-footer-imprint {
-      font-size: 12px;
+      font-size: 11px;
       color: #64748b;
       text-align: center;
       border-top: 1.5px solid #ede6da;
-      padding-top: 16px;
+      padding-top: 14px;
       font-weight: 600;
       z-index: 2;
+    }
+
+    /* =========================================================
+       5. RESPONSIVE MEDIA QUERIES (MOBILE / VIVO X200 OPTIMIZED)
+       ========================================================= */
+    @media (max-width: 768px) {
+      body {
+        padding: 5px;
+        justify-content: flex-start;
+      }
+
+      .book-stage {
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .page-sheet {
+        width: 95vw !important;
+        height: 92vh !important;
+        border-radius: 8px;
+        padding: 20px 16px !important;
+      }
+
+      .cover-front, .cover-back, .editorial-page {
+        padding: 22px 16px !important;
+      }
+
+      .college-name-styled {
+        font-size: 20px !important;
+      }
+
+      .architectural-frame {
+        height: 180px !important;
+      }
+
+      /* Stack photo and content vertically on mobile for full readability */
+      .leader-row-card {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px !important;
+        padding: 14px !important;
+      }
+
+      .leader-row-portrait {
+        width: 90px !important;
+        height: 110px !important;
+      }
+
+      .leader-row-body p.quote {
+        text-align: center !important;
+        font-size: 13.5px !important;
+      }
+
+      .profile-card-page {
+        padding: 10px 4px !important;
+      }
+
+      .profile-top {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 10px !important;
+      }
+
+      .contact-links {
+        justify-content: center !important;
+      }
+
+      .turn-guide {
+        font-size: 10px !important;
+        bottom: 8px !important;
+      }
     }
   </style>
 </head>
@@ -986,12 +963,12 @@
         <div class="cover-bottom-bar">
           <div class="department-caption">Department of Computer Applications</div>
           <div class="turn-guide right">
-            Click edge to open <i class="fa-solid fa-arrow-right"></i>
+            Swipe / Click to open <i class="fa-solid fa-arrow-right"></i>
           </div>
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP DESK (4 LEADERS WITH PHOTOS) ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP DESK (PRINCIPAL & VICE PRINCIPAL) ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
@@ -999,58 +976,83 @@
             <span class="lead-tag">Patrons</span>
           </div>
 
-          <!-- 2x2 Grid for 4 Leaders -->
-          <div class="leaders-quad-grid">
-            
-            <!-- 1. Principal -->
-            <div class="leader-box-compact">
-              <div class="leader-portrait-lg">
-                <img src="principal.jpg" alt="Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-              </div>
-              <h4>Rev. Dr. Principal</h4>
-              <span class="role">Principal</span>
-              <p class="msg">"Nurturing ethical innovators equipped with robust engineering logic."</p>
+          <!-- Principal Row Card -->
+          <div class="leader-row-card">
+            <div class="leader-row-portrait">
+              <img src="principal.jpg" alt="Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
             </div>
-
-            <!-- 2. Vice Principal -->
-            <div class="leader-box-compact">
-              <div class="leader-portrait-lg">
-                <img src="vice-principal.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-              </div>
-              <h4>Rev. Fr. Vice Principal</h4>
-              <span class="role">Vice Principal</span>
-              <p class="msg">"Instilling academic rigor and agility for dynamic corporate environments."</p>
+            <div class="leader-row-body">
+              <h3>Rev. Dr. Principal</h3>
+              <span class="designation">Principal, St. Thomas College Palai</span>
+              <p class="quote">
+                "St. Thomas College Palai upholds a benchmark of academic distinction and ethical discipline. Our Computer Application graduates are trained to translate foundational logic into resilient, industry-scale engineering."
+              </p>
             </div>
+          </div>
 
-            <!-- 3. Bursar -->
-            <div class="leader-box-compact">
-              <div class="leader-portrait-lg">
-                <img src="bursar.jpg" alt="Bursar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-              </div>
-              <h4>Rev. Fr. Bursar</h4>
-              <span class="role">Bursar</span>
-              <p class="msg">"Empowering technological education with world-class campus facilities."</p>
+          <!-- Vice Principal Row Card -->
+          <div class="leader-row-card">
+            <div class="leader-row-portrait">
+              <img src="vice-principal.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
             </div>
-
-            <!-- 4. Placement Coordinator -->
-            <div class="leader-box-compact">
-              <div class="leader-portrait-lg">
-                <img src="coordinator.jpg" alt="Coordinator" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-              </div>
-              <h4>Placement Coordinator</h4>
-              <span class="role">Campus Placement Head</span>
-              <p class="msg">"Fostering sustainable corporate collaborations and premier hiring opportunities."</p>
+            <div class="leader-row-body">
+              <h3>Rev. Fr. Vice Principal</h3>
+              <span class="designation">Vice Principal, St. Thomas College Palai</span>
+              <p class="quote">
+                "Academic rigor blended with practical industry curriculum makes our students quick learners and agile problem-solvers in dynamic tech environments."
+              </p>
             </div>
-
           </div>
         </div>
 
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13.5px; color:var(--gold-foil); text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-foil); text-align:center;">
           Excellence in Technology & Character
         </div>
       </div>
 
-      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY TEAM WITH PHOTOS) ================= -->
+      <!-- ================= PAGE 3: LEADERSHIP DESK (BURSAR & COORDINATOR) ================= -->
+      <div class="page-sheet editorial-page" data-density="hard">
+        <div>
+          <div class="page-lead-title">
+            <span>Leadership Desk</span>
+            <span class="lead-tag">Administration</span>
+          </div>
+
+          <!-- Bursar Row Card -->
+          <div class="leader-row-card">
+            <div class="leader-row-portrait">
+              <img src="bursar.jpg" alt="Bursar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+            </div>
+            <div class="leader-row-body">
+              <h3>Rev. Fr. Bursar</h3>
+              <span class="designation">Bursar, St. Thomas College Palai</span>
+              <p class="quote">
+                "We provide uncompromised technical infrastructure and high-performance software lab facilities to equip our students with industry-grade competencies."
+              </p>
+            </div>
+          </div>
+
+          <!-- Coordinator Row Card -->
+          <div class="leader-row-card">
+            <div class="leader-row-portrait">
+              <img src="coordinator.jpg" alt="Placement Coordinator" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+            </div>
+            <div class="leader-row-body">
+              <h3>Placement Coordinator</h3>
+              <span class="designation">Campus Placement Head</span>
+              <p class="quote">
+                "Our placement cell bridges academia and corporate expectations, ensuring our recruiting partners discover agile, disciplined, and technically versatile talent."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-foil); text-align:center;">
+          Institutional Vision & Mentorship
+        </div>
+      </div>
+
+      <!-- ================= PAGE 4: DEPARTMENT DESK (HOD & FACULTY TEAM) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1059,21 +1061,21 @@
           </div>
 
           <!-- Large Featured HOD Card -->
-          <div class="hod-feature-card">
-            <div class="hod-portrait">
+          <div class="leader-row-card" style="border-left-color: var(--primary); margin-bottom:12px;">
+            <div class="leader-row-portrait">
               <img src="hod.jpg" alt="HOD" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
             </div>
-            <div class="hod-info">
+            <div class="leader-row-body">
               <h3>Head of the Department</h3>
-              <span class="role">Dept. of Computer Applications (BCA)</span>
-              <p>
-                "Our BCA curriculum blends computational foundations with daily hands-on software development. We train our cohorts in resilient cloud systems, full-stack stacks, and industry-grade engineering practices."
+              <span class="designation">Dept. of Computer Applications (BCA)</span>
+              <p class="quote">
+                "Our BCA curriculum blends computational theory with practical software engineering. We train our cohorts in resilient cloud systems, full-stack web, and modern data pipelines."
               </p>
             </div>
           </div>
 
-          <!-- Faculty Members Row with Large Photos -->
-          <div class="page-lead-title" style="font-size:16px; margin-bottom:10px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
+          <!-- Faculty Members Row -->
+          <div class="page-lead-title" style="font-size:14px; margin-bottom:8px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
             <span>Faculty Mentors</span>
             <span class="lead-tag">Teaching Faculty</span>
           </div>
@@ -1105,12 +1107,12 @@
           </div>
         </div>
 
-        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:8px; font-weight:600;">
+        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:8px; font-weight:600;">
           Dedicated Faculty Mentorship & Lab Supervision
         </div>
       </div>
 
-      <!-- ================= PAGE 4: INFRASTRUCTURE & LAB GALLERY ================= -->
+      <!-- ================= PAGE 5: INFRASTRUCTURE & LAB GALLERY ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1118,7 +1120,7 @@
             <span class="lead-tag">Software Lab</span>
           </div>
 
-          <p style="font-size:13px; line-height:1.65; color:#334155; margin-bottom:12px;">
+          <p style="font-size:12.5px; line-height:1.6; color:#334155; margin-bottom:10px;">
             The Department features modern computing facilities equipped with high-throughput network backbones, dedicated containerized environments, and full enterprise developer stacks.
           </p>
 
@@ -1126,17 +1128,17 @@
           <div class="infra-photo-grid">
             <div class="infra-photo-box">
               <img src="lab1.jpg" alt="Software Lab" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600';">
-              <div class="infra-photo-caption">High-Performance Computing Lab</div>
+              <div class="infra-photo-caption">High-Performance Lab</div>
             </div>
             <div class="infra-photo-box">
               <img src="lab2.jpg" alt="Developer Studio" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600';">
-              <div class="infra-photo-caption">Interactive Coding & Seminar Hall</div>
+              <div class="infra-photo-caption">Seminar & Coding Studio</div>
             </div>
           </div>
 
-          <div class="leader-message-card" style="margin-bottom:0; padding:14px 16px; border-left-color:var(--gold-foil);">
-            <div style="font-size:12.5px; font-weight:800; color:var(--primary); margin-bottom:4px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
-            <p style="font-size:12px; color:#475569; line-height:1.55;">
+          <div class="leader-row-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--gold-foil);">
+            <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:3px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
+            <p style="font-size:11.5px; color:#475569; line-height:1.5;">
               Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
             </p>
           </div>
@@ -1147,7 +1149,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE - EXACT TEMPLATE EMBED) ================= -->
+      <!-- ================= PAGE 6: STUDENT 1 (ALEN JOSE) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
@@ -1299,7 +1301,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K - EXACT TEMPLATE EMBED) ================= -->
+      <!-- ================= PAGE 7: STUDENT 2 (RAHUL K) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
@@ -1447,7 +1449,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 7: PLACEMENT SECRETARIAT GUIDELINES ================= -->
+      <!-- ================= PAGE 8: PLACEMENT SECRETARIAT GUIDELINES ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1455,32 +1457,36 @@
             <span class="lead-tag">Placement Drive</span>
           </div>
 
-          <div class="leader-message-card" style="margin-bottom:16px; border-left-color:var(--gold-foil);">
-            <div style="font-size:14px; font-weight:800; color:var(--primary); margin-bottom:4px;">Hiring Framework</div>
-            <p style="font-size:13px; color:#475569; line-height:1.65;">
+          <div class="leader-row-card" style="margin-bottom:14px; border-left-color:var(--gold-foil);">
+            <div style="font-size:13.5px; font-weight:800; color:var(--primary); margin-bottom:4px;">Hiring Framework</div>
+            <p style="font-size:12px; color:#475569; line-height:1.6;">
               Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
             </p>
           </div>
 
-          <div class="ribbon-head" style="font-size:12px; font-weight:800; color:var(--primary);"><i class="fa-solid fa-star" style="color:var(--gold-foil);"></i> Department Accolades</div>
+          <div class="page-lead-title" style="font-size:14px; margin-bottom:8px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
+            <span>Department Accolades</span>
+            <span class="lead-tag">Track Record</span>
+          </div>
+
           <div class="faculty-trio-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="faculty-col-card" style="padding:14px;">
-              <h4 style="font-size:13px; color:var(--primary);">Top Tier Placements</h4>
-              <p style="font-size:11px; color:var(--gold-foil);">MNCs & Product Labs</p>
+            <div class="faculty-col-card" style="padding:12px;">
+              <h4 style="font-size:12px; color:var(--primary);">Top Tier Placements</h4>
+              <p style="font-size:10.5px; color:var(--gold-foil);">MNCs & Product Labs</p>
             </div>
-            <div class="faculty-col-card" style="padding:14px;">
-              <h4 style="font-size:13px; color:var(--primary);">Active Repositories</h4>
-              <p style="font-size:11px; color:var(--gold-foil);">Verified Student Work</p>
+            <div class="faculty-col-card" style="padding:12px;">
+              <h4 style="font-size:12px; color:var(--primary);">Active Repositories</h4>
+              <p style="font-size:10.5px; color:var(--gold-foil);">Verified Student Work</p>
             </div>
           </div>
         </div>
 
-        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:10px; font-weight:600;">
+        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:8px; font-weight:600;">
           Seamless Recruitment Drives & Dedicated Interview Rooms
         </div>
       </div>
 
-      <!-- ================= PAGE 8: BACK COVER ================= -->
+      <!-- ================= PAGE 9: BACK COVER ================= -->
       <div class="page-sheet cover-back" data-density="hard">
         <div>
           <span class="secretariat-tag">Placement Secretariat</span>
@@ -1510,30 +1516,37 @@
   <script>
     let flipBook;
 
-    window.addEventListener('DOMContentLoaded', () => {
+    function initBook() {
       const bookElem = document.getElementById('flipbook');
+      const isMobile = window.innerWidth <= 768;
 
-      // Initialize StPageFlip with Soft Magazine Physics
+      // Smart Responsive Canvas: Single-page portrait for Mobile, Double-spread for Desktop
+      const pageWidth = isMobile ? Math.min(window.innerWidth * 0.95, 480) : 550;
+      const pageHeight = isMobile ? Math.min(window.innerHeight * 0.92, 820) : 820;
+
       flipBook = new St.PageFlip(bookElem, {
-        width: 600,
-        height: 870,
+        width: pageWidth,
+        height: pageHeight,
         size: 'fixed',
-        minWidth: 360,
-        maxWidth: 680,
-        minHeight: 520,
-        maxHeight: 930,
+        minWidth: 320,
+        maxWidth: 650,
+        minHeight: 480,
+        maxHeight: 900,
         maxShadowOpacity: 0.35,
         showCover: true,
-        usePortrait: false,
-        mobileScrollSupport: false,
+        usePortrait: isMobile, // Automatically single page on mobile!
+        mobileScrollSupport: true,
         autoSize: true
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
-    });
+    }
+
+    window.addEventListener('DOMContentLoaded', initBook);
 
     // Keyboard Arrow Keys Support (Left / Right Arrow)
     document.addEventListener('keydown', (e) => {
+      if (!flipBook) return;
       if (e.key === 'ArrowRight') flipBook.flipNext();
       if (e.key === 'ArrowLeft') flipBook.flipPrev();
     });
