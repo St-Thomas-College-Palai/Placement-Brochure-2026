@@ -15,11 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
   <style>
-    /* =========================================================
-       1. CORE DESIGN VARIABLES & GLOBAL RESET
-       ========================================================= */
     :root {
-      /* Student Card Tokens */
       --primary: #0b192c;
       --secondary: #1e3e62;
       --accent: #0066cc;
@@ -28,8 +24,6 @@
       --border-color: #cbd5e1;
       --card-bg: #ffffff;
       --body-bg: #f8fafc;
-
-      /* Editorial & Cover Tokens */
       --paper-sheet: #fbf9f4;
       --gold-foil: #946c24;
       --gold-filigree: #d6be8c;
@@ -70,7 +64,7 @@
       z-index: 0;
     }
 
-    /* 3D Canvas Stage - Maximum Large Screen Viewport */
+    /* 3D Canvas Stage */
     .book-stage {
       position: relative;
       z-index: 10;
@@ -102,7 +96,7 @@
     .turn-guide.left { left: 28px; }
 
     /* =========================================================
-       2. COVER PAGE (EDITORIAL LUXURY DESIGN)
+       1. COVER PAGE
        ========================================================= */
     .cover-front {
       background: var(--paper-sheet);
@@ -277,10 +271,10 @@
     }
 
     /* =========================================================
-       3. EDITORIAL LEADERSHIP & INFRASTRUCTURE PAGES
+       2. LEADERSHIP & DEPARTMENT DESK SPECIFIC STYLES
        ========================================================= */
     .editorial-page {
-      padding: 48px 44px;
+      padding: 44px 38px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -298,12 +292,12 @@
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 23px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
-      padding-bottom: 10px;
-      margin-bottom: 22px;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -319,22 +313,93 @@
       text-transform: uppercase;
     }
 
-    .leader-message-card {
+    /* 4-Leader Grid (Principal, VP, Bursar, Coordinator) */
+    .leaders-quad-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .leader-box-compact {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 20px;
+      padding: 14px;
       border-radius: 6px;
-      margin-bottom: 18px;
-      border-left: 5px solid var(--gold-foil);
+      border-top: 3px solid var(--gold-foil);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .leader-portrait-lg {
+      width: 100px;
+      height: 125px;
+      border-radius: 4px;
+      border: 1.5px solid var(--gold-filigree);
+      background-color: #f4efe6;
+      overflow: hidden;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      color: #94a3b8;
+    }
+
+    .leader-portrait-lg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .leader-box-compact h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .leader-box-compact span.role {
+      display: block;
+      font-size: 11px;
+      color: var(--gold-foil);
+      font-weight: 700;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .leader-box-compact p.msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13.5px;
+      font-style: italic;
+      color: #334155;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    /* HOD Feature Card */
+    .hod-feature-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      padding: 18px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      border-left: 5px solid var(--primary);
       box-shadow: 0 6px 18px rgba(0,0,0,0.03);
       display: flex;
       gap: 18px;
       align-items: flex-start;
     }
 
-    .leader-portrait {
-      width: 95px;
-      height: 118px;
+    .hod-portrait {
+      width: 110px;
+      height: 135px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -343,103 +408,97 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 44px;
       color: #94a3b8;
     }
 
-    .leader-portrait img {
+    .hod-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .leader-text-col {
-      flex: 1;
-    }
-
-    .quote-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      font-style: italic;
-      color: #334155;
-      line-height: 1.65;
-    }
-
-    .sign-info {
-      margin-top: 10px;
+    .hod-info h3 {
       font-family: 'Cinzel', serif;
-      font-size: 13.5px;
+      font-size: 15.5px;
       font-weight: 800;
       color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
-    .sign-info span {
+    .hod-info span.role {
       display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
+      font-size: 11.5px;
       color: var(--gold-foil);
-      text-transform: none;
-      font-size: 12px;
-      margin-top: 3px;
+      font-weight: 700;
+      margin: 2px 0 8px 0;
     }
 
-    .faculty-grid-rich {
+    .hod-info p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14.5px;
+      font-style: italic;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    /* Faculty Members 3-Column Grid */
+    .faculty-trio-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 12px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
     }
 
-    .faculty-card-item {
+    .faculty-col-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 12px;
+      padding: 12px 8px;
       border-radius: 6px;
+      text-align: center;
       display: flex;
-      gap: 12px;
+      flex-direction: column;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
-    .faculty-avatar {
-      width: 58px;
-      height: 70px;
+    .faculty-col-avatar {
+      width: 75px;
+      height: 90px;
       border-radius: 4px;
       border: 1px solid var(--gold-filigree);
       background: #f4efe6;
       overflow: hidden;
-      flex-shrink: 0;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 30px;
       color: #94a3b8;
     }
 
-    .faculty-avatar img {
+    .faculty-col-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .faculty-info h4 {
-      font-size: 13.5px;
+    .faculty-col-card h4 {
+      font-size: 12px;
       color: var(--primary);
       font-weight: 800;
       line-height: 1.25;
     }
 
-    .faculty-info p {
-      font-size: 11.5px;
+    .faculty-col-card p {
+      font-size: 10.5px;
       color: var(--gold-foil);
       font-weight: 600;
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
+    /* Infrastructure Gallery Grid */
     .infra-photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -478,7 +537,7 @@
     }
 
     /* =========================================================
-       4. STUDENT DOSSIER EMBEDDED STYLES (ORIGINAL CLASS MAPPING)
+       3. STUDENT PROFILE CARDS
        ========================================================= */
     .profile-card-page {
       padding: 30px 26px;
@@ -787,7 +846,7 @@
     }
 
     /* =========================================================
-       5. FINAL PAGES: RECRUITMENT PROTOCOL & BACK COVER
+       4. BACK COVER
        ========================================================= */
     .cover-back {
       background: var(--paper-sheet);
@@ -932,53 +991,66 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP DESK ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP DESK (4 LEADERS WITH PHOTOS) ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
             <span>Leadership Desk</span>
-            <span class="lead-tag">Patron Message</span>
+            <span class="lead-tag">Patrons</span>
           </div>
 
-          <!-- Principal Card -->
-          <div class="leader-message-card">
-            <div class="leader-portrait">
-              <img src="principal.jpg" alt="Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-            </div>
-            <div class="leader-text-col">
-              <p class="quote-text">
-                "St. Thomas College Palai upholds a benchmark of academic distinction and ethical discipline. Our Computer Application graduates are trained to translate foundational logic into resilient, industry-scale engineering."
-              </p>
-              <div class="sign-info">
-                Rev. Dr. Principal
-                <span>Principal, St. Thomas College Palai (Autonomous)</span>
+          <!-- 2x2 Grid for 4 Leaders -->
+          <div class="leaders-quad-grid">
+            
+            <!-- 1. Principal -->
+            <div class="leader-box-compact">
+              <div class="leader-portrait-lg">
+                <img src="principal.jpg" alt="Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
+              <h4>Rev. Dr. Principal</h4>
+              <span class="role">Principal</span>
+              <p class="msg">"Nurturing ethical innovators equipped with robust engineering logic."</p>
             </div>
-          </div>
 
-          <!-- Vice Principal Card -->
-          <div class="leader-message-card">
-            <div class="leader-portrait">
-              <img src="vice-principal.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-            </div>
-            <div class="leader-text-col">
-              <p class="quote-text">
-                "Through extensive hands-on coursework in our dedicated Software Laboratory, our students build verifiable proficiencies across Full Stack Web, Cloud Infrastructure, and Data Engineering."
-              </p>
-              <div class="sign-info">
-                Rev. Fr. Vice Principal
-                <span>Vice Principal, St. Thomas College Palai</span>
+            <!-- 2. Vice Principal -->
+            <div class="leader-box-compact">
+              <div class="leader-portrait-lg">
+                <img src="vice-principal.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
               </div>
+              <h4>Rev. Fr. Vice Principal</h4>
+              <span class="role">Vice Principal</span>
+              <p class="msg">"Instilling academic rigor and agility for dynamic corporate environments."</p>
             </div>
+
+            <!-- 3. Bursar -->
+            <div class="leader-box-compact">
+              <div class="leader-portrait-lg">
+                <img src="bursar.jpg" alt="Bursar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <h4>Rev. Fr. Bursar</h4>
+              <span class="role">Bursar</span>
+              <p class="msg">"Empowering technological education with world-class campus facilities."</p>
+            </div>
+
+            <!-- 4. Placement Coordinator -->
+            <div class="leader-box-compact">
+              <div class="leader-portrait-lg">
+                <img src="coordinator.jpg" alt="Coordinator" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <h4>Placement Coordinator</h4>
+              <span class="role">Campus Placement Head</span>
+              <p class="msg">"Fostering sustainable corporate collaborations and premier hiring opportunities."</p>
+            </div>
+
           </div>
         </div>
 
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:14px; color:var(--gold-foil); text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13.5px; color:var(--gold-foil); text-align:center;">
           Excellence in Technology & Character
         </div>
       </div>
 
-      <!-- ================= PAGE 3: HOD & FACULTY DESK ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY TEAM WITH PHOTOS) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -986,48 +1058,55 @@
             <span class="lead-tag">Academic Vision</span>
           </div>
 
-          <!-- HOD Message Card -->
-          <div class="leader-message-card" style="border-left-color: var(--primary);">
-            <div class="leader-portrait">
+          <!-- Large Featured HOD Card -->
+          <div class="hod-feature-card">
+            <div class="hod-portrait">
               <img src="hod.jpg" alt="HOD" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
             </div>
-            <div class="leader-text-col">
-              <p class="quote-text">
-                "Our BCA program seamlessly combines computational theory with continuous project-based practicals. Our recruiters consistently recognize our students for their agility and rapid onboarding ability."
+            <div class="hod-info">
+              <h3>Head of the Department</h3>
+              <span class="role">Dept. of Computer Applications (BCA)</span>
+              <p>
+                "Our BCA curriculum blends computational foundations with daily hands-on software development. We train our cohorts in resilient cloud systems, full-stack stacks, and industry-grade engineering practices."
               </p>
-              <div class="sign-info">
-                Head of the Department
-                <span>Dept. of Computer Applications</span>
-              </div>
             </div>
           </div>
 
-          <!-- Placement Faculty Mentors with Photos -->
-          <div class="ribbon-head" style="margin-top:10px; font-size:12px; font-weight:800; color:var(--primary);"><i class="fa-solid fa-users-gear" style="color:var(--gold-foil);"></i> Placement Mentors & Faculty</div>
-          <div class="faculty-grid-rich">
-            <div class="faculty-card-item">
-              <div class="faculty-avatar">
-                <img src="faculty1.jpg" alt="Faculty" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+          <!-- Faculty Members Row with Large Photos -->
+          <div class="page-lead-title" style="font-size:16px; margin-bottom:10px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
+            <span>Faculty Mentors</span>
+            <span class="lead-tag">Teaching Faculty</span>
+          </div>
+
+          <div class="faculty-trio-grid">
+            <div class="faculty-col-card">
+              <div class="faculty-col-avatar">
+                <img src="teacher1.jpg" alt="Teacher 1" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <div class="faculty-info">
-                <h4>Faculty Coordinator</h4>
-                <p>Placement & Training Cell</p>
-              </div>
+              <h4>Faculty Member 1</h4>
+              <p>Assistant Professor</p>
             </div>
-            <div class="faculty-card-item">
-              <div class="faculty-avatar">
-                <img src="faculty2.jpg" alt="Staff" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+
+            <div class="faculty-col-card">
+              <div class="faculty-col-avatar">
+                <img src="teacher2.jpg" alt="Teacher 2" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <div class="faculty-info">
-                <h4>Staff Coordinator</h4>
-                <p>Technical Mentorship Wing</p>
+              <h4>Faculty Member 2</h4>
+              <p>Assistant Professor</p>
+            </div>
+
+            <div class="faculty-col-card">
+              <div class="faculty-col-avatar">
+                <img src="teacher3.jpg" alt="Teacher 3" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
+              <h4>Faculty Member 3</h4>
+              <p>Assistant Professor</p>
             </div>
           </div>
         </div>
 
-        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:10px; font-weight:600;">
-          Continuous Faculty Mentorship & Lab Practice
+        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:8px; font-weight:600;">
+          Dedicated Faculty Mentorship & Lab Supervision
         </div>
       </div>
 
@@ -1068,12 +1147,11 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE - YOUR EXACT CODE) ================= -->
+      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE - EXACT TEMPLATE EMBED) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
           <div class="profile-card">
-            <!-- College & Department Info -->
             <div class="institution-header">
               <div class="inst-name">
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -1082,7 +1160,6 @@
               <div class="batch-tag">Batch 2026 - 2027</div>
             </div>
 
-            <!-- Profile Identification Section -->
             <div class="profile-top">
               <div class="photo-slot">
                 <img src="photos/24BCA01.jpg" alt="Student Photo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
@@ -1090,35 +1167,19 @@
               
               <div class="student-info">
                 <h1 class="student-name">ALEN JOSE</h1>
-                
-                <div class="target-role">
-                  <i class="fa-solid fa-code"></i> Aspiring Software Developer
-                </div>
+                <div class="target-role"><i class="fa-solid fa-code"></i> Aspiring Software Developer</div>
 
-                <!-- Contact Information -->
                 <div class="contact-links">
-                  <span class="contact-item">
-                    <i class="fa-solid fa-envelope" style="color: #2563eb;"></i> alenjose@email.com
-                  </span>
-                  <span class="contact-item">
-                    <i class="fa-solid fa-phone" style="color: #10b981;"></i> +91 9847123456
-                  </span>
-                  <span class="contact-item">
-                    <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Kottayam, Kerala
-                  </span>
-                  <span class="contact-item">
-                    <i class="fa-brands fa-github"></i> <a href="https://github.com/alenjose" target="_blank">GitHub Profile</a>
-                  </span>
-                  <span class="contact-item">
-                    <i class="fa-brands fa-linkedin" style="color: #0284c7;"></i> <a href="https://linkedin.com/in/alenjose" target="_blank">LinkedIn Profile</a>
-                  </span>
+                  <span class="contact-item"><i class="fa-solid fa-envelope" style="color: #2563eb;"></i> alenjose@email.com</span>
+                  <span class="contact-item"><i class="fa-solid fa-phone" style="color: #10b981;"></i> +91 9847123456</span>
+                  <span class="contact-item"><i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Kottayam, Kerala</span>
+                  <span class="contact-item"><i class="fa-brands fa-github"></i> <a href="https://github.com/alenjose" target="_blank">GitHub Profile</a></span>
+                  <span class="contact-item"><i class="fa-brands fa-linkedin" style="color: #0284c7;"></i> <a href="https://linkedin.com/in/alenjose" target="_blank">LinkedIn Profile</a></span>
                 </div>
               </div>
             </div>
 
-            <!-- Detailed Profile Content -->
             <div class="profile-body">
-              <!-- 1. Career Objective -->
               <div>
                 <div class="section-title"><i class="fa-solid fa-bullseye"></i> Career Objective</div>
                 <p class="objective-text">
@@ -1126,7 +1187,6 @@
                 </p>
               </div>
 
-              <!-- 2. Technical Skills -->
               <div>
                 <div class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</div>
                 <div class="skills-wrapper">
@@ -1162,7 +1222,6 @@
                 </div>
               </div>
 
-              <!-- 3. Internship Experience -->
               <div>
                 <div class="section-title"><i class="fa-solid fa-briefcase"></i> Internship Experience</div>
                 <div class="timeline-box">
@@ -1178,7 +1237,6 @@
                 </div>
               </div>
 
-              <!-- 4. Academic Project -->
               <div>
                 <div class="section-title"><i class="fa-solid fa-diagram-project"></i> Major Academic Project</div>
                 <div class="timeline-box">
@@ -1193,7 +1251,6 @@
                 </div>
               </div>
 
-              <!-- 5. Academic Record -->
               <div>
                 <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
                 <table class="academic-table">
@@ -1228,13 +1285,11 @@
                 </table>
               </div>
 
-              <!-- 6. Certifications -->
               <div class="cert-section">
                 <i class="fa-solid fa-award"></i> <strong>Certifications:</strong> Python Programming (NPTEL), Responsive Web Design (freeCodeCamp), SQL Database Fundamentals.
               </div>
             </div>
 
-            <!-- Card Footer -->
             <div class="profile-footer">
               <span>Roll No: 24BCA01</span>
               <span>Dept. of Computer Applications | St. Thomas College Palai</span>
@@ -1244,7 +1299,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K - SAME TEMPLATE STRUCTURE) ================= -->
+      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K - EXACT TEMPLATE EMBED) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
@@ -1408,18 +1463,14 @@
           </div>
 
           <div class="ribbon-head" style="font-size:12px; font-weight:800; color:var(--primary);"><i class="fa-solid fa-star" style="color:var(--gold-foil);"></i> Department Accolades</div>
-          <div class="faculty-grid-rich">
-            <div class="faculty-card-item">
-              <div class="faculty-info">
-                <h4>Top Tier Placements</h4>
-                <p>MNCs & Product Labs</p>
-              </div>
+          <div class="faculty-trio-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="faculty-col-card" style="padding:14px;">
+              <h4 style="font-size:13px; color:var(--primary);">Top Tier Placements</h4>
+              <p style="font-size:11px; color:var(--gold-foil);">MNCs & Product Labs</p>
             </div>
-            <div class="faculty-card-item">
-              <div class="faculty-info">
-                <h4>Active Repositories</h4>
-                <p>Verified Student Work</p>
-              </div>
+            <div class="faculty-col-card" style="padding:14px;">
+              <h4 style="font-size:13px; color:var(--primary);">Active Repositories</h4>
+              <p style="font-size:11px; color:var(--gold-foil);">Verified Student Work</p>
             </div>
           </div>
         </div>
