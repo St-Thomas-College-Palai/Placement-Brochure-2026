@@ -8,14 +8,13 @@
   <!-- Typography Suite -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- StPageFlip Engine -->
+  <!-- StPageFlip Soft Paper Physics Engine -->
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
   <style>
-    /* Root Design Tokens */
     :root {
       --bg-ambient: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
       --paper-sheet: #fbf9f4;
@@ -24,8 +23,8 @@
       --paper-line: #ede6da;
       --ink-midnight: #071326;
       --ink-slate: #1f2d3d;
-      --ink-muted: #5e6d82;
-      --gold-foil: #9b7126;
+      --ink-muted: #57687d;
+      --gold-foil: #946c24;
       --gold-filigree: #d6be8c;
       --gold-tint: #fcf8ee;
     }
@@ -47,102 +46,71 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       color: var(--ink-slate);
-      padding: 24px;
+      padding: 15px;
     }
 
-    /* Ambient Warmth Glow */
+    /* Ambient Warmth Halo */
     body::before {
       content: '';
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 1400px;
-      height: 900px;
+      width: 1500px;
+      height: 950px;
       transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse at center, rgba(155, 113, 38, 0.07) 0%, transparent 68%);
+      background: radial-gradient(ellipse at center, rgba(148, 108, 36, 0.08) 0%, transparent 68%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Floating Navigation Controls */
-    .top-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 24px;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-      padding: 8px 28px;
-      border-radius: 40px;
-      border: 1px solid var(--paper-border);
-      box-shadow: 0 12px 35px rgba(7, 19, 38, 0.08);
-      z-index: 100;
-    }
-
-    .ctrl-btn {
-      background: #ffffff;
-      border: 1px solid #d0d7de;
-      color: var(--ink-midnight);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .ctrl-btn:hover {
-      background: var(--ink-midnight);
-      color: #ffffff;
-      border-color: var(--ink-midnight);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(7, 19, 38, 0.16);
-    }
-
-    .page-index-label {
-      font-size: 13px;
-      color: var(--ink-muted);
-      font-weight: 700;
-      padding: 0 14px;
-      border-left: 1px solid #e2e8f0;
-      border-right: 1px solid #e2e8f0;
-      letter-spacing: 0.5px;
-    }
-
-    /* 3D Canvas Stage */
+    /* 3D Canvas Stage - Maximum Screen Presence */
     .book-stage {
       position: relative;
       z-index: 10;
-      filter: drop-shadow(0 40px 80px rgba(7, 19, 38, 0.22));
+      filter: drop-shadow(0 42px 85px rgba(7, 19, 38, 0.24));
     }
 
+    /* Large Format Page Sheet (600px x 860px) */
     .page-sheet {
-      width: 550px;
-      height: 775px;
+      width: 600px;
+      height: 860px;
       background-color: var(--paper-sheet);
       overflow: hidden;
       position: relative;
     }
 
+    /* Floating Side Page Indicators (Minimal Discreet Cue) */
+    .turn-guide {
+      position: absolute;
+      bottom: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-foil);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 5;
+      opacity: 0.85;
+    }
+    .turn-guide.right { right: 28px; }
+    .turn-guide.left { left: 28px; }
+
     /* =========================================================
-       1. FRONT COVER: EDITORIAL MASTHEAD DESIGN
+       1. FRONT COVER: ULTRA-LUXURY EXECUTIVE DESIGN
        ========================================================= */
     .cover-front {
       background: var(--paper-sheet);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 42px 38px;
+      padding: 46px 42px;
       border: 1px solid var(--paper-border);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    /* Golden Shimmer Reflection */
+    /* Golden Reflection Shimmer */
     .cover-front::before {
       content: '';
       position: absolute;
@@ -150,7 +118,7 @@
       left: -60%;
       width: 220%;
       height: 220%;
-      background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%);
+      background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
       transform: rotate(25deg);
       pointer-events: none;
       animation: goldSweep 8s infinite ease-in-out;
@@ -164,15 +132,15 @@
     .cover-front::after {
       content: '';
       position: absolute;
-      top: 12px; left: 12px; right: 12px; bottom: 12px;
+      top: 14px; left: 14px; right: 14px; bottom: 14px;
       border: 1.5px solid var(--gold-filigree);
       pointer-events: none;
     }
 
     .inner-gold-frame {
       position: absolute;
-      top: 16px; left: 16px; right: 16px; bottom: 16px;
-      border: 0.5px dashed rgba(155, 113, 38, 0.4);
+      top: 18px; left: 18px; right: 18px; bottom: 18px;
+      border: 0.5px dashed rgba(148, 108, 36, 0.4);
       pointer-events: none;
     }
 
@@ -180,14 +148,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--paper-line);
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--paper-line);
       z-index: 2;
     }
 
     .brand-logo-slot {
-      height: 54px;
-      max-width: 135px;
+      height: 60px;
+      max-width: 150px;
       display: flex;
       align-items: center;
     }
@@ -201,25 +169,25 @@
 
     .pill-badge {
       font-family: 'Cinzel', serif;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
       color: var(--gold-foil);
       text-transform: uppercase;
-      border: 1px solid var(--gold-foil);
-      padding: 4px 14px;
+      border: 1.5px solid var(--gold-foil);
+      padding: 5px 16px;
       border-radius: 20px;
       background: var(--gold-tint);
     }
 
     .architectural-frame {
       width: 100%;
-      height: 250px;
+      height: 290px;
       border-radius: 4px;
       overflow: hidden;
-      border: 1px solid #dfd7c8;
-      margin: 14px 0;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border: 1px solid #ded6c7;
+      margin: 16px 0;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
       position: relative;
       z-index: 2;
     }
@@ -243,7 +211,7 @@
 
     .college-name-styled {
       font-family: 'Cinzel Decorative', 'Cinzel', serif;
-      font-size: 26px;
+      font-size: 29px;
       font-weight: 900;
       letter-spacing: 2.5px;
       color: var(--ink-midnight);
@@ -254,72 +222,60 @@
     .college-sub-meta {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 14.5px;
+      font-size: 16px;
       color: var(--gold-foil);
       letter-spacing: 2px;
       font-weight: 600;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     .dossier-headline {
-      margin: 16px 0;
+      margin: 18px 0;
       border-top: 1.5px solid var(--gold-filigree);
       border-bottom: 1.5px solid var(--gold-filigree);
-      padding: 12px 0;
+      padding: 14px 0;
       background: #ffffff;
-      box-shadow: 0 4px 15px rgba(155, 113, 38, 0.05);
+      box-shadow: 0 4px 15px rgba(148, 108, 36, 0.05);
     }
 
     .dossier-headline h2 {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 900;
-      letter-spacing: 3.5px;
+      letter-spacing: 4px;
       color: var(--ink-midnight);
       text-transform: uppercase;
     }
 
     .dossier-headline span {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--ink-muted);
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
     }
 
     .cover-bottom-bar {
       text-align: center;
-      border-top: 1px solid var(--paper-line);
-      padding-top: 12px;
+      border-top: 1.5px solid var(--paper-line);
+      padding-top: 14px;
       z-index: 2;
     }
 
     .department-caption {
       font-family: 'Playfair Display', serif;
-      font-size: 19px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--ink-midnight);
       letter-spacing: 0.5px;
-    }
-
-    .flip-direction {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11.5px;
-      color: var(--gold-foil);
-      margin-top: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-weight: 700;
     }
 
     /* =========================================================
        EDITORIAL LEADERSHIP & FACULTY PAGES
        ========================================================= */
     .editorial-page {
-      padding: 44px 38px;
+      padding: 48px 44px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -330,19 +286,19 @@
     .editorial-page::after {
       content: '';
       position: absolute;
-      top: 12px; left: 12px; right: 12px; bottom: 12px;
+      top: 14px; left: 14px; right: 14px; bottom: 14px;
       border: 1px solid rgba(214, 190, 140, 0.45);
       pointer-events: none;
     }
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 21px;
+      font-size: 23px;
       font-weight: 800;
       color: var(--ink-midnight);
       border-bottom: 2px solid var(--gold-filigree);
-      padding-bottom: 8px;
-      margin-bottom: 18px;
+      padding-bottom: 10px;
+      margin-bottom: 22px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -351,9 +307,9 @@
 
     .lead-tag {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: var(--gold-foil);
       text-transform: uppercase;
     }
@@ -361,19 +317,19 @@
     .leader-message-card {
       background: #ffffff;
       border: 1px solid var(--paper-border);
-      padding: 16px;
-      border-radius: 4px;
-      margin-bottom: 14px;
-      border-left: 4px solid var(--gold-foil);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      border-left: 5px solid var(--gold-foil);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
       display: flex;
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
     }
 
     .leader-portrait {
-      width: 80px;
-      height: 98px;
+      width: 95px;
+      height: 118px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -382,7 +338,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 36px;
       color: #94a3b8;
     }
 
@@ -399,16 +355,16 @@
 
     .quote-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14.5px;
+      font-size: 16px;
       font-style: italic;
       color: #334155;
-      line-height: 1.55;
+      line-height: 1.65;
     }
 
     .sign-info {
-      margin-top: 8px;
+      margin-top: 10px;
       font-family: 'Cinzel', serif;
-      font-size: 12px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--ink-midnight);
       text-transform: uppercase;
@@ -421,31 +377,32 @@
       font-weight: 600;
       color: var(--gold-foil);
       text-transform: none;
-      font-size: 11px;
-      margin-top: 2px;
+      font-size: 12px;
+      margin-top: 3px;
     }
 
     .faculty-grid-rich {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 14px;
+      margin-top: 12px;
     }
 
     .faculty-card-item {
       background: #ffffff;
       border: 1px solid var(--paper-border);
-      padding: 10px;
-      border-radius: 4px;
+      padding: 12px;
+      border-radius: 6px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
     .faculty-avatar {
-      width: 50px;
-      height: 60px;
-      border-radius: 3px;
+      width: 58px;
+      height: 70px;
+      border-radius: 4px;
       border: 1px solid var(--gold-filigree);
       background: #f4efe6;
       overflow: hidden;
@@ -453,7 +410,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 24px;
       color: #94a3b8;
     }
 
@@ -465,32 +422,31 @@
     }
 
     .faculty-info h4 {
-      font-size: 12px;
+      font-size: 13.5px;
       color: var(--ink-midnight);
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .faculty-info p {
-      font-size: 10.5px;
+      font-size: 11.5px;
       color: var(--gold-foil);
       font-weight: 600;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
-    /* Infrastructure Gallery Grid */
     .infra-photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 12px 0;
+      gap: 14px;
+      margin: 14px 0;
     }
 
     .infra-photo-box {
-      border-radius: 4px;
+      border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
-      height: 110px;
+      height: 140px;
       position: relative;
       background: #f4efe6;
     }
@@ -507,19 +463,20 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(7, 19, 38, 0.82);
+      background: rgba(7, 19, 38, 0.85);
       color: #ffffff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 4px 6px;
+      padding: 6px 8px;
       text-align: center;
+      letter-spacing: 0.5px;
     }
 
     /* =========================================================
-       FORMAL CANDIDATE DOSSIERS (PAGES 5 & 6)
+       LARGE-FONT FORMAL CANDIDATE DOSSIERS (PAGES 5 & 6)
        ========================================================= */
     .profile-page-content {
-      padding: 34px 30px;
+      padding: 40px 36px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -528,9 +485,9 @@
     }
 
     .masthead-row {
-      border-bottom: 2px solid var(--ink-midnight);
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      border-bottom: 2.5px solid var(--ink-midnight);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -538,7 +495,7 @@
 
     .inst-signature {
       font-family: 'Cinzel', serif;
-      font-size: 13.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--ink-midnight);
       text-transform: uppercase;
@@ -546,36 +503,37 @@
     }
 
     .cohort-badge {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: var(--gold-foil);
       text-transform: uppercase;
     }
 
+    /* Larger Profile Header */
     .candidate-card-top {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       background: #faf9f6;
-      padding: 12px;
+      padding: 16px;
       border: 1px solid var(--paper-border);
-      border-radius: 4px;
+      border-radius: 6px;
     }
 
     .candidate-photo-frame {
-      width: 90px;
-      height: 110px;
-      border-radius: 3px;
-      border: 1.5px solid #d4c8b5;
+      width: 105px;
+      height: 130px;
+      border-radius: 4px;
+      border: 2px solid #d4c8b5;
       background-color: #f1ede6;
       overflow: hidden;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 40px;
       color: #94a3b8;
     }
 
@@ -587,26 +545,27 @@
     }
 
     .name-title-box h2 {
-      font-size: 18px;
+      font-size: 22px; /* Very clear large candidate name */
       font-weight: 800;
       letter-spacing: 0.5px;
       color: var(--ink-midnight);
       text-transform: uppercase;
+      line-height: 1.2;
     }
 
     .role-badge {
-      font-size: 12px;
+      font-size: 13.5px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin-bottom: 6px;
+      margin: 4px 0 8px 0;
       letter-spacing: 0.5px;
     }
 
     .link-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 10px;
-      font-size: 11px;
+      gap: 6px 14px;
+      font-size: 12.5px;
       color: var(--ink-muted);
     }
 
@@ -617,47 +576,47 @@
     }
 
     .ribbon-head {
-      font-size: 11px;
+      font-size: 12.5px;
       font-weight: 800;
       letter-spacing: 1px;
       color: var(--ink-midnight);
       text-transform: uppercase;
-      border-bottom: 1px solid #e5e0d6;
-      padding-bottom: 3px;
-      margin-top: 6px;
-      margin-bottom: 5px;
+      border-bottom: 1.5px solid #e5e0d6;
+      padding-bottom: 4px;
+      margin-top: 10px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
 
     .ribbon-head i {
       color: var(--gold-foil);
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .summary-paragraph {
-      font-size: 11.5px;
-      line-height: 1.5;
+      font-size: 13px; /* Comfortable reading size */
+      line-height: 1.6;
       color: #334155;
       background: #faf9f6;
-      padding: 8px 12px;
+      padding: 10px 14px;
       border: 1px solid var(--paper-border);
-      border-radius: 4px;
+      border-radius: 6px;
       text-align: justify;
     }
 
     .skill-matrix-line {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      margin-bottom: 3px;
+      gap: 10px;
+      font-size: 12.5px;
+      margin-bottom: 5px;
     }
 
     .matrix-lbl {
       font-weight: 700;
-      min-width: 85px;
+      min-width: 95px;
       color: var(--ink-midnight);
     }
 
@@ -665,10 +624,10 @@
       background: #f1eee7;
       color: var(--ink-midnight);
       border: 1px solid #ddd7c9;
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 1px 6px;
-      border-radius: 3px;
+      padding: 2px 8px;
+      border-radius: 4px;
       display: inline-block;
       margin: 1px;
     }
@@ -676,15 +635,15 @@
     .experience-tile {
       background: #faf9f6;
       border: 1px solid var(--paper-border);
-      padding: 6px 10px;
-      border-radius: 4px;
-      margin-bottom: 4px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 6px;
     }
 
     .tile-top {
       display: flex;
       justify-content: space-between;
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--ink-midnight);
     }
@@ -692,22 +651,23 @@
     .clean-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11px;
-      margin-top: 3px;
+      font-size: 12.5px;
+      margin-top: 4px;
     }
 
     .clean-table th, .clean-table td {
       border: 1px solid var(--paper-border);
-      padding: 4px 8px;
+      padding: 6px 10px;
       text-align: left;
     }
 
     .clean-table th {
       background-color: #f7f4ed;
-      font-weight: 700;
-      font-size: 10px;
+      font-weight: 800;
+      font-size: 11.5px;
       color: var(--ink-midnight);
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .score-gold {
@@ -716,13 +676,13 @@
     }
 
     .cert-strip {
-      font-size: 11px;
+      font-size: 12px;
       background: #fbf9f4;
       border: 1px solid var(--gold-filigree);
-      padding: 6px 10px;
-      border-radius: 4px;
+      padding: 8px 12px;
+      border-radius: 6px;
       color: #7b5922;
-      margin-top: 5px;
+      margin-top: 8px;
     }
 
     /* =========================================================
@@ -733,7 +693,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 42px 38px;
+      padding: 46px 42px;
       border: 1px solid var(--paper-border);
       position: relative;
     }
@@ -741,19 +701,19 @@
     .cover-back::after {
       content: '';
       position: absolute;
-      top: 12px; left: 12px; right: 12px; bottom: 12px;
+      top: 14px; left: 14px; right: 14px; bottom: 14px;
       border: 1.5px solid var(--gold-filigree);
       pointer-events: none;
     }
 
     .back-image-frame {
       width: 100%;
-      height: 180px;
-      border-radius: 4px;
+      height: 220px;
+      border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
-      margin: 14px 0;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin: 16px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
     }
 
     .back-image-frame img {
@@ -765,13 +725,13 @@
 
     .secretariat-tag {
       font-family: 'Cinzel', serif;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
       color: var(--gold-foil);
       text-transform: uppercase;
-      border: 1px solid var(--gold-foil);
-      padding: 4px 14px;
+      border: 1.5px solid var(--gold-foil);
+      padding: 5px 16px;
       border-radius: 20px;
       display: inline-block;
       margin-bottom: 12px;
@@ -780,8 +740,8 @@
 
     .back-main-heading {
       font-family: 'Cinzel', serif;
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 26px;
+      font-weight: 900;
       color: var(--ink-midnight);
       letter-spacing: 1px;
     }
@@ -789,14 +749,14 @@
     .back-sub-heading {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--gold-foil);
       font-weight: 600;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .contact-details-box {
-      margin: 15px 0;
+      margin: 16px 0;
       z-index: 2;
     }
 
@@ -804,40 +764,29 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 12px;
-      font-size: 12.5px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
       color: #334155;
     }
 
     .contact-item-row i {
       color: var(--gold-foil);
-      width: 18px;
-      font-size: 14px;
+      width: 20px;
+      font-size: 15px;
     }
 
     .back-footer-imprint {
-      font-size: 11px;
+      font-size: 12px;
       color: #64748b;
       text-align: center;
-      border-top: 1px solid var(--paper-line);
-      padding-top: 14px;
+      border-top: 1.5px solid var(--paper-line);
+      padding-top: 16px;
       font-weight: 600;
       z-index: 2;
     }
   </style>
 </head>
 <body>
-
-  <!-- Floating Navigation Toolbar -->
-  <div class="top-toolbar">
-    <button class="ctrl-btn" onclick="flipBook.flipPrev()">
-      <i class="fas fa-chevron-left"></i> Previous
-    </button>
-    <span class="page-index-label" id="pageLabel">Cover Page</span>
-    <button class="ctrl-btn" onclick="flipBook.flipNext()">
-      Next <i class="fas fa-chevron-right"></i>
-    </button>
-  </div>
 
   <div class="book-stage">
     <div id="flipbook">
@@ -876,8 +825,8 @@
 
         <div class="cover-bottom-bar">
           <div class="department-caption">Department of Computer Applications</div>
-          <div class="flip-direction">
-            <i class="fas fa-hand-pointer"></i> Drag page corner or click to open
+          <div class="turn-guide right">
+            Click edge to open <i class="fa-solid fa-arrow-right"></i>
           </div>
         </div>
       </div>
@@ -923,7 +872,7 @@
           </div>
         </div>
 
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-foil); text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:14px; color:var(--gold-foil); text-align:center;">
           Excellence in Technology & Character
         </div>
       </div>
@@ -976,7 +925,7 @@
           </div>
         </div>
 
-        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1px solid var(--paper-line); padding-top:8px;">
+        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid var(--paper-line); padding-top:10px; font-weight:600;">
           Continuous Faculty Mentorship & Lab Practice
         </div>
       </div>
@@ -989,7 +938,7 @@
             <span class="lead-tag">Software Lab</span>
           </div>
 
-          <p style="font-size:12px; line-height:1.6; color:#334155; margin-bottom:10px;">
+          <p style="font-size:13px; line-height:1.65; color:#334155; margin-bottom:12px;">
             The Department features modern computing facilities equipped with high-throughput network backbones, dedicated containerized environments, and full enterprise developer stacks.
           </p>
 
@@ -1005,16 +954,16 @@
             </div>
           </div>
 
-          <div class="quote-box" style="margin-bottom:8px; padding:12px 14px;">
-            <div style="font-size:11.5px; font-weight:800; color:var(--ink-midnight); margin-bottom:3px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
-            <p style="font-size:11px; color:#475569; line-height:1.5;">
+          <div class="leader-message-card" style="margin-bottom:0; padding:14px 16px; border-left-color:var(--gold-foil);">
+            <div style="font-size:12.5px; font-weight:800; color:var(--ink-midnight); margin-bottom:4px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
+            <p style="font-size:12px; color:#475569; line-height:1.55;">
               Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
             </p>
           </div>
         </div>
 
-        <div style="font-size:11px; color:var(--gold-foil); text-align:right; font-weight:700;">
-          Turn page for Candidate Profiles <i class="fa-solid fa-arrow-right"></i>
+        <div class="turn-guide right">
+          Candidate Profiles <i class="fa-solid fa-arrow-right"></i>
         </div>
       </div>
 
@@ -1061,9 +1010,9 @@
             <div class="experience-tile">
               <div class="tile-top">
                 <span>Web Dev Intern • InnovateX</span>
-                <span style="font-weight:normal; font-size:10.5px; color:#64748b;">May 2026 – Jul 2026</span>
+                <span style="font-weight:normal; font-size:11.5px; color:#64748b;">May 2026 – Jul 2026</span>
               </div>
-              <p style="font-size:11px; color:#475569; margin-top:2px;">Developed UI components and integrated with MySQL databases.</p>
+              <p style="font-size:12px; color:#475569; margin-top:3px;">Developed UI components and integrated with MySQL databases.</p>
             </div>
 
             <div class="ribbon-head"><i class="fa-solid fa-graduation-cap"></i> Academic History</div>
@@ -1080,7 +1029,7 @@
             </div>
           </div>
 
-          <div style="font-size:10px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:4px;">
+          <div style="font-size:11px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:6px; font-weight:600;">
             Roll No: 24BCA01 • BCA Placement Cell
           </div>
         </div>
@@ -1129,9 +1078,9 @@
             <div class="experience-tile">
               <div class="tile-top">
                 <span>Placement Portal System</span>
-                <span style="font-weight:600; font-size:10.5px; color:var(--gold-foil);">Spring Boot | React</span>
+                <span style="font-weight:700; font-size:11.5px; color:var(--gold-foil);">Spring Boot | React</span>
               </div>
-              <p style="font-size:11px; color:#475569; margin-top:2px;">Built end-to-end recruitment management system with resume screening.</p>
+              <p style="font-size:12px; color:#475569; margin-top:3px;">Built end-to-end recruitment management system with resume screening.</p>
             </div>
 
             <div class="ribbon-head"><i class="fa-solid fa-graduation-cap"></i> Academic History</div>
@@ -1148,7 +1097,7 @@
             </div>
           </div>
 
-          <div style="font-size:10px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:4px;">
+          <div style="font-size:11px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:6px; font-weight:600;">
             Roll No: 23BCA14 • BCA Placement Cell
           </div>
         </div>
@@ -1162,9 +1111,9 @@
             <span class="lead-tag">Placement Drive</span>
           </div>
 
-          <div class="quote-box" style="margin-bottom:14px;">
-            <div style="font-size:13px; font-weight:800; color:var(--ink-midnight); margin-bottom:4px;">Hiring Framework</div>
-            <p style="font-size:12px; color:#475569; line-height:1.6;">
+          <div class="leader-message-card" style="margin-bottom:16px; border-left-color:var(--gold-foil);">
+            <div style="font-size:14px; font-weight:800; color:var(--ink-midnight); margin-bottom:4px;">Hiring Framework</div>
+            <p style="font-size:13px; color:#475569; line-height:1.65;">
               Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
             </p>
           </div>
@@ -1186,7 +1135,7 @@
           </div>
         </div>
 
-        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1px solid var(--paper-line); padding-top:8px;">
+        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid var(--paper-line); padding-top:10px; font-weight:600;">
           Seamless Recruitment Drives & Dedicated Interview Rooms
         </div>
       </div>
@@ -1224,16 +1173,16 @@
     window.addEventListener('DOMContentLoaded', () => {
       const bookElem = document.getElementById('flipbook');
 
-      // Initialize StPageFlip with Smooth Paper Physics
+      // Initialize StPageFlip with Soft Magazine Physics
       flipBook = new St.PageFlip(bookElem, {
-        width: 550,
-        height: 775,
+        width: 600,
+        height: 860,
         size: 'fixed',
-        minWidth: 340,
-        maxWidth: 620,
-        minHeight: 500,
-        maxHeight: 860,
-        maxShadowOpacity: 0.32,
+        minWidth: 360,
+        maxWidth: 680,
+        minHeight: 520,
+        maxHeight: 920,
+        maxShadowOpacity: 0.35,
         showCover: true,
         usePortrait: false,
         mobileScrollSupport: false,
@@ -1241,15 +1190,9 @@
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
-
-      flipBook.on('flip', (e) => {
-        const total = flipBook.getPageCount();
-        const current = e.data + 1;
-        document.getElementById('pageLabel').innerText = `Page: ${current} / ${total}`;
-      });
     });
 
-    // Keyboard Arrow Keys Support
+    // Keyboard Arrow Keys Support (Left / Right Arrow)
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') flipBook.flipNext();
       if (e.key === 'ArrowLeft') flipBook.flipPrev();
