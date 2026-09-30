@@ -43,7 +43,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
+      background: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd5e2 100%);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       color: var(--text-main);
@@ -81,6 +81,8 @@
       overflow-x: hidden;
       position: relative;
       box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
     }
 
     .page-sheet::-webkit-scrollbar {
@@ -101,12 +103,13 @@
       align-items: center;
       gap: 6px;
       z-index: 20;
-      opacity: 0.9;
-      background: rgba(251, 249, 244, 0.9);
-      padding: 4px 12px;
+      opacity: 0.95;
+      background: rgba(251, 249, 244, 0.95);
+      padding: 5px 14px;
       border-radius: 20px;
       backdrop-filter: blur(4px);
       border: 1px solid var(--gold-filigree);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     .turn-guide.right { right: 18px; }
     .turn-guide.left { left: 18px; }
@@ -299,7 +302,7 @@
     }
 
     /* =========================================================
-       2. LEADERSHIP & DEPARTMENT CARDS (HORIZONTAL SPLIT THEME)
+       2. LEADERSHIP & DEPARTMENT CARDS
        ========================================================= */
     .editorial-page {
       padding: 34px 28px;
@@ -350,7 +353,6 @@
       margin-bottom: 6px;
     }
 
-    /* Common Horizontal Row Card for Leadership & Department */
     .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
@@ -872,11 +874,11 @@
     }
 
     /* =========================================================
-       5. RESPONSIVE MEDIA QUERIES (VIVO X200 / MOBILE OPTIMIZATION)
+       5. RESPONSIVE MOBILE TWEAKS (VIVO X200 OPTIMIZED)
        ========================================================= */
     @media (max-width: 768px) {
       body {
-        padding: 4px;
+        padding: 2px;
         justify-content: flex-start;
       }
 
@@ -886,60 +888,74 @@
       }
 
       .page-sheet {
-        width: 95vw !important;
-        height: 92vh !important;
+        width: 96vw !important;
+        height: 94vh !important;
         border-radius: 8px;
-        padding: 20px 16px !important;
+        padding: 18px 14px !important;
       }
 
       .cover-front, .cover-back, .editorial-page {
-        padding: 22px 16px !important;
+        padding: 18px 14px !important;
       }
 
       .college-name-styled {
-        font-size: 20px !important;
+        font-size: 19px !important;
       }
 
       .cover-hero-frame {
-        height: 190px !important;
+        height: 180px !important;
       }
 
       .leader-row-card {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 8px !important;
-        padding: 10px !important;
-      }
-
-      .leader-row-portrait {
-        width: 75px !important;
-        height: 95px !important;
-      }
-
-      .leader-row-body p.quote {
-        text-align: center !important;
-        font-size: 12.5px !important;
-      }
-
-      .profile-card-page {
-        padding: 10px 4px !important;
-      }
-
-      .profile-top {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
+        padding: 8px 10px !important;
         gap: 10px !important;
       }
 
-      .contact-links {
-        justify-content: center !important;
+      .leader-row-portrait {
+        width: 60px !important;
+        height: 75px !important;
+      }
+
+      .leader-row-body h3 {
+        font-size: 12.5px !important;
+      }
+
+      .leader-row-body span.designation {
+        font-size: 9.5px !important;
+      }
+
+      .leader-row-body p.quote {
+        font-size: 11.5px !important;
+        line-height: 1.35 !important;
+      }
+
+      .profile-card-page {
+        padding: 4px 2px !important;
+      }
+
+      .profile-top {
+        padding: 8px !important;
+        gap: 10px !important;
+      }
+
+      .photo-slot {
+        width: 75px !important;
+        height: 90px !important;
+      }
+
+      .student-name {
+        font-size: 15px !important;
+      }
+
+      .profile-body {
+        padding: 8px 10px !important;
+        gap: 6px !important;
       }
 
       .turn-guide {
-        font-size: 10px !important;
-        bottom: 8px !important;
+        font-size: 9.5px !important;
+        bottom: 6px !important;
+        padding: 3px 8px !important;
       }
     }
   </style>
@@ -953,7 +969,6 @@
       <div class="page-sheet cover-front" data-density="hard">
         <div class="inner-gold-frame"></div>
         
-        <!-- Header with Dual Logos -->
         <div class="logo-masthead">
           <div class="brand-logo-slot">
             <img src="CollegeLogo.png" alt="College Crest" onerror="this.src='COLLEGE LOGO(1).png';">
@@ -966,7 +981,6 @@
           </div>
         </div>
 
-        <!-- Single Grand Hero Image Showcase -->
         <div class="cover-hero-frame">
           <img src="college.jpg" alt="St. Thomas College Palai Heritage Campus" onerror="this.src='cover.png';">
           <div class="cover-hero-caption">St. Thomas College Palai • Academic Heritage & Innovation</div>
@@ -985,12 +999,12 @@
         <div class="cover-bottom-bar">
           <div class="department-caption">Department of Computer Applications</div>
           <div class="turn-guide right">
-            Swipe / Click to open <i class="fa-solid fa-arrow-right"></i>
+            Tap Edge to Open <i class="fa-solid fa-arrow-right"></i>
           </div>
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION (HORIZONTAL SPLIT THEME) ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
@@ -1057,12 +1071,12 @@
           </div>
         </div>
 
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:12.5px; color:var(--gold-foil); text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:12px; color:var(--gold-foil); text-align:center;">
           Excellence in Technology & Character
         </div>
       </div>
 
-      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY MEMBERS) ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1071,7 +1085,7 @@
           </div>
 
           <div class="leadership-stack">
-            <!-- Head of the Department: Arjun Ram Sankar (Arjun.jpeg) -->
+            <!-- Head of the Department: Arjun Ram Sankar -->
             <div class="leader-row-card primary-accent">
               <div class="leader-row-portrait">
                 <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
@@ -1085,7 +1099,7 @@
               </div>
             </div>
 
-            <!-- Faculty: Jikki Jose (Jikki.jpeg) -->
+            <!-- Faculty: Jikki Jose -->
             <div class="leader-row-card">
               <div class="leader-row-portrait">
                 <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
@@ -1182,7 +1196,7 @@
         </div>
       </div>
 
-      <!-- ================= BACK COVER (ROYAL IMPRINT & SECRETARIAT) ================= -->
+      <!-- ================= BACK COVER ================= -->
       <div class="page-sheet cover-back" data-density="hard">
         <div class="back-header-box">
           <span class="secretariat-tag">Placement Secretariat</span>
@@ -1224,7 +1238,6 @@
   <script>
     let flipBook;
 
-    // students/ ഫോൾഡറിലുള്ള നിങ്ങളുടെ യഥാർത്ഥ HTML ഫയലുകളുടെ പേരുകൾ:
     const studentFiles = [
       'students/24BCA18_profile.html',
       'students/24UCOAP0922_PROFILE.html',
@@ -1258,20 +1271,26 @@
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
-            // ഫോട്ടോ പാത്ത് കൃത്യമായി photos/ ഫോൾഡറിലേക്ക് റീ-റൂട്ട് ചെയ്യുന്നു:
             const imgElem = profileCard.querySelector('.photo-slot img');
             if (imgElem) {
-              let src = imgElem.getAttribute('src') || '';
-              // src-ൽ നിന്ന് ഫയലിന്റെ പേര് മാത്രം എടുക്കുന്നു
-              const filename = src.split('/').pop().split('\\').pop();
-              if (filename) {
-                imgElem.src = 'photos/' + filename;
-              }
-              // ഫോട്ടോ ഇല്ലെങ്കിൽ തനിയെ ഡിഫോൾട്ട് ഐക്കൺ വരാൻ
+              const originalSrc = imgElem.getAttribute('src') || '';
+              const filename = originalSrc.split('/').pop().split('\\').pop();
+              
+              // Smart Auto Fallback Engine for extensions (.jpg, .jpeg, .png, .JPG)
+              const baseName = filename.substring(0, filename.lastIndexOf('.')) || filename;
+              const extensions = ['.jpg', '.jpeg', '.png', '.JPG', '.PNG'];
+              let extIndex = 0;
+
+              imgElem.src = 'photos/' + filename;
+
               imgElem.onerror = function() {
-                this.style.display = 'none';
-                if (this.parentElement) {
-                  this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:34px; color:#94a3b8;"></i>';
+                if (extIndex < extensions.length) {
+                  this.src = 'photos/' + baseName + extensions[extIndex++];
+                } else {
+                  this.style.display = 'none';
+                  if (this.parentElement) {
+                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
+                  }
                 }
               };
             }
@@ -1291,7 +1310,7 @@
         }
       }
 
-      // Even page count check: ബാക്ക് കവർ കൃത്യമായി ഒറ്റയ്ക്ക് അടയാൻ പേജുകൾ ഇരട്ട സംഖ്യയാണെന്ന് ഉറപ്പുവരുത്തുന്നു
+      // Even page count check for seamless Back Cover closing
       const allPages = document.querySelectorAll('.page-sheet');
       if (allPages.length % 2 !== 0) {
         const blankPage = document.createElement('div');
@@ -1299,7 +1318,7 @@
         blankPage.innerHTML = `
           <div>
             <div class="page-lead-title"><span>Student Notes</span><span class="lead-tag">Recruiter Remarks</span></div>
-            <div style="border: 1px dashed var(--gold-filigree); height: 640px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
+            <div style="border: 1.5px dashed var(--gold-filigree); height: 620px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
               <i class="fa-solid fa-pen-to-square"></i> Recruiter Interview Assessment & Placement Notes
             </div>
           </div>
@@ -1316,8 +1335,8 @@
       const bookElem = document.getElementById('flipbook');
       const isMobile = window.innerWidth <= 768;
 
-      const pageWidth = isMobile ? Math.min(window.innerWidth * 0.95, 480) : 580;
-      const pageHeight = isMobile ? Math.min(window.innerHeight * 0.92, 850) : 850;
+      const pageWidth = isMobile ? Math.min(window.innerWidth * 0.96, 460) : 580;
+      const pageHeight = isMobile ? Math.min(window.innerHeight * 0.94, 850) : 850;
 
       flipBook = new St.PageFlip(bookElem, {
         width: pageWidth,
@@ -1330,7 +1349,8 @@
         maxShadowOpacity: 0.35,
         showCover: true,
         usePortrait: isMobile,
-        mobileScrollSupport: true,
+        mobileScrollSupport: true, // Prevents sudden flip while vertical scrolling
+        swipeDistance: 60,          // Requires intentional horizontal swipe to flip
         autoSize: true
       });
 
