@@ -112,7 +112,7 @@
     .turn-guide.left { left: 18px; }
 
     /* =========================================================
-       1. COVER PAGE
+       1. FRONT COVER
        ========================================================= */
     .cover-front {
       background: var(--paper-sheet);
@@ -123,6 +123,24 @@
       border: 1px solid #e8e1d5;
       position: relative;
       cursor: pointer;
+    }
+
+    .cover-front::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 220%;
+      height: 220%;
+      background: linear-gradient(60deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
+      transform: rotate(25deg);
+      pointer-events: none;
+      animation: goldSweep 8s infinite ease-in-out;
+    }
+
+    @keyframes goldSweep {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      30%, 100% { transform: translateX(100%) rotate(25deg); }
     }
 
     .cover-front::after {
@@ -175,24 +193,19 @@
       background: var(--gold-tint);
     }
 
-    .cover-dual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .cover-hero-frame {
+      width: 100%;
+      height: 290px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1.5px solid var(--gold-filigree);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
       margin: 14px 0;
       z-index: 2;
     }
 
-    .cover-photo-frame {
-      height: 230px;
-      border-radius: 4px;
-      overflow: hidden;
-      border: 1px solid #dfd7c8;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      position: relative;
-    }
-
-    .cover-photo-frame img {
+    .cover-hero-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -200,20 +213,21 @@
       transition: transform 0.8s ease;
     }
 
-    .cover-photo-frame:hover img {
-      transform: scale(1.04);
+    .cover-hero-frame:hover img {
+      transform: scale(1.03);
     }
 
-    .cover-photo-label {
+    .cover-hero-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: rgba(11, 25, 44, 0.85);
+      background: linear-gradient(to top, rgba(11, 25, 44, 0.9) 0%, rgba(11, 25, 44, 0.3) 70%, transparent 100%);
       color: #ffffff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 5px 8px;
+      padding: 12px 14px 6px;
       text-align: center;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .cover-titles {
@@ -242,7 +256,7 @@
     }
 
     .dossier-headline {
-      margin: 14px 0;
+      margin: 12px 0;
       border-top: 1.5px solid var(--gold-filigree);
       border-bottom: 1.5px solid var(--gold-filigree);
       padding: 10px 0;
@@ -271,7 +285,7 @@
     .cover-bottom-bar {
       text-align: center;
       border-top: 1.5px solid #ede6da;
-      padding-top: 12px;
+      padding-top: 10px;
       z-index: 2;
     }
 
@@ -284,10 +298,10 @@
     }
 
     /* =========================================================
-       2. EDITORIAL LEADERSHIP & ADMINISTRATION PAGES
+       2. EDITORIAL PAGES (LEADERSHIP & DEPARTMENT)
        ========================================================= */
     .editorial-page {
-      padding: 38px 32px;
+      padding: 34px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -305,12 +319,12 @@
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--primary);
       border-bottom: 1.5px solid var(--gold-filigree);
       padding-bottom: 6px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -319,29 +333,34 @@
 
     .lead-tag {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 1px;
       color: var(--gold-foil);
       text-transform: uppercase;
     }
 
-    .leader-row-card {
+    .leadership-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .leader-compact-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 16px;
+      padding: 10px 14px;
       border-radius: 6px;
-      margin-bottom: 14px;
-      border-left: 4.5px solid var(--gold-foil);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      border-left: 4px solid var(--gold-foil);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
       display: flex;
-      gap: 18px;
+      gap: 14px;
       align-items: center;
     }
 
-    .leader-row-portrait {
-      width: 110px;
-      height: 135px;
+    .leader-compact-portrait {
+      width: 72px;
+      height: 88px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -350,99 +369,121 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 42px;
+      font-size: 32px;
       color: #94a3b8;
     }
 
-    .leader-row-portrait img {
+    .leader-compact-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .leader-row-body {
+    .leader-compact-body {
       flex: 1;
+      min-width: 0;
     }
 
-    .leader-row-body h3 {
+    .leader-compact-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 15.5px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.2;
     }
 
-    .leader-row-body span.designation {
+    .leader-compact-body span.designation {
       display: block;
-      font-size: 11.5px;
+      font-size: 10.5px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin: 2px 0 6px 0;
+      margin: 1px 0 4px 0;
     }
 
-    .leader-row-body p.quote {
+    .leader-compact-body p.quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
+      font-size: 13px;
       font-style: italic;
       color: #334155;
-      line-height: 1.55;
-      text-align: justify;
+      line-height: 1.45;
     }
 
-    .faculty-trio-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .faculty-col-card {
+    /* Department Page Layout */
+    .hod-feature-row {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 14px 12px;
+      padding: 16px;
       border-radius: 6px;
-      text-align: center;
+      margin-bottom: 12px;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
       display: flex;
-      flex-direction: column;
+      gap: 16px;
       align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
-    .faculty-col-avatar {
-      width: 95px;
-      height: 120px;
+    .hod-portrait-frame {
+      width: 105px;
+      height: 130px;
+      border-radius: 4px;
+      border: 1.5px solid var(--gold-filigree);
+      background-color: #f4efe6;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #94a3b8;
+    }
+
+    .hod-portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Faculty Members Stack */
+    .faculty-members-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faculty-single-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border-left: 4px solid var(--gold-foil);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+    }
+
+    .faculty-portrait-frame {
+      width: 75px;
+      height: 92px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background: #f4efe6;
       overflow: hidden;
-      margin-bottom: 8px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 30px;
       color: #94a3b8;
     }
 
-    .faculty-col-avatar img {
+    .faculty-portrait-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .faculty-col-card h4 {
-      font-size: 13.5px;
-      color: var(--primary);
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .faculty-col-card p {
-      font-size: 11px;
-      color: var(--gold-foil);
-      font-weight: 600;
-      margin-top: 2px;
     }
 
     .infra-photo-grid {
@@ -456,7 +497,7 @@
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
-      height: 130px;
+      height: 135px;
       position: relative;
       background: #f4efe6;
     }
@@ -473,7 +514,7 @@
       bottom: 0; left: 0; right: 0;
       background: rgba(11, 25, 44, 0.88);
       color: #ffffff;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
       padding: 4px 6px;
       text-align: center;
@@ -793,7 +834,7 @@
 
     .back-image-frame {
       width: 100%;
-      height: 200px;
+      height: 220px;
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid #dfd7c8;
@@ -899,31 +940,32 @@
         font-size: 20px !important;
       }
 
-      .cover-dual-grid {
-        grid-template-columns: 1fr !important;
-        gap: 8px !important;
+      .cover-hero-frame {
+        height: 180px !important;
       }
 
-      .cover-photo-frame {
-        height: 140px !important;
-      }
-
-      .leader-row-card {
+      .leader-compact-card {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 10px !important;
-        padding: 14px !important;
+        gap: 8px !important;
+        padding: 10px !important;
       }
 
-      .leader-row-portrait {
-        width: 90px !important;
-        height: 115px !important;
+      .leader-compact-portrait {
+        width: 65px !important;
+        height: 80px !important;
       }
 
-      .leader-row-body p.quote {
+      .leader-compact-body p.quote {
         text-align: center !important;
-        font-size: 13.5px !important;
+        font-size: 12px !important;
+      }
+
+      .hod-feature-row, .faculty-single-card {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
       }
 
       .profile-card-page {
@@ -970,16 +1012,10 @@
           </div>
         </div>
 
-        <!-- Dual Photo Showcase: Campus Aerial & Lab Facility -->
-        <div class="cover-dual-grid">
-          <div class="cover-photo-frame">
-            <img src="college.jpg" alt="College Campus" onerror="this.src='ArealSTCP.png';">
-            <div class="cover-photo-label">Historic Campus Heritage</div>
-          </div>
-          <div class="cover-photo-frame">
-            <img src="cover.png" alt="Software Lab" onerror="this.src='DSC_0056_mix01.png';">
-            <div class="cover-photo-label">BCA Software Laboratory</div>
-          </div>
+        <!-- Single Grand Hero Image Showcase -->
+        <div class="cover-hero-frame">
+          <img src="college.jpg" alt="St. Thomas College Palai Heritage Campus" onerror="this.src='cover.png';">
+          <div class="cover-hero-caption">St. Thomas College Palai • Academic Heritage & Innovation</div>
         </div>
 
         <div class="cover-titles">
@@ -1000,135 +1036,144 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION (PRINCIPAL & VICE PRINCIPAL) ================= -->
+      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION ================= -->
       <div class="page-sheet editorial-page" data-density="hard">
         <div>
           <div class="page-lead-title">
             <span>Leadership & Administration</span>
-            <span class="lead-tag">Principal & VP</span>
+            <span class="lead-tag">Governing Council</span>
           </div>
 
-          <!-- Principal Row Card -->
-          <div class="leader-row-card">
-            <div class="leader-row-portrait">
-              <img src="Principal.png" alt="Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+          <div class="leadership-stack">
+            <!-- 1. Principal -->
+            <div class="leader-compact-card">
+              <div class="leader-compact-portrait">
+                <img src="Principal.png" alt="Prof. (Dr.) Toji Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-compact-body">
+                <h3>Prof. (Dr.) Toji Thomas</h3>
+                <span class="designation">Principal, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Our Computer Application graduates are trained to translate foundational logic into resilient, industry-scale engineering."
+                </p>
+              </div>
             </div>
-            <div class="leader-row-body">
-              <h3>Rev. Dr. Principal</h3>
-              <span class="designation">Principal, St. Thomas College Palai</span>
-              <p class="quote">
-                "St. Thomas College Palai upholds a benchmark of academic distinction and ethical discipline. Our Computer Application graduates are trained to translate foundational logic into resilient, industry-scale engineering."
-              </p>
-            </div>
-          </div>
 
-          <!-- Vice Principal Row Card -->
-          <div class="leader-row-card">
-            <div class="leader-row-portrait">
-              <img src="VicePrincipal.jpeg" alt="Vice Principal" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+            <!-- 2. Vice Principal -->
+            <div class="leader-compact-card">
+              <div class="leader-compact-portrait">
+                <img src="VicePrincipal.jpeg" alt="Rev. Dr. Salvin Kappiliparampil Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-compact-body">
+                <h3>Rev. Dr. Salvin Kappiliparampil Thomas</h3>
+                <span class="designation">Vice Principal, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Academic rigor blended with practical industry curriculum makes our cohorts agile problem-solvers in modern corporate tech."
+                </p>
+              </div>
             </div>
-            <div class="leader-row-body">
-              <h3>Rev. Fr. Vice Principal</h3>
-              <span class="designation">Vice Principal, St. Thomas College Palai</span>
-              <p class="quote">
-                "Academic rigor blended with practical industry curriculum makes our students quick learners and agile problem-solvers in dynamic tech environments."
-              </p>
+
+            <!-- 3. Bursar -->
+            <div class="leader-compact-card">
+              <div class="leader-compact-portrait">
+                <img src="Mathew.png" alt="Rev. Fr. Mathew Allapattumedayil" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-compact-body">
+                <h3>Rev. Fr. Mathew Allapattumedayil</h3>
+                <span class="designation">Bursar, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Providing uncompromised computing infrastructure and high-throughput lab facilities to nurture technical mastery."
+                </p>
+              </div>
+            </div>
+
+            <!-- 4. Course Coordinator -->
+            <div class="leader-compact-card">
+              <div class="leader-compact-portrait">
+                <img src="Roshan.jpeg" alt="Rev. Fr. Roshan Chacko" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-compact-body">
+                <h3>Rev. Fr. Roshan Chacko</h3>
+                <span class="designation">Course Coordinator, BCA Department</span>
+                <p class="quote">
+                  "Fostering continuous mentorship and professional discipline to ensure our candidates excel in competitive hiring environments."
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-foil); text-align:center;">
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:12.5px; color:var(--gold-foil); text-align:center;">
           Excellence in Technology & Character
         </div>
       </div>
 
-      <!-- ================= PAGE 3: LEADERSHIP & ADMINISTRATION (BURSAR & COURSE COORDINATOR) ================= -->
-      <div class="page-sheet editorial-page" data-density="hard">
-        <div>
-          <div class="page-lead-title">
-            <span>Leadership & Administration</span>
-            <span class="lead-tag">Bursar & Coordinator</span>
-          </div>
-
-          <!-- Bursar Row Card (Mathew.png) -->
-          <div class="leader-row-card">
-            <div class="leader-row-portrait">
-              <img src="Mathew.png" alt="Bursar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-            </div>
-            <div class="leader-row-body">
-              <h3>Rev. Fr. Mathew Allapattumedayil</h3>
-              <span class="designation">Bursar, St. Thomas College Palai</span>
-              <p class="quote">
-                "We provide uncompromised technical infrastructure and high-performance software lab facilities to equip our students with industry-grade competencies."
-              </p>
-            </div>
-          </div>
-
-          <!-- Course Coordinator Row Card (Roshan.jpeg) -->
-          <div class="leader-row-card">
-            <div class="leader-row-portrait">
-              <img src="Roshan.jpeg" alt="Course Coordinator" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
-            </div>
-            <div class="leader-row-body">
-              <h3>Rev. Fr. Roshan Chacko</h3>
-              <span class="designation">Course Coordinator, BCA Department</span>
-              <p class="quote">
-                "Our placement cell bridges academia and corporate expectations, ensuring our recruiting partners discover agile, disciplined, and technically versatile talent."
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color:var(--gold-foil); text-align:center;">
-          Institutional Vision & Mentorship
-        </div>
-      </div>
-
-      <!-- ================= PAGE 4: DEPARTMENT DESK (HOD & FACULTY TEAM) ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY MEMBERS) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
             <span>Department Desk</span>
-            <span class="lead-tag">Department Leadership</span>
+            <span class="lead-tag">Academic Leadership</span>
           </div>
 
-          <!-- Head of the Department (HoD) - Arjun Ram Sankar (Arjun.jpeg) -->
-          <div class="leader-row-card" style="border-left-color: var(--primary); margin-bottom:14px;">
-            <div class="leader-row-portrait">
+          <!-- Head of the Department: Arjun Ram Sankar (Arjun.jpeg) -->
+          <div class="hod-feature-row">
+            <div class="hod-portrait-frame">
               <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
             </div>
-            <div class="leader-row-body">
-              <h3>Arjun Ram Sankar</h3>
-              <span class="designation">Assistant Professor & Head of the Department (HoD)</span>
-              <p class="quote">
-                "Our BCA curriculum blends computational theory with practical software engineering. We train our cohorts in resilient cloud systems, full-stack web, and modern data pipelines."
+            <div style="flex:1;">
+              <h3 style="font-family:'Cinzel', serif; font-size:15.5px; font-weight:800; color:var(--primary);">Arjun Ram Sankar</h3>
+              <span style="display:block; font-size:11px; color:var(--gold-foil); font-weight:700; margin:2px 0 6px 0;">Head of the Department, Department of Computer Applications</span>
+              <p style="font-family:'Cormorant Garamond', serif; font-size:14px; font-style:italic; color:#334155; line-height:1.55;">
+                "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures, full-stack stacks, and modern software development pipelines."
               </p>
             </div>
           </div>
 
-          <!-- Faculty Mentors - Jikki Jose (Jikki.jpeg) -->
+          <!-- Faculty Members Section -->
           <div class="page-lead-title" style="font-size:14px; margin-bottom:8px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:4px;">
-            <span>Faculty Mentors</span>
+            <span>Faculty Members</span>
             <span class="lead-tag">Teaching Faculty</span>
           </div>
 
-          <div class="faculty-trio-grid">
-            <div class="faculty-col-card">
-              <div class="faculty-col-avatar">
+          <div class="faculty-members-list">
+            <!-- Faculty 1: Jikki Jose (Jikki.jpeg) -->
+            <div class="faculty-single-card">
+              <div class="faculty-portrait-frame">
                 <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <h4>Jikki Jose</h4>
-              <p>Assistant Professor</p>
+              <div style="flex:1;">
+                <h4 style="font-size:13.5px; color:var(--primary); font-weight:800;">Jikki Jose</h4>
+                <p style="font-size:11px; color:var(--gold-foil); font-weight:600; margin-bottom:3px;">Assistant Professor, Department of Computer Applications</p>
+                <p style="font-size:12px; color:#475569; line-height:1.45;">
+                  Specialized in web architectures, software project guidance, and practical technical skill development.
+                </p>
+              </div>
             </div>
+
+            <!-- ഭാവിയിൽ കൂടുതൽ അധ്യാപകരെ ചേർക്കാൻ താഴെയുള്ള ബ്ലോക്ക് അൺകമന്റ് ചെയ്ത് ഉപയോഗിക്കാം:
+            <div class="faculty-single-card">
+              <div class="faculty-portrait-frame">
+                <img src="teacher_photo.jpg" alt="Faculty Name" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+              </div>
+              <div style="flex:1;">
+                <h4 style="font-size:13.5px; color:var(--primary); font-weight:800;">Teacher Name</h4>
+                <p style="font-size:11px; color:var(--gold-foil); font-weight:600; margin-bottom:3px;">Assistant Professor, Department of Computer Applications</p>
+                <p style="font-size:12px; color:#475569; line-height:1.45;">
+                  Specialized in database management and algorithms.
+                </p>
+              </div>
+            </div>
+            -->
           </div>
         </div>
 
         <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:8px; font-weight:600;">
-          Dedicated Faculty Mentorship & Lab Supervision
+          Continuous Faculty Mentorship & Lab Supervision
         </div>
       </div>
 
-      <!-- ================= PAGE 5: INFRASTRUCTURE & LAB GALLERY ================= -->
+      <!-- ================= PAGE 4: INFRASTRUCTURE & LAB GALLERY ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1151,7 +1196,7 @@
             </div>
           </div>
 
-          <div class="leader-row-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--gold-foil);">
+          <div class="leader-compact-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--gold-foil);">
             <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:3px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
             <p style="font-size:11.5px; color:#475569; line-height:1.5;">
               Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
@@ -1164,7 +1209,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 6: STUDENT 1 (ALEN JOSE) ================= -->
+      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
@@ -1316,7 +1361,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 7: STUDENT 2 (RAHUL K) ================= -->
+      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K) ================= -->
       <div class="page-sheet">
         <div class="profile-card-page">
           
@@ -1464,7 +1509,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 8: RECRUITER PROTOCOL & INFRASTRUCTURE ================= -->
+      <!-- ================= PAGE 7: RECRUITER PROTOCOL & PLACEMENT DRIVE ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -1472,7 +1517,7 @@
             <span class="lead-tag">Placement Drive</span>
           </div>
 
-          <div class="leader-row-card" style="margin-bottom:14px; border-left-color:var(--gold-foil);">
+          <div class="leader-compact-card" style="margin-bottom:14px; border-left-color:var(--gold-foil);">
             <div style="font-size:13.5px; font-weight:800; color:var(--primary); margin-bottom:4px;">Hiring Framework</div>
             <p style="font-size:12px; color:#475569; line-height:1.6;">
               Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
@@ -1484,14 +1529,14 @@
             <span class="lead-tag">Track Record</span>
           </div>
 
-          <div class="faculty-trio-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="faculty-col-card" style="padding:12px;">
-              <h4 style="font-size:12px; color:var(--primary);">Top Tier Placements</h4>
-              <p style="font-size:10.5px; color:var(--gold-foil);">MNCs & Product Labs</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div style="background:#fff; border:1px solid #e8e1d5; padding:12px; border-radius:6px; text-align:center;">
+              <h4 style="font-size:12px; color:var(--primary); font-weight:800;">Top Tier Placements</h4>
+              <p style="font-size:10.5px; color:var(--gold-foil); font-weight:600;">MNCs & Product Labs</p>
             </div>
-            <div class="faculty-col-card" style="padding:12px;">
-              <h4 style="font-size:12px; color:var(--primary);">Active Repositories</h4>
-              <p style="font-size:10.5px; color:var(--gold-foil);">Verified Student Work</p>
+            <div style="background:#fff; border:1px solid #e8e1d5; padding:12px; border-radius:6px; text-align:center;">
+              <h4 style="font-size:12px; color:var(--primary); font-weight:800;">Active Repositories</h4>
+              <p style="font-size:10.5px; color:var(--gold-foil); font-weight:600;">Verified Student Work</p>
             </div>
           </div>
         </div>
@@ -1501,36 +1546,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 9: PLACEMENT SECRETARIAT HIGHLIGHTS ================= -->
-      <div class="page-sheet editorial-page">
-        <div>
-          <div class="page-lead-title">
-            <span>Corporate Relations</span>
-            <span class="lead-tag">Placement Cell</span>
-          </div>
-
-          <p style="font-size:13px; line-height:1.65; color:#334155; margin-bottom:14px;">
-            The Placement Cell facilitates year-round industry partnerships, expert webinars, and hackathons, ensuring that our students remain aligned with the latest market demands.
-          </p>
-
-          <div class="back-image-frame" style="height:170px; margin: 10px 0;">
-            <img src="ArealSTCP.png" alt="Campus Landscape" onerror="this.src='college.jpg';">
-          </div>
-
-          <div class="leader-row-card" style="margin-bottom:0; padding:12px 14px; border-left-color:var(--primary);">
-            <div style="font-size:12px; font-weight:800; color:var(--primary); margin-bottom:3px;"><i class="fa-solid fa-handshake" style="color:var(--gold-foil);"></i> Recruiter Assistance</div>
-            <p style="font-size:11.5px; color:#475569; line-height:1.5;">
-              Dedicated interview suites, high-speed test labs, and student volunteer support provided for seamless hiring operations.
-            </p>
-          </div>
-        </div>
-
-        <div class="turn-guide right">
-          Official Imprint <i class="fa-solid fa-arrow-right"></i>
-        </div>
-      </div>
-
-      <!-- ================= PAGE 10: BACK COVER ================= -->
+      <!-- ================= PAGE 8: BACK COVER ================= -->
       <div class="page-sheet cover-back" data-density="hard">
         <div>
           <span class="secretariat-tag">Placement Secretariat</span>
