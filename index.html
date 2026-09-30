@@ -15,15 +15,22 @@
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
   <style>
+    /* =========================================================
+       1. CORE DESIGN VARIABLES & GLOBAL RESET
+       ========================================================= */
     :root {
-      --bg-ambient: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
+      /* Student Card Tokens */
+      --primary: #0b192c;
+      --secondary: #1e3e62;
+      --accent: #0066cc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --card-bg: #ffffff;
+      --body-bg: #f8fafc;
+
+      /* Editorial & Cover Tokens */
       --paper-sheet: #fbf9f4;
-      --paper-pure: #ffffff;
-      --paper-border: #e8e1d5;
-      --paper-line: #ede6da;
-      --ink-midnight: #071326;
-      --ink-slate: #1f2d3d;
-      --ink-muted: #57687d;
       --gold-foil: #946c24;
       --gold-filigree: #d6be8c;
       --gold-tint: #fcf8ee;
@@ -42,14 +49,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: var(--bg-ambient);
+      background: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
-      color: var(--ink-slate);
+      color: var(--text-main);
       padding: 15px;
     }
 
-    /* Ambient Warmth Halo */
+    /* Ambient Warm Glow */
     body::before {
       content: '';
       position: fixed;
@@ -63,40 +70,39 @@
       z-index: 0;
     }
 
-    /* 3D Canvas Stage - Maximum Screen Presence */
+    /* 3D Canvas Stage - Maximum Large Screen Viewport */
     .book-stage {
       position: relative;
       z-index: 10;
       filter: drop-shadow(0 42px 85px rgba(7, 19, 38, 0.24));
     }
 
-    /* Large Format Page Sheet (600px x 860px) */
     .page-sheet {
       width: 600px;
-      height: 860px;
+      height: 870px;
       background-color: var(--paper-sheet);
       overflow: hidden;
       position: relative;
     }
 
-    /* Floating Side Page Indicators (Minimal Discreet Cue) */
+    /* Subtle Navigation Guides */
     .turn-guide {
       position: absolute;
-      bottom: 16px;
-      font-size: 12px;
+      bottom: 14px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--gold-foil);
       display: flex;
       align-items: center;
       gap: 6px;
-      z-index: 5;
+      z-index: 15;
       opacity: 0.85;
     }
     .turn-guide.right { right: 28px; }
     .turn-guide.left { left: 28px; }
 
     /* =========================================================
-       1. FRONT COVER: ULTRA-LUXURY EXECUTIVE DESIGN
+       2. COVER PAGE (EDITORIAL LUXURY DESIGN)
        ========================================================= */
     .cover-front {
       background: var(--paper-sheet);
@@ -104,13 +110,12 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 46px 42px;
-      border: 1px solid var(--paper-border);
+      border: 1px solid #e8e1d5;
       position: relative;
       overflow: hidden;
       cursor: pointer;
     }
 
-    /* Golden Reflection Shimmer */
     .cover-front::before {
       content: '';
       position: absolute;
@@ -149,7 +154,7 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 14px;
-      border-bottom: 1.5px solid var(--paper-line);
+      border-bottom: 1.5px solid #ede6da;
       z-index: 2;
     }
 
@@ -214,7 +219,7 @@
       font-size: 29px;
       font-weight: 900;
       letter-spacing: 2.5px;
-      color: var(--ink-midnight);
+      color: var(--primary);
       line-height: 1.25;
       text-transform: uppercase;
     }
@@ -243,7 +248,7 @@
       font-size: 20px;
       font-weight: 900;
       letter-spacing: 4px;
-      color: var(--ink-midnight);
+      color: var(--primary);
       text-transform: uppercase;
     }
 
@@ -251,14 +256,14 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 12px;
       font-weight: 700;
-      color: var(--ink-muted);
+      color: var(--text-muted);
       letter-spacing: 2.5px;
       text-transform: uppercase;
     }
 
     .cover-bottom-bar {
       text-align: center;
-      border-top: 1.5px solid var(--paper-line);
+      border-top: 1.5px solid #ede6da;
       padding-top: 14px;
       z-index: 2;
     }
@@ -267,12 +272,12 @@
       font-family: 'Playfair Display', serif;
       font-size: 21px;
       font-weight: 700;
-      color: var(--ink-midnight);
+      color: var(--primary);
       letter-spacing: 0.5px;
     }
 
     /* =========================================================
-       EDITORIAL LEADERSHIP & FACULTY PAGES
+       3. EDITORIAL LEADERSHIP & INFRASTRUCTURE PAGES
        ========================================================= */
     .editorial-page {
       padding: 48px 44px;
@@ -280,7 +285,7 @@
       flex-direction: column;
       justify-content: space-between;
       background: var(--paper-sheet);
-      border-right: 1px solid var(--paper-border);
+      border-right: 1px solid #e8e1d5;
     }
 
     .editorial-page::after {
@@ -295,7 +300,7 @@
       font-family: 'Cinzel', serif;
       font-size: 23px;
       font-weight: 800;
-      color: var(--ink-midnight);
+      color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
       padding-bottom: 10px;
       margin-bottom: 22px;
@@ -316,7 +321,7 @@
 
     .leader-message-card {
       background: #ffffff;
-      border: 1px solid var(--paper-border);
+      border: 1px solid #e8e1d5;
       padding: 20px;
       border-radius: 6px;
       margin-bottom: 18px;
@@ -366,7 +371,7 @@
       font-family: 'Cinzel', serif;
       font-size: 13.5px;
       font-weight: 800;
-      color: var(--ink-midnight);
+      color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -390,7 +395,7 @@
 
     .faculty-card-item {
       background: #ffffff;
-      border: 1px solid var(--paper-border);
+      border: 1px solid #e8e1d5;
       padding: 12px;
       border-radius: 6px;
       display: flex;
@@ -423,7 +428,7 @@
 
     .faculty-info h4 {
       font-size: 13.5px;
-      color: var(--ink-midnight);
+      color: var(--primary);
       font-weight: 800;
       line-height: 1.25;
     }
@@ -463,7 +468,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(7, 19, 38, 0.85);
+      background: rgba(11, 25, 44, 0.88);
       color: #ffffff;
       font-size: 11px;
       font-weight: 700;
@@ -473,220 +478,316 @@
     }
 
     /* =========================================================
-       LARGE-FONT FORMAL CANDIDATE DOSSIERS (PAGES 5 & 6)
+       4. STUDENT DOSSIER EMBEDDED STYLES (ORIGINAL CLASS MAPPING)
        ========================================================= */
-    .profile-page-content {
-      padding: 40px 36px;
+    .profile-card-page {
+      padding: 30px 26px;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: var(--paper-pure);
+      background: #ffffff;
     }
 
-    .masthead-row {
-      border-bottom: 2.5px solid var(--ink-midnight);
-      padding-bottom: 10px;
-      margin-bottom: 16px;
+    .profile-card {
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-card::-webkit-scrollbar {
+      width: 5px;
+    }
+    .profile-card::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .institution-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 12px 18px;
+      color: #ffffff;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .inst-signature {
-      font-family: 'Cinzel', serif;
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--ink-midnight);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .cohort-badge {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      color: var(--gold-foil);
-      text-transform: uppercase;
-    }
-
-    /* Larger Profile Header */
-    .candidate-card-top {
-      display: flex;
-      gap: 20px;
       align-items: center;
-      margin-bottom: 16px;
-      background: #faf9f6;
-      padding: 16px;
-      border: 1px solid var(--paper-border);
-      border-radius: 6px;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
-    .candidate-photo-frame {
-      width: 105px;
-      height: 130px;
+    .inst-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #bfdbfe;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .batch-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 3px 10px;
       border-radius: 4px;
-      border: 2px solid #d4c8b5;
-      background-color: #f1ede6;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #fef08a;
+    }
+
+    .profile-top {
+      padding: 16px 18px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 1px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    .photo-slot {
+      width: 100px;
+      height: 120px;
+      border-radius: 6px;
+      border: 2px solid var(--secondary);
+      background-color: #e2e8f0;
       overflow: hidden;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
+      font-size: 38px;
       color: #94a3b8;
     }
 
-    .candidate-photo-frame img {
+    .photo-slot img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .name-title-box h2 {
-      font-size: 22px; /* Very clear large candidate name */
+    .student-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .student-name {
+      font-size: 21px;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      color: var(--ink-midnight);
+      color: var(--primary);
       text-transform: uppercase;
       line-height: 1.2;
+      margin-bottom: 4px;
     }
 
-    .role-badge {
+    .target-role {
       font-size: 13.5px;
-      color: var(--gold-foil);
-      font-weight: 700;
-      margin: 4px 0 8px 0;
-      letter-spacing: 0.5px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
     }
 
-    .link-row {
+    .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 14px;
-      font-size: 12.5px;
-      color: var(--ink-muted);
+      gap: 6px 12px;
+      font-size: 12px;
+      color: var(--text-main);
     }
 
-    .link-row a {
-      color: var(--ink-midnight);
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-item a {
+      color: var(--accent);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .ribbon-head {
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-body {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .section-title {
       font-size: 12.5px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--ink-midnight);
+      font-weight: 700;
+      color: var(--primary);
       text-transform: uppercase;
-      border-bottom: 1.5px solid #e5e0d6;
-      padding-bottom: 4px;
-      margin-top: 10px;
-      margin-bottom: 6px;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 6px;
     }
 
-    .ribbon-head i {
-      color: var(--gold-foil);
-      font-size: 12px;
+    .section-title i {
+      color: var(--accent);
     }
 
-    .summary-paragraph {
-      font-size: 13px; /* Comfortable reading size */
-      line-height: 1.6;
-      color: #334155;
-      background: #faf9f6;
-      padding: 10px 14px;
-      border: 1px solid var(--paper-border);
+    .objective-text {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-main);
+      background: #fafaf9;
+      padding: 8px 12px;
       border-radius: 6px;
+      border-left: 3px solid var(--accent);
       text-align: justify;
     }
 
-    .skill-matrix-line {
+    .skills-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-category {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 12.5px;
-      margin-bottom: 5px;
+      gap: 8px;
+      font-size: 12px;
+      flex-wrap: wrap;
     }
 
-    .matrix-lbl {
+    .skill-label {
       font-weight: 700;
+      color: var(--text-main);
       min-width: 95px;
-      color: var(--ink-midnight);
     }
 
-    .skill-capsule {
-      background: #f1eee7;
-      color: var(--ink-midnight);
-      border: 1px solid #ddd7c9;
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 2px 8px;
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      flex: 1;
+    }
+
+    .tag-item {
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 7px;
       border-radius: 4px;
-      display: inline-block;
-      margin: 1px;
     }
 
-    .experience-tile {
-      background: #faf9f6;
-      border: 1px solid var(--paper-border);
-      padding: 8px 12px;
+    .timeline-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 6px;
-      margin-bottom: 6px;
+      padding: 8px 12px;
+      margin-bottom: 4px;
     }
 
-    .tile-top {
+    .timeline-head {
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
+      align-items: baseline;
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--ink-midnight);
+      color: var(--primary);
+      flex-wrap: wrap;
+      gap: 4px;
     }
 
-    .clean-table {
+    .timeline-duration {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .timeline-company {
+      font-size: 11.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 1px 0 4px 0;
+    }
+
+    .summary-points {
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .academic-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
-      margin-top: 4px;
+      font-size: 12px;
+      margin-top: 2px;
     }
 
-    .clean-table th, .clean-table td {
-      border: 1px solid var(--paper-border);
-      padding: 6px 10px;
+    .academic-table th, 
+    .academic-table td {
+      border: 1px solid #e2e8f0;
+      padding: 6px 8px;
       text-align: left;
     }
 
-    .clean-table th {
-      background-color: #f7f4ed;
-      font-weight: 800;
-      font-size: 11.5px;
-      color: var(--ink-midnight);
+    .academic-table th {
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
-    .score-gold {
-      font-weight: 800;
-      color: var(--gold-foil);
+    .score-highlight {
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
     }
 
-    .cert-strip {
+    .cert-section {
       font-size: 12px;
-      background: #fbf9f4;
-      border: 1px solid var(--gold-filigree);
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
       padding: 8px 12px;
       border-radius: 6px;
-      color: #7b5922;
-      margin-top: 8px;
+      color: #581c87;
+      line-height: 1.4;
+    }
+
+    .profile-footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 10px 18px;
+      background: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex-shrink: 0;
     }
 
     /* =========================================================
-       FINAL PAGES: PLACEMENT SECRETARIAT & BACK COVER
+       5. FINAL PAGES: RECRUITMENT PROTOCOL & BACK COVER
        ========================================================= */
     .cover-back {
       background: var(--paper-sheet);
@@ -694,7 +795,7 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 46px 42px;
-      border: 1px solid var(--paper-border);
+      border: 1px solid #e8e1d5;
       position: relative;
     }
 
@@ -742,7 +843,7 @@
       font-family: 'Cinzel', serif;
       font-size: 26px;
       font-weight: 900;
-      color: var(--ink-midnight);
+      color: var(--primary);
       letter-spacing: 1px;
     }
 
@@ -779,7 +880,7 @@
       font-size: 12px;
       color: #64748b;
       text-align: center;
-      border-top: 1.5px solid var(--paper-line);
+      border-top: 1.5px solid #ede6da;
       padding-top: 16px;
       font-weight: 600;
       z-index: 2;
@@ -886,7 +987,7 @@
           </div>
 
           <!-- HOD Message Card -->
-          <div class="leader-message-card" style="border-left-color: var(--ink-midnight);">
+          <div class="leader-message-card" style="border-left-color: var(--primary);">
             <div class="leader-portrait">
               <img src="hod.jpg" alt="HOD" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
             </div>
@@ -902,7 +1003,7 @@
           </div>
 
           <!-- Placement Faculty Mentors with Photos -->
-          <div class="ribbon-head" style="margin-top:10px;"><i class="fa-solid fa-users-gear"></i> Placement Mentors & Faculty</div>
+          <div class="ribbon-head" style="margin-top:10px; font-size:12px; font-weight:800; color:var(--primary);"><i class="fa-solid fa-users-gear" style="color:var(--gold-foil);"></i> Placement Mentors & Faculty</div>
           <div class="faculty-grid-rich">
             <div class="faculty-card-item">
               <div class="faculty-avatar">
@@ -925,7 +1026,7 @@
           </div>
         </div>
 
-        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid var(--paper-line); padding-top:10px; font-weight:600;">
+        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:10px; font-weight:600;">
           Continuous Faculty Mentorship & Lab Practice
         </div>
       </div>
@@ -942,7 +1043,7 @@
             The Department features modern computing facilities equipped with high-throughput network backbones, dedicated containerized environments, and full enterprise developer stacks.
           </p>
 
-          <!-- Lab & Infrastructure Photo Showcase Grid -->
+          <!-- Lab Photo Showcase Grid -->
           <div class="infra-photo-grid">
             <div class="infra-photo-box">
               <img src="lab1.jpg" alt="Software Lab" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600';">
@@ -955,7 +1056,7 @@
           </div>
 
           <div class="leader-message-card" style="margin-bottom:0; padding:14px 16px; border-left-color:var(--gold-foil);">
-            <div style="font-size:12.5px; font-weight:800; color:var(--ink-midnight); margin-bottom:4px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
+            <div style="font-size:12.5px; font-weight:800; color:var(--primary); margin-bottom:4px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
             <p style="font-size:12px; color:#475569; line-height:1.55;">
               Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
             </p>
@@ -967,139 +1068,327 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE) ================= -->
+      <!-- ================= PAGE 5: STUDENT 1 (ALEN JOSE - YOUR EXACT CODE) ================= -->
       <div class="page-sheet">
-        <div class="profile-page-content">
-          <div>
-            <div class="masthead-row">
-              <div class="inst-signature">St. Thomas College Palai</div>
-              <div class="cohort-badge">Cohort 2026 - 2027</div>
+        <div class="profile-card-page">
+          
+          <div class="profile-card">
+            <!-- College & Department Info -->
+            <div class="institution-header">
+              <div class="inst-name">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>St. Thomas College Palai (Autonomous) | BCA</span>
+              </div>
+              <div class="batch-tag">Batch 2026 - 2027</div>
             </div>
 
-            <div class="candidate-card-top">
-              <div class="candidate-photo-frame">
-                <img src="photos/24BCA01.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+            <!-- Profile Identification Section -->
+            <div class="profile-top">
+              <div class="photo-slot">
+                <img src="photos/24BCA01.jpg" alt="Student Photo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <div class="name-title-box">
-                <h2>ALEN JOSE</h2>
-                <div class="role-badge">Aspiring Software Developer</div>
-                <div class="link-row">
-                  <span><i class="fa-solid fa-envelope"></i> alenjose@email.com</span>
-                  <span><i class="fa-solid fa-phone"></i> +91 9847123456</span>
-                  <span><i class="fa-brands fa-github"></i> <a href="#" target="_blank">GitHub</a></span>
+              
+              <div class="student-info">
+                <h1 class="student-name">ALEN JOSE</h1>
+                
+                <div class="target-role">
+                  <i class="fa-solid fa-code"></i> Aspiring Software Developer
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-links">
+                  <span class="contact-item">
+                    <i class="fa-solid fa-envelope" style="color: #2563eb;"></i> alenjose@email.com
+                  </span>
+                  <span class="contact-item">
+                    <i class="fa-solid fa-phone" style="color: #10b981;"></i> +91 9847123456
+                  </span>
+                  <span class="contact-item">
+                    <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Kottayam, Kerala
+                  </span>
+                  <span class="contact-item">
+                    <i class="fa-brands fa-github"></i> <a href="https://github.com/alenjose" target="_blank">GitHub Profile</a>
+                  </span>
+                  <span class="contact-item">
+                    <i class="fa-brands fa-linkedin" style="color: #0284c7;"></i> <a href="https://linkedin.com/in/alenjose" target="_blank">LinkedIn Profile</a>
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div class="ribbon-head"><i class="fa-solid fa-compass"></i> Career Objective</div>
-            <p class="summary-paragraph">
-              Dedicated BCA student with strong foundational knowledge in Python, web programming, and database architecture. Seeking to join a progressive engineering team to build scalable software solutions.
-            </p>
-
-            <div class="ribbon-head"><i class="fa-solid fa-layer-group"></i> Technical Core</div>
-            <div class="skill-matrix-line">
-              <span class="matrix-lbl">Languages:</span>
-              <div><span class="skill-capsule">Python</span><span class="skill-capsule">Java</span><span class="skill-capsule">C++</span><span class="skill-capsule">SQL</span></div>
-            </div>
-            <div class="skill-matrix-line">
-              <span class="matrix-lbl">Web & Stack:</span>
-              <div><span class="skill-capsule">HTML5</span><span class="skill-capsule">CSS3</span><span class="skill-capsule">Bootstrap</span><span class="skill-capsule">React basics</span></div>
-            </div>
-
-            <div class="ribbon-head"><i class="fa-solid fa-briefcase"></i> Practical Exposure</div>
-            <div class="experience-tile">
-              <div class="tile-top">
-                <span>Web Dev Intern • InnovateX</span>
-                <span style="font-weight:normal; font-size:11.5px; color:#64748b;">May 2026 – Jul 2026</span>
+            <!-- Detailed Profile Content -->
+            <div class="profile-body">
+              <!-- 1. Career Objective -->
+              <div>
+                <div class="section-title"><i class="fa-solid fa-bullseye"></i> Career Objective</div>
+                <p class="objective-text">
+                  Dedicated BCA graduate from St. Thomas College Palai with strong foundational knowledge in Python, web programming, and database management. Looking forward to joining a progressive software team where I can apply my problem-solving skills and internship exposure to build scalable solutions.
+                </p>
               </div>
-              <p style="font-size:12px; color:#475569; margin-top:3px;">Developed UI components and integrated with MySQL databases.</p>
+
+              <!-- 2. Technical Skills -->
+              <div>
+                <div class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</div>
+                <div class="skills-wrapper">
+                  <div class="skill-category">
+                    <span class="skill-label">Languages:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">Python</span>
+                      <span class="tag-item">Java</span>
+                      <span class="tag-item">C</span>
+                      <span class="tag-item">C++</span>
+                      <span class="tag-item">JavaScript</span>
+                      <span class="tag-item">SQL</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <span class="skill-label">Web Tech:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">HTML5</span>
+                      <span class="tag-item">CSS3</span>
+                      <span class="tag-item">Bootstrap</span>
+                      <span class="tag-item">React basics</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <span class="skill-label">Tools & DB:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">MySQL</span>
+                      <span class="tag-item">MongoDB</span>
+                      <span class="tag-item">VS Code</span>
+                      <span class="tag-item">Git & GitHub</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Internship Experience -->
+              <div>
+                <div class="section-title"><i class="fa-solid fa-briefcase"></i> Internship Experience</div>
+                <div class="timeline-box">
+                  <div class="timeline-head">
+                    <span>Web Development Intern - <strong>InnovateX Technologies</strong></span>
+                    <span class="timeline-duration">May 2026 – Jul 2026</span>
+                  </div>
+                  <div class="timeline-company"><i class="fa-solid fa-building"></i> Kochi, Kerala</div>
+                  <ul class="summary-points">
+                    <li>Developed and optimized frontend UI components using HTML5, modern CSS, and JavaScript.</li>
+                    <li>Handled database integration using MySQL and followed standard Git branching workflows.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 4. Academic Project -->
+              <div>
+                <div class="section-title"><i class="fa-solid fa-diagram-project"></i> Major Academic Project</div>
+                <div class="timeline-box">
+                  <div class="timeline-head">
+                    <span><strong>Campus Facility Reservation Portal</strong></span>
+                    <span style="font-size: 11.5px; color: var(--accent); font-weight: 700;">Python | Django | MySQL</span>
+                  </div>
+                  <ul class="summary-points" style="margin-top: 3px;">
+                    <li>Developed an automated booking system for seminar halls and campus facilities with authentication and email confirmation.</li>
+                    <li>Repository: <a href="https://github.com/alenjose/facility-booking" target="_blank" style="color: var(--accent); font-weight: 600;">github.com/alenjose/facility-booking</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 5. Academic Record -->
+              <div>
+                <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                <table class="academic-table">
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Institution / Board</th>
+                      <th>Year</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>BCA</strong></td>
+                      <td>St. Thomas College Palai (Autonomous)</td>
+                      <td>2027</td>
+                      <td class="score-highlight">8.4 CGPA</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Class XII</strong></td>
+                      <td>St. Thomas HSS Pala (Kerala Board)</td>
+                      <td>2024</td>
+                      <td class="score-highlight">88%</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Class X</strong></td>
+                      <td>St. Thomas High School Pala (Kerala Board)</td>
+                      <td>2022</td>
+                      <td class="score-highlight">92%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 6. Certifications -->
+              <div class="cert-section">
+                <i class="fa-solid fa-award"></i> <strong>Certifications:</strong> Python Programming (NPTEL), Responsive Web Design (freeCodeCamp), SQL Database Fundamentals.
+              </div>
             </div>
 
-            <div class="ribbon-head"><i class="fa-solid fa-graduation-cap"></i> Academic History</div>
-            <table class="clean-table">
-              <thead><tr><th>Program</th><th>Board / College</th><th>Year</th><th>Score</th></tr></thead>
-              <tbody>
-                <tr><td><strong>BCA</strong></td><td>St. Thomas College Palai</td><td>2027</td><td class="score-gold">8.4 CGPA</td></tr>
-                <tr><td><strong>Class XII</strong></td><td>Kerala State Board</td><td>2024</td><td class="score-gold">88%</td></tr>
-              </tbody>
-            </table>
-
-            <div class="cert-strip">
-              <i class="fa-solid fa-certificate"></i> <strong>Verified Credentials:</strong> Python Programming (NPTEL), Responsive Web Design (freeCodeCamp).
+            <!-- Card Footer -->
+            <div class="profile-footer">
+              <span>Roll No: 24BCA01</span>
+              <span>Dept. of Computer Applications | St. Thomas College Palai</span>
             </div>
           </div>
 
-          <div style="font-size:11px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:6px; font-weight:600;">
-            Roll No: 24BCA01 • BCA Placement Cell
-          </div>
         </div>
       </div>
 
-      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K) ================= -->
+      <!-- ================= PAGE 6: STUDENT 2 (RAHUL K - SAME TEMPLATE STRUCTURE) ================= -->
       <div class="page-sheet">
-        <div class="profile-page-content">
-          <div>
-            <div class="masthead-row">
-              <div class="inst-signature">St. Thomas College Palai</div>
-              <div class="cohort-badge">Cohort 2025 - 2026</div>
+        <div class="profile-card-page">
+          
+          <div class="profile-card">
+            <div class="institution-header">
+              <div class="inst-name">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>St. Thomas College Palai (Autonomous) | BCA</span>
+              </div>
+              <div class="batch-tag">Batch 2025 - 2026</div>
             </div>
 
-            <div class="candidate-card-top">
-              <div class="candidate-photo-frame">
-                <img src="photos/23BCA14.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+            <div class="profile-top">
+              <div class="photo-slot">
+                <img src="photos/23BCA14.jpg" alt="Student Photo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
-              <div class="name-title-box">
-                <h2>RAHUL K</h2>
-                <div class="role-badge">Full Stack Web Engineer</div>
-                <div class="link-row">
-                  <span><i class="fa-solid fa-envelope"></i> rahulk@email.com</span>
-                  <span><i class="fa-solid fa-phone"></i> +91 9847234567</span>
-                  <span><i class="fa-brands fa-github"></i> <a href="#" target="_blank">GitHub</a></span>
+              
+              <div class="student-info">
+                <h1 class="student-name">RAHUL K</h1>
+                <div class="target-role"><i class="fa-solid fa-code"></i> Full Stack Developer</div>
+                <div class="contact-links">
+                  <span class="contact-item"><i class="fa-solid fa-envelope" style="color: #2563eb;"></i> rahulk@email.com</span>
+                  <span class="contact-item"><i class="fa-solid fa-phone" style="color: #10b981;"></i> +91 9847234567</span>
+                  <span class="contact-item"><i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Ernakulam, Kerala</span>
+                  <span class="contact-item"><i class="fa-brands fa-github"></i> <a href="#" target="_blank">GitHub Profile</a></span>
+                  <span class="contact-item"><i class="fa-brands fa-linkedin" style="color: #0284c7;"></i> <a href="#" target="_blank">LinkedIn Profile</a></span>
                 </div>
               </div>
             </div>
 
-            <div class="ribbon-head"><i class="fa-solid fa-compass"></i> Career Objective</div>
-            <p class="summary-paragraph">
-              Final-year BCA student with proven competency in Spring Boot, React, and RESTful architectures. Focused on cloud-ready services and clean code standards.
-            </p>
-
-            <div class="ribbon-head"><i class="fa-solid fa-layer-group"></i> Technical Core</div>
-            <div class="skill-matrix-line">
-              <span class="matrix-lbl">Languages:</span>
-              <div><span class="skill-capsule">Java</span><span class="skill-capsule">JavaScript</span><span class="skill-capsule">SQL</span></div>
-            </div>
-            <div class="skill-matrix-line">
-              <span class="matrix-lbl">Frameworks:</span>
-              <div><span class="skill-capsule">Spring Boot</span><span class="skill-capsule">React</span><span class="skill-capsule">Node.js</span></div>
-            </div>
-
-            <div class="ribbon-head"><i class="fa-solid fa-code-commit"></i> Major Project</div>
-            <div class="experience-tile">
-              <div class="tile-top">
-                <span>Placement Portal System</span>
-                <span style="font-weight:700; font-size:11.5px; color:var(--gold-foil);">Spring Boot | React</span>
+            <div class="profile-body">
+              <div>
+                <div class="section-title"><i class="fa-solid fa-bullseye"></i> Career Objective</div>
+                <p class="objective-text">
+                  Dedicated final year BCA student with solid foundations in Spring Boot, React, and RESTful Microservices. Eager to contribute to high-performance enterprise systems.
+                </p>
               </div>
-              <p style="font-size:12px; color:#475569; margin-top:3px;">Built end-to-end recruitment management system with resume screening.</p>
+
+              <div>
+                <div class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</div>
+                <div class="skills-wrapper">
+                  <div class="skill-category">
+                    <span class="skill-label">Languages:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">Java</span>
+                      <span class="tag-item">JavaScript</span>
+                      <span class="tag-item">Python</span>
+                      <span class="tag-item">SQL</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <span class="skill-label">Web Tech:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">React</span>
+                      <span class="tag-item">Spring Boot</span>
+                      <span class="tag-item">Node.js</span>
+                      <span class="tag-item">Tailwind CSS</span>
+                    </div>
+                  </div>
+                  <div class="skill-category">
+                    <span class="skill-label">Tools & DB:</span>
+                    <div class="skill-tags">
+                      <span class="tag-item">PostgreSQL</span>
+                      <span class="tag-item">Docker</span>
+                      <span class="tag-item">Git & GitHub</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="section-title"><i class="fa-solid fa-briefcase"></i> Internship Experience</div>
+                <div class="timeline-box">
+                  <div class="timeline-head">
+                    <span>Full Stack Intern - <strong>TechNova Solutions</strong></span>
+                    <span class="timeline-duration">Jan 2026 – Mar 2026</span>
+                  </div>
+                  <div class="timeline-company"><i class="fa-solid fa-building"></i> Infopark, Kochi</div>
+                  <ul class="summary-points">
+                    <li>Developed REST APIs in Spring Boot and integrated frontend state management.</li>
+                    <li>Collaborated on Agile sprints and handled containerized testing.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <div class="section-title"><i class="fa-solid fa-diagram-project"></i> Major Academic Project</div>
+                <div class="timeline-box">
+                  <div class="timeline-head">
+                    <span><strong>Campus Placement Management Portal</strong></span>
+                    <span style="font-size: 11.5px; color: var(--accent); font-weight: 700;">Spring Boot | React | PostgreSQL</span>
+                  </div>
+                  <ul class="summary-points" style="margin-top: 3px;">
+                    <li>Role-based recruitment workflow portal with resume parsing and automated slot scheduling.</li>
+                    <li>Repository: <a href="#" target="_blank" style="color: var(--accent); font-weight: 600;">github.com/rahulk/placement-portal</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                <table class="academic-table">
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Institution / Board</th>
+                      <th>Year</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>BCA</strong></td>
+                      <td>St. Thomas College Palai (Autonomous)</td>
+                      <td>2026</td>
+                      <td class="score-highlight">8.9 CGPA</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Class XII</strong></td>
+                      <td>Govt HSS Pala (Kerala Board)</td>
+                      <td>2023</td>
+                      <td class="score-highlight">91%</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Class X</strong></td>
+                      <td>St. Thomas High School Pala</td>
+                      <td>2021</td>
+                      <td class="score-highlight">94%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="cert-section">
+                <i class="fa-solid fa-award"></i> <strong>Certifications:</strong> Java Enterprise Specialization, Cloud Foundation (AWS).
+              </div>
             </div>
 
-            <div class="ribbon-head"><i class="fa-solid fa-graduation-cap"></i> Academic History</div>
-            <table class="clean-table">
-              <thead><tr><th>Program</th><th>Board / College</th><th>Year</th><th>Score</th></tr></thead>
-              <tbody>
-                <tr><td><strong>BCA</strong></td><td>St. Thomas College Palai</td><td>2026</td><td class="score-gold">8.9 CGPA</td></tr>
-                <tr><td><strong>Class XII</strong></td><td>Kerala State Board</td><td>2023</td><td class="score-gold">91%</td></tr>
-              </tbody>
-            </table>
-
-            <div class="cert-strip">
-              <i class="fa-solid fa-certificate"></i> <strong>Verified Credentials:</strong> Java Enterprise Specialization, Cloud Foundation.
+            <div class="profile-footer">
+              <span>Roll No: 23BCA14</span>
+              <span>Dept. of Computer Applications | St. Thomas College Palai</span>
             </div>
           </div>
 
-          <div style="font-size:11px; color:#94a3b8; text-align:right; border-top:1px solid #eee; padding-top:6px; font-weight:600;">
-            Roll No: 23BCA14 • BCA Placement Cell
-          </div>
         </div>
       </div>
 
@@ -1112,13 +1401,13 @@
           </div>
 
           <div class="leader-message-card" style="margin-bottom:16px; border-left-color:var(--gold-foil);">
-            <div style="font-size:14px; font-weight:800; color:var(--ink-midnight); margin-bottom:4px;">Hiring Framework</div>
+            <div style="font-size:14px; font-weight:800; color:var(--primary); margin-bottom:4px;">Hiring Framework</div>
             <p style="font-size:13px; color:#475569; line-height:1.65;">
               Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
             </p>
           </div>
 
-          <div class="ribbon-head"><i class="fa-solid fa-star"></i> Department Accolades</div>
+          <div class="ribbon-head" style="font-size:12px; font-weight:800; color:var(--primary);"><i class="fa-solid fa-star" style="color:var(--gold-foil);"></i> Department Accolades</div>
           <div class="faculty-grid-rich">
             <div class="faculty-card-item">
               <div class="faculty-info">
@@ -1135,7 +1424,7 @@
           </div>
         </div>
 
-        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid var(--paper-line); padding-top:10px; font-weight:600;">
+        <div style="font-size:12px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:10px; font-weight:600;">
           Seamless Recruitment Drives & Dedicated Interview Rooms
         </div>
       </div>
@@ -1176,12 +1465,12 @@
       // Initialize StPageFlip with Soft Magazine Physics
       flipBook = new St.PageFlip(bookElem, {
         width: 600,
-        height: 860,
+        height: 870,
         size: 'fixed',
         minWidth: 360,
         maxWidth: 680,
         minHeight: 520,
-        maxHeight: 920,
+        maxHeight: 930,
         maxShadowOpacity: 0.35,
         showCover: true,
         usePortrait: false,
