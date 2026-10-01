@@ -104,7 +104,7 @@
     .turn-guide.left { left: 16px; }
 
     /* =========================================================
-       1. ARTWORK FULL COVERS (FRONT & BACK)
+       1. ARTWORK FULL COVERS
        ========================================================= */
     .artwork-cover-page {
       width: 100%;
@@ -125,7 +125,7 @@
        2. EDITORIAL PAGES
        ========================================================= */
     .editorial-page {
-      padding: 28px 24px;
+      padding: 26px 22px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -145,12 +145,12 @@
 
     .page-lead-title {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 800;
       color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
-      padding-bottom: 5px;
-      margin-bottom: 10px;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -169,21 +169,21 @@
     .leadership-stack {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
       flex-grow: 1;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 6px;
-      border-left: 5px solid var(--gold-foil);
+      border-left: 4.5px solid var(--gold-foil);
       box-shadow: 0 4px 14px rgba(0,0,0,0.03);
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
     }
 
@@ -192,8 +192,8 @@
     }
 
     .leader-row-portrait {
-      width: 78px;
-      height: 98px;
+      width: 74px;
+      height: 92px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -202,7 +202,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
+      font-size: 32px;
       color: #94a3b8;
       box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
@@ -221,7 +221,7 @@
 
     .leader-row-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.2;
@@ -229,53 +229,157 @@
 
     .leader-row-body span.designation {
       display: block;
-      font-size: 10.5px;
+      font-size: 10px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin: 1px 0 4px 0;
+      margin: 1px 0 3px 0;
     }
 
     .leader-row-body p.quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
+      font-size: 12.5px;
       font-style: italic;
       color: #334155;
-      line-height: 1.4;
+      line-height: 1.35;
       text-align: justify;
     }
 
-    .infra-photo-grid {
+    /* 6-Faculty Executive Grid */
+    .faculty-hex-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 10px 0;
+      gap: 8px;
+      margin-top: 4px;
     }
 
-    .infra-photo-box {
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid #dfd7c8;
-      height: 140px;
-      position: relative;
+    .faculty-mini-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-radius: 5px;
+      padding: 7px 9px;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border-left: 3px solid var(--gold-foil);
+    }
+
+    .faculty-mini-avatar {
+      width: 48px;
+      height: 58px;
+      border-radius: 3px;
+      border: 1px solid var(--gold-filigree);
       background: #f4efe6;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #94a3b8;
     }
 
-    .infra-photo-box img {
+    .faculty-mini-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .infra-photo-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(11, 25, 44, 0.88);
-      color: #ffffff;
-      font-size: 10.5px;
+    .faculty-mini-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .faculty-mini-info h4 {
+      font-size: 11.5px;
+      color: var(--primary);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .faculty-mini-info span.role {
+      display: block;
+      font-size: 9.5px;
+      color: var(--gold-foil);
       font-weight: 700;
-      padding: 4px 6px;
-      text-align: center;
+      margin: 1px 0;
+    }
+
+    .faculty-mini-info span.spec {
+      display: block;
+      font-size: 9px;
+      color: #64748b;
+      line-height: 1.25;
+    }
+
+    /* Collaborations Styles */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .collab-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-radius: 6px;
+      padding: 10px 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      border-top: 3px solid var(--gold-foil);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .collab-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .collab-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .collab-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .collab-focus {
+      font-size: 10.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .collab-desc {
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .collab-highlight-box {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-left: 5px solid var(--primary);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-top: 6px;
     }
 
     /* =========================================================
@@ -556,7 +660,6 @@
       line-height: 1.3;
     }
 
-    /* Desktop Footer */
     .profile-footer {
       border-top: 1px solid #e2e8f0;
       padding: 6px 14px;
@@ -571,7 +674,7 @@
     }
 
     /* =========================================================
-       4. MOBILE-SPECIFIC ULTRA COMPACT (NO CUTTING / ZERO SCROLL)
+       4. MOBILE OPTIMIZATION
        ========================================================= */
     @media (max-width: 768px) {
       body {
@@ -592,6 +695,16 @@
 
       .editorial-page {
         padding: 10px 8px !important;
+      }
+
+      .collab-grid {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+      }
+
+      .faculty-hex-grid {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
       }
 
       .leader-row-card {
@@ -621,7 +734,6 @@
         padding: 4px !important;
       }
 
-      /* മൊബൈലിൽ അടിയിലെ ഫൂട്ടർ ബാർ ഒഴിവാക്കുന്നു */
       .profile-footer {
         display: none !important;
       }
@@ -670,39 +782,8 @@
         padding: 3px 6px !important;
       }
 
-      .skill-category {
-        font-size: 9.5px !important;
-      }
-
-      .tag-item {
-        font-size: 8.5px !important;
-        padding: 0 4px !important;
-      }
-
-      .timeline-box {
-        padding: 3px 6px !important;
-      }
-
-      .timeline-head {
-        font-size: 9.5px !important;
-      }
-
-      .summary-points {
-        font-size: 9px !important;
-        line-height: 1.2 !important;
-      }
-
       .academic-table {
         font-size: 9.5px !important;
-      }
-
-      .academic-table th, .academic-table td {
-        padding: 2px 4px !important;
-      }
-
-      .cert-section {
-        font-size: 9px !important;
-        padding: 3px 6px !important;
       }
 
       .turn-guide {
@@ -721,7 +802,7 @@
       <!-- ================= PAGE 1: FRONT COVER ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
-          <img src="front-cover.jpg" alt="Front Cover" onerror="this.src='college.jpg';">
+          <img src="front-cover.png" alt="Front Cover" onerror="this.src='college.jpg';">
         </div>
       </div>
 
@@ -797,77 +878,192 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 3: DEPARTMENT DESK ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY MENTORS) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
             <span>Department Desk</span>
-            <span class="lead-tag">Academic Leadership</span>
+            <span class="lead-tag">Academic Mentors</span>
           </div>
 
-          <div class="leadership-stack">
-            <!-- Head of the Department: Arjun Ram Sankar -->
-            <div class="leader-row-card primary-accent">
-              <div class="leader-row-portrait">
-                <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+          <!-- Featured Head of the Department: Arjun Ram Sankar -->
+          <div class="leader-row-card primary-accent" style="margin-bottom: 8px;">
+            <div class="leader-row-portrait" style="width: 72px; height: 88px;">
+              <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+            </div>
+            <div class="leader-row-body">
+              <h3 style="font-size: 13.5px;">Arjun Ram Sankar</h3>
+              <span class="designation">Assistant Professor & Head of the Department</span>
+              <p class="quote" style="font-size: 12px; line-height: 1.35;">
+                "Our BCA curriculum balances core algorithmic depth with real-world enterprise architectures. We mentor our cohorts in resilient cloud systems, full-stack stacks, and continuous learning."
+              </p>
+            </div>
+          </div>
+
+          <!-- Common Department & Faculty Header -->
+          <div style="font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid var(--gold-filigree); padding-bottom: 2px; margin-bottom: 5px; display: flex; justify-content: space-between;">
+            <span>Faculty Mentors</span>
+            <span style="color: var(--gold-foil); font-size: 9.5px;">Dept. of Computer Applications</span>
+          </div>
+
+          <!-- 6 Faculty Members Grid (All with Uniform Mentor Titles) -->
+          <div class="faculty-hex-grid">
+            <!-- 1. Jintu Joseph -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Jintu.jpg" alt="Jintu Joseph" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
-              <div class="leader-row-body">
-                <h3>Arjun Ram Sankar</h3>
-                <span class="designation">Head of the Department, Department of Computer Applications</span>
-                <p class="quote">
-                  "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures and cloud pipelines."
-                </p>
+              <div class="faculty-mini-info">
+                <h4>Jintu Joseph</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
               </div>
             </div>
 
-            <!-- Faculty: Jikki Jose -->
-            <div class="leader-row-card">
-              <div class="leader-row-portrait">
-                <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+            <!-- 2. Jikki Jose -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
-              <div class="leader-row-body">
-                <h3>Jikki Jose</h3>
-                <span class="designation">Assistant Professor, Department of Computer Applications</span>
-                <p class="quote">
-                  "Dedicated to hands-on practical lab guidance, project reviews, and competitive skill training in modern programming frameworks."
-                </p>
+              <div class="faculty-mini-info">
+                <h4>Jikki Jose</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Project & Tech Mentor</span>
+              </div>
+            </div>
+
+            <!-- 3. Linda Baby (English Faculty & Mentor) -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Linda.jpg" alt="Linda Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Linda Baby</h4>
+                <span class="role">Assistant Professor (English) & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Business Communication Mentor</span>
+              </div>
+            </div>
+
+            <!-- 4. Subin M Varghese -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Subin.jpg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Subin M. Varghese</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
+              </div>
+            </div>
+
+            <!-- 5. Sandra Krishna P S -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Sandra.jpg" alt="Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Sandra Krishna P. S.</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">Dept. of BCA • Technical Mentor</span>
+              </div>
+            </div>
+
+            <!-- 6. Chaithra Sudhir -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Chaithra.jpg" alt="Chaithra Sudhir" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Chaithra Sudhir</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">Dept. of BCA • Technical Mentor</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:6px; font-weight:600;">
-          Continuous Faculty Mentorship & Lab Supervision
+        <div style="font-size:10.5px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:6px; font-weight:600;">
+          Dedicated Faculty Mentorship & Continuous Career Guidance
         </div>
       </div>
 
-      <!-- ================= PAGE 4: INFRASTRUCTURE & LAB GALLERY ================= -->
+      <!-- ================= PAGE 4: ACADEMIC & INDUSTRY COLLABORATIONS ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
-            <span>Infrastructure</span>
-            <span class="lead-tag">Software Lab</span>
+            <span>Academic Collaborations</span>
+            <span class="lead-tag">Industry Alliances</span>
           </div>
 
-          <p style="font-size:12px; line-height:1.55; color:#334155; margin-bottom:8px;">
-            The Department features modern computing facilities equipped with high-throughput network backbones, dedicated containerized environments, and full enterprise developer stacks.
+          <p style="font-size:12px; line-height:1.5; color:#334155; margin-bottom:8px;">
+            The Department bridges academia and corporate expectations through official institutional alliances with world-leading technology pioneers:
           </p>
 
-          <div class="infra-photo-grid">
-            <div class="infra-photo-box">
-              <img src="DSC_0056_mix01.png" alt="Software Lab" onerror="this.src='college.jpg';">
-              <div class="infra-photo-caption">High-Performance Lab</div>
+          <div class="collab-grid">
+            <!-- AWS Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <div class="collab-icon-box" style="color: #ff9900;"><i class="fa-brands fa-aws"></i></div>
+                  <div class="collab-title">AWS Academy & Educate</div>
+                </div>
+                <div class="collab-focus">Cloud Computing & DevOps</div>
+                <div class="collab-desc">
+                  Official AWS curriculum covering Cloud Architectures, Serverless Computing, and scalable cloud solutions.
+                </div>
+              </div>
             </div>
-            <div class="infra-photo-box">
-              <img src="15311599785.png" alt="Developer Studio" onerror="this.src='ArealSTCP.png';">
-              <div class="infra-photo-caption">Seminar & Development Studio</div>
+
+            <!-- Red Hat Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <div class="collab-icon-box" style="color: #ee0000;"><i class="fa-brands fa-redhat"></i></div>
+                  <div class="collab-title">Red Hat Academy</div>
+                </div>
+                <div class="collab-focus">Linux & Container Systems</div>
+                <div class="collab-desc">
+                  Hands-on instruction in Enterprise Linux administration, Docker containers, and OpenShift Kubernetes workflows.
+                </div>
+              </div>
+            </div>
+
+            <!-- Oracle Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <div class="collab-icon-box" style="color: #f80000;"><i class="fa-solid fa-database"></i></div>
+                  <div class="collab-title">Oracle Academy</div>
+                </div>
+                <div class="collab-focus">Databases & Java EE</div>
+                <div class="collab-desc">
+                  Comprehensive training in Relational Database Design, SQL, PL/SQL optimization, and enterprise Java standards.
+                </div>
+              </div>
+            </div>
+
+            <!-- EC-Council Academia -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <div class="collab-icon-box" style="color: #0284c7;"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div class="collab-title">EC-Council Academia</div>
+                </div>
+                <div class="collab-focus">Cybersecurity & Forensics</div>
+                <div class="collab-desc">
+                  Curriculum aligned with Ethical Hacking, Network Security Protocols, Threat Analysis, and digital forensics.
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="leader-row-card" style="margin-bottom:0; padding:10px 12px; border-left-color:var(--gold-foil);">
-            <div style="font-size:11.5px; font-weight:800; color:var(--primary); margin-bottom:2px;"><i class="fa-solid fa-microchip" style="color:var(--gold-foil);"></i> Enterprise Tech Stack</div>
-            <p style="font-size:11px; color:#475569; line-height:1.45;">
-              Students are rigorously trained in Spring Boot, Python FastAPI, Modern JavaScript Frameworks, Cloud DevOps, and Microservices architecture.
+          <div class="collab-highlight-box">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+              <i class="fa-brands fa-github" style="font-size: 16px; color: var(--primary);"></i>
+              <span style="font-size: 12px; font-weight: 800; color: var(--primary);">GitHub Campus Global Program</span>
+            </div>
+            <p style="font-size: 11px; color: #475569; line-height: 1.4;">
+              Empowering students with industry-standard Git version control, GitHub Actions (CI/CD), and collaborative open-source workflows.
             </p>
           </div>
         </div>
@@ -917,7 +1113,7 @@
         </div>
       </div>
 
-      <!-- ================= BACK COVER (ARTWORK IMAGE READY) ================= -->
+      <!-- ================= BACK COVER ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
           <img src="back-cover.png" alt="Back Cover" onerror="this.src='college copy.png';">
@@ -963,7 +1159,6 @@
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
-            // Auto Fallback Engine for Student Photos
             const imgElem = profileCard.querySelector('.photo-slot img');
             if (imgElem) {
               const originalSrc = imgElem.getAttribute('src') || '';
@@ -981,7 +1176,7 @@
                 } else {
                   this.style.display = 'none';
                   if (this.parentElement) {
-                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:30px; color:#94a3b8;"></i>';
+                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
                   }
                 }
               };
