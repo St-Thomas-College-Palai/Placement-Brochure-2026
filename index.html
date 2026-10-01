@@ -47,7 +47,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       color: var(--text-main);
-      padding: 10px;
+      padding: 6px;
     }
 
     body::before {
@@ -73,30 +73,13 @@
       filter: drop-shadow(0 25px 50px rgba(7, 19, 38, 0.22));
     }
 
-    /* Fixed Clean Page Sheet */
     .page-sheet {
       width: 580px;
       height: 850px;
       background-color: var(--paper-sheet);
-      overflow: hidden !important; /* Disables all scrollbars */
+      overflow: hidden !important;
       position: relative;
       box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
-    }
-
-    /* Full Artwork Covers (Front / Back) */
-    .artwork-cover-page {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      background: #0b192c;
-    }
-
-    .artwork-cover-page img {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      display: block;
     }
 
     .turn-guide {
@@ -111,20 +94,38 @@
       z-index: 20;
       opacity: 0.95;
       background: rgba(251, 249, 244, 0.95);
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 20px;
       backdrop-filter: blur(4px);
       border: 1px solid var(--gold-filigree);
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
-    .turn-guide.right { right: 18px; }
-    .turn-guide.left { left: 18px; }
+    .turn-guide.right { right: 16px; }
+    .turn-guide.left { left: 16px; }
 
     /* =========================================================
-       EDITORIAL PAGES (LEADERSHIP & DEPARTMENT)
+       1. ARTWORK FULL COVERS (FRONT & BACK)
+       ========================================================= */
+    .artwork-cover-page {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #0b192c;
+    }
+
+    .artwork-cover-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* =========================================================
+       2. EDITORIAL PAGES
        ========================================================= */
     .editorial-page {
-      padding: 30px 24px;
+      padding: 28px 24px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -149,7 +150,7 @@
       color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
       padding-bottom: 5px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -168,20 +169,19 @@
     .leadership-stack {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
       flex-grow: 1;
-      justify-content: space-around;
-      margin-bottom: 4px;
+      justify-content: space-between;
+      margin-bottom: 6px;
     }
 
-    /* Common Horizontal Row Card Theme */
     .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 8px 14px;
+      padding: 10px 14px;
       border-radius: 6px;
       border-left: 5px solid var(--gold-foil);
-      box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
       display: flex;
       gap: 14px;
       align-items: center;
@@ -192,8 +192,8 @@
     }
 
     .leader-row-portrait {
-      width: 74px;
-      height: 92px;
+      width: 78px;
+      height: 98px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -202,9 +202,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 34px;
       color: #94a3b8;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
 
     .leader-row-portrait img {
@@ -221,7 +221,7 @@
 
     .leader-row-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.2;
@@ -232,15 +232,15 @@
       font-size: 10.5px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin: 1px 0 3px 0;
+      margin: 1px 0 4px 0;
     }
 
     .leader-row-body p.quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 12.5px;
+      font-size: 13px;
       font-style: italic;
       color: #334155;
-      line-height: 1.38;
+      line-height: 1.4;
       text-align: justify;
     }
 
@@ -279,7 +279,7 @@
     }
 
     /* =========================================================
-       ZERO-SCROLL AUTOFIT STUDENT DOSSIER
+       3. ZERO-SCROLL AUTOFIT STUDENT DOSSIER
        ========================================================= */
     .profile-card-page {
       padding: 14px 12px;
@@ -410,10 +410,10 @@
     }
 
     .profile-body {
-      padding: 10px 14px;
+      padding: 8px 14px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 6px;
       flex-grow: 1;
       justify-content: space-around;
       overflow: hidden;
@@ -430,15 +430,15 @@
       gap: 5px;
       padding-bottom: 2px;
       border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .objective-text {
-      font-size: 11.5px;
-      line-height: 1.45;
+      font-size: 11px;
+      line-height: 1.4;
       color: var(--text-main);
       background: #fafaf9;
-      padding: 6px 9px;
+      padding: 5px 8px;
       border-radius: 4px;
       border-left: 3px solid var(--accent);
       text-align: justify;
@@ -447,14 +447,14 @@
     .skills-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .skill-category {
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 11px;
+      font-size: 10.5px;
       flex-wrap: wrap;
     }
 
@@ -485,14 +485,14 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 4px;
-      padding: 5px 8px;
+      padding: 4px 8px;
     }
 
     .timeline-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--primary);
       flex-wrap: wrap;
@@ -500,13 +500,13 @@
     }
 
     .timeline-duration {
-      font-size: 10.5px;
+      font-size: 10px;
       color: var(--text-muted);
       font-weight: normal;
     }
 
     .timeline-company {
-      font-size: 10.5px;
+      font-size: 10px;
       color: var(--accent);
       font-weight: 600;
       margin: 1px 0 2px 0;
@@ -514,22 +514,22 @@
 
     .summary-points {
       padding-left: 14px;
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-main);
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .academic-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11px;
+      font-size: 10.5px;
       margin-top: 1px;
     }
 
     .academic-table th, 
     .academic-table td {
       border: 1px solid #e2e8f0;
-      padding: 4px 6px;
+      padding: 3px 5px;
       text-align: left;
     }
 
@@ -537,7 +537,7 @@
       background-color: #f8fafc;
       font-weight: 700;
       color: var(--primary);
-      font-size: 10px;
+      font-size: 9.5px;
       text-transform: uppercase;
     }
 
@@ -547,15 +547,16 @@
     }
 
     .cert-section {
-      font-size: 10.5px;
+      font-size: 10px;
       background: #faf5ff;
       border: 1px solid #e9d5ff;
-      padding: 5px 8px;
+      padding: 4px 8px;
       border-radius: 4px;
       color: #581c87;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
+    /* Desktop Footer */
     .profile-footer {
       border-top: 1px solid #e2e8f0;
       padding: 6px 14px;
@@ -569,11 +570,12 @@
       flex-shrink: 0;
     }
 
-    /* Responsive Mobile Tweaks */
+    /* =========================================================
+       4. MOBILE-SPECIFIC ULTRA COMPACT (NO CUTTING / ZERO SCROLL)
+       ========================================================= */
     @media (max-width: 768px) {
       body {
-        padding: 2px;
-        justify-content: flex-start;
+        padding: 0;
       }
 
       .book-stage {
@@ -582,14 +584,14 @@
       }
 
       .page-sheet {
-        width: 96vw !important;
-        height: 94vh !important;
-        border-radius: 8px;
-        padding: 10px 8px !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0;
+        padding: 8px 6px !important;
       }
 
       .editorial-page {
-        padding: 14px 10px !important;
+        padding: 10px 8px !important;
       }
 
       .leader-row-card {
@@ -598,55 +600,115 @@
       }
 
       .leader-row-portrait {
-        width: 58px !important;
-        height: 72px !important;
+        width: 54px !important;
+        height: 68px !important;
       }
 
       .leader-row-body h3 {
-        font-size: 12px !important;
+        font-size: 11.5px !important;
       }
 
       .leader-row-body span.designation {
-        font-size: 9.5px !important;
+        font-size: 9px !important;
       }
 
       .leader-row-body p.quote {
-        font-size: 11px !important;
-        line-height: 1.3 !important;
+        font-size: 10.5px !important;
+        line-height: 1.25 !important;
       }
 
       .profile-card-page {
-        padding: 2px 2px !important;
+        padding: 4px !important;
+      }
+
+      /* മൊബൈലിൽ അടിയിലെ ഫൂട്ടർ ബാർ ഒഴിവാക്കുന്നു */
+      .profile-footer {
+        display: none !important;
+      }
+
+      .institution-header {
+        padding: 5px 8px !important;
       }
 
       .profile-top {
-        padding: 6px !important;
+        padding: 6px 8px !important;
         gap: 8px !important;
       }
 
       .photo-slot {
-        width: 68px !important;
-        height: 82px !important;
+        width: 60px !important;
+        height: 72px !important;
       }
 
       .student-name {
-        font-size: 14px !important;
+        font-size: 13.5px !important;
+      }
+
+      .target-role {
+        font-size: 10.5px !important;
+        margin-bottom: 2px !important;
+      }
+
+      .contact-links {
+        font-size: 9.5px !important;
+        gap: 2px 6px !important;
       }
 
       .profile-body {
-        padding: 6px 8px !important;
+        padding: 4px 6px !important;
         gap: 4px !important;
       }
 
+      .section-title {
+        font-size: 10px !important;
+        margin-bottom: 1px !important;
+      }
+
       .objective-text {
-        font-size: 10.5px !important;
-        line-height: 1.35 !important;
+        font-size: 9.5px !important;
+        line-height: 1.25 !important;
+        padding: 3px 6px !important;
+      }
+
+      .skill-category {
+        font-size: 9.5px !important;
+      }
+
+      .tag-item {
+        font-size: 8.5px !important;
+        padding: 0 4px !important;
+      }
+
+      .timeline-box {
+        padding: 3px 6px !important;
+      }
+
+      .timeline-head {
+        font-size: 9.5px !important;
+      }
+
+      .summary-points {
+        font-size: 9px !important;
+        line-height: 1.2 !important;
+      }
+
+      .academic-table {
+        font-size: 9.5px !important;
+      }
+
+      .academic-table th, .academic-table td {
+        padding: 2px 4px !important;
+      }
+
+      .cert-section {
+        font-size: 9px !important;
+        padding: 3px 6px !important;
       }
 
       .turn-guide {
-        font-size: 9.5px !important;
+        font-size: 9px !important;
         bottom: 4px !important;
-        padding: 3px 8px !important;
+        padding: 2px 8px !important;
       }
     }
   </style>
@@ -659,7 +721,7 @@
       <!-- ================= PAGE 1: FRONT COVER ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
-          <img src="front-cover.jpg" alt="Front Cover" onerror="this.src='front-cover.png'; this.onerror=function(){this.src='college.jpg';};">
+          <img src="front-cover.png" alt="Front Cover" onerror="this.src='college.jpg';">
         </div>
       </div>
 
@@ -735,7 +797,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY TEAM) ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -744,7 +806,7 @@
           </div>
 
           <div class="leadership-stack">
-            <!-- 1. HOD: Arjun Ram Sankar -->
+            <!-- Head of the Department: Arjun Ram Sankar -->
             <div class="leader-row-card primary-accent">
               <div class="leader-row-portrait">
                 <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
@@ -753,12 +815,12 @@
                 <h3>Arjun Ram Sankar</h3>
                 <span class="designation">Head of the Department, Department of Computer Applications</span>
                 <p class="quote">
-                  "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures, full-stack stacks, and modern software development pipelines."
+                  "Our BCA curriculum seamlessly balances core algorithmic foundations with real-world enterprise engineering. We prepare our cohorts in scalable web architectures and cloud pipelines."
                 </p>
               </div>
             </div>
 
-            <!-- 2. Faculty: Jikki Jose -->
+            <!-- Faculty: Jikki Jose -->
             <div class="leader-row-card">
               <div class="leader-row-portrait">
                 <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
@@ -768,20 +830,6 @@
                 <span class="designation">Assistant Professor, Department of Computer Applications</span>
                 <p class="quote">
                   "Dedicated to hands-on practical lab guidance, project reviews, and competitive skill training in modern programming frameworks."
-                </p>
-              </div>
-            </div>
-
-            <!-- 3. Faculty: Subin M. Varghese -->
-            <div class="leader-row-card">
-              <div class="leader-row-portrait">
-                <img src="Subin.jpeg" alt="Subin M. Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
-              </div>
-              <div class="leader-row-body">
-                <h3>Subin M. Varghese</h3>
-                <span class="designation">Assistant Professor, Department of Computer Applications</span>
-                <p class="quote">
-                  "Mentoring students in algorithmic thinking, data engineering concepts, and continuous industry-oriented development practices."
                 </p>
               </div>
             </div>
@@ -872,7 +920,7 @@
       <!-- ================= BACK COVER (ARTWORK IMAGE READY) ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
-          <img src="back-cover.png" alt="Back Cover" onerror="this.src='back-cover.jpg'; this.onerror=function(){this.src='college copy.png';};">
+          <img src="back-cover.png" alt="Back Cover" onerror="this.src='college copy.png';">
         </div>
       </div>
 
@@ -882,7 +930,6 @@
   <script>
     let flipBook;
 
-    // students/ ഫോൾഡറിലുള്ള നിങ്ങളുടെ യഥാർത്ഥ HTML ഫയലുകളുടെ പേരുകൾ:
     const studentFiles = [
       'students/24BCA18_profile.html',
       'students/24UCOAP0922_PROFILE.html',
@@ -916,14 +963,14 @@
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
-            // Smart Auto Fallback Engine for Student Photos
+            // Auto Fallback Engine for Student Photos
             const imgElem = profileCard.querySelector('.photo-slot img');
             if (imgElem) {
               const originalSrc = imgElem.getAttribute('src') || '';
               const filename = originalSrc.split('/').pop().split('\\').pop();
               const baseName = filename.substring(0, filename.lastIndexOf('.')) || filename;
               
-              const extensions = ['.jpeg', '.jpg', '.png', '.JPG', '.PNG'];
+              const extensions = ['.jpg', '.jpeg', '.png', '.JPG', '.PNG'];
               let extIndex = 0;
 
               imgElem.src = 'photos/' + filename;
@@ -934,7 +981,7 @@
                 } else {
                   this.style.display = 'none';
                   if (this.parentElement) {
-                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
+                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:30px; color:#94a3b8;"></i>';
                   }
                 }
               };
@@ -963,7 +1010,7 @@
         blankPage.innerHTML = `
           <div>
             <div class="page-lead-title"><span>Student Notes</span><span class="lead-tag">Recruiter Remarks</span></div>
-            <div style="border: 1.5px dashed var(--gold-filigree); height: 620px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
+            <div style="border: 1.5px dashed var(--gold-filigree); height: 600px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
               <i class="fa-solid fa-pen-to-square"></i> Recruiter Interview Assessment & Placement Notes
             </div>
           </div>
@@ -980,8 +1027,8 @@
       const bookElem = document.getElementById('flipbook');
       const isMobile = window.innerWidth <= 768;
 
-      const pageWidth = isMobile ? Math.min(window.innerWidth * 0.96, 460) : 580;
-      const pageHeight = isMobile ? Math.min(window.innerHeight * 0.94, 850) : 850;
+      const pageWidth = isMobile ? window.innerWidth : 580;
+      const pageHeight = isMobile ? window.innerHeight : 850;
 
       flipBook = new St.PageFlip(bookElem, {
         width: pageWidth,
