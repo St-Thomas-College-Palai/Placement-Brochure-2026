@@ -125,7 +125,7 @@
        2. EDITORIAL PAGES
        ========================================================= */
     .editorial-page {
-      padding: 26px 22px;
+      padding: 24px 20px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -313,20 +313,22 @@
       line-height: 1.25;
     }
 
-    /* Collaborations Styles */
+    /* =========================================================
+       3. EXPANDED INDUSTRY COLLABORATIONS (WITH AUTHENTIC LOGOS)
+       ========================================================= */
     .collab-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 8px 0;
+      gap: 8px;
+      margin: 6px 0;
     }
 
     .collab-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      border-radius: 6px;
-      padding: 10px 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      border-radius: 5px;
+      padding: 8px 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
       border-top: 3px solid var(--gold-foil);
       display: flex;
       flex-direction: column;
@@ -336,54 +338,48 @@
     .collab-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 5px;
+      gap: 8px;
+      margin-bottom: 4px;
     }
 
-    .collab-icon-box {
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
+    .collab-logo-img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
       flex-shrink: 0;
     }
 
     .collab-title {
-      font-size: 12.5px;
+      font-size: 11.5px;
       font-weight: 800;
       color: var(--primary);
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .collab-focus {
-      font-size: 10.5px;
+      font-size: 9.5px;
       color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 2px;
     }
 
     .collab-desc {
-      font-size: 11px;
+      font-size: 10px;
       color: #475569;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .collab-highlight-box {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      border-left: 5px solid var(--primary);
-      border-radius: 6px;
-      padding: 10px 12px;
-      margin-top: 6px;
+      border-left: 4.5px solid var(--primary);
+      border-radius: 5px;
+      padding: 8px 10px;
+      margin-top: 4px;
     }
 
     /* =========================================================
-       3. ZERO-SCROLL AUTOFIT STUDENT DOSSIER
+       4. STUDENT DOSSIER
        ========================================================= */
     .profile-card-page {
       padding: 14px 12px;
@@ -674,7 +670,7 @@
     }
 
     /* =========================================================
-       4. MOBILE OPTIMIZATION
+       5. MOBILE OPTIMIZATION
        ========================================================= */
     @media (max-width: 768px) {
       body {
@@ -699,12 +695,12 @@
 
       .collab-grid {
         grid-template-columns: 1fr !important;
-        gap: 6px !important;
+        gap: 5px !important;
       }
 
       .faculty-hex-grid {
         grid-template-columns: 1fr !important;
-        gap: 6px !important;
+        gap: 5px !important;
       }
 
       .leader-row-card {
@@ -906,7 +902,7 @@
             <span style="color: var(--gold-foil); font-size: 9.5px;">Dept. of Computer Applications</span>
           </div>
 
-          <!-- 6 Faculty Members Grid (All with Uniform Mentor Titles) -->
+          <!-- 6 Faculty Members Grid -->
           <div class="faculty-hex-grid">
             <!-- 1. Jintu Joseph -->
             <div class="faculty-mini-card">
@@ -987,7 +983,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 4: ACADEMIC & INDUSTRY COLLABORATIONS ================= -->
+      <!-- ================= PAGE 4: ACADEMIC & INDUSTRY COLLABORATIONS (WITH AUTHENTIC LOGOS) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -995,75 +991,105 @@
             <span class="lead-tag">Industry Alliances</span>
           </div>
 
-          <p style="font-size:12px; line-height:1.5; color:#334155; margin-bottom:8px;">
+          <p style="font-size:11.5px; line-height:1.45; color:#334155; margin-bottom:6px;">
             The Department bridges academia and corporate expectations through official institutional alliances with world-leading technology pioneers:
           </p>
 
+          <!-- 6-Alliance Balanced Grid (2x3 Grid with Authentic SVGs) -->
           <div class="collab-grid">
-            <!-- AWS Academy -->
+            <!-- 1. AWS Academy & Educate -->
             <div class="collab-card">
               <div>
                 <div class="collab-header">
-                  <div class="collab-icon-box" style="color: #ff9900;"><i class="fa-brands fa-aws"></i></div>
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg" alt="AWS" class="collab-logo-img">
                   <div class="collab-title">AWS Academy & Educate</div>
                 </div>
-                <div class="collab-focus">Cloud Computing & DevOps</div>
+                <div class="collab-focus">Cloud Architecture & Serverless</div>
                 <div class="collab-desc">
-                  Official AWS curriculum covering Cloud Architectures, Serverless Computing, and scalable cloud solutions.
+                  Curriculum covering AWS Cloud Architecture, Serverless computing, and Cloud Security.
                 </div>
               </div>
             </div>
 
-            <!-- Red Hat Academy -->
+            <!-- 2. Google Cloud Career Launchpad -->
             <div class="collab-card">
               <div>
                 <div class="collab-header">
-                  <div class="collab-icon-box" style="color: #ee0000;"><i class="fa-brands fa-redhat"></i></div>
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlecloud.svg" alt="Google Cloud" class="collab-logo-img">
+                  <div class="collab-title">Google Cloud Launchpad</div>
+                </div>
+                <div class="collab-focus">GCP Infrastructure & AI/ML</div>
+                <div class="collab-desc">
+                  Career Readiness track focusing on GCP Cloud Engineering, BigQuery data pipelines, and scalable APIs.
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Red Hat Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/redhat.svg" alt="Red Hat" class="collab-logo-img">
                   <div class="collab-title">Red Hat Academy</div>
                 </div>
-                <div class="collab-focus">Linux & Container Systems</div>
+                <div class="collab-focus">Enterprise Linux & OpenShift</div>
                 <div class="collab-desc">
-                  Hands-on instruction in Enterprise Linux administration, Docker containers, and OpenShift Kubernetes workflows.
+                  Enterprise Linux (RHEL) system administration, containerization, and OpenShift Kubernetes workflows.
                 </div>
               </div>
             </div>
 
-            <!-- Oracle Academy -->
+            <!-- 4. Kubernetes (CNCF) Cloud Native Track -->
             <div class="collab-card">
               <div>
                 <div class="collab-header">
-                  <div class="collab-icon-box" style="color: #f80000;"><i class="fa-solid fa-database"></i></div>
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg" alt="Kubernetes" class="collab-logo-img">
+                  <div class="collab-title">Kubernetes Cloud Native</div>
+                </div>
+                <div class="collab-focus">Container Orchestration & DevOps</div>
+                <div class="collab-desc">
+                  Microservices deployment, Docker container clustering, CI/CD pipelines, and cloud native scaling.
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Oracle Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg" alt="Oracle" class="collab-logo-img">
                   <div class="collab-title">Oracle Academy</div>
                 </div>
                 <div class="collab-focus">Databases & Java EE</div>
                 <div class="collab-desc">
-                  Comprehensive training in Relational Database Design, SQL, PL/SQL optimization, and enterprise Java standards.
+                  Relational Database Design, SQL/PL-SQL query tuning, and enterprise Java development standards.
                 </div>
               </div>
             </div>
 
-            <!-- EC-Council Academia -->
+            <!-- 6. EC-Council Academia -->
             <div class="collab-card">
               <div>
                 <div class="collab-header">
-                  <div class="collab-icon-box" style="color: #0284c7;"><i class="fa-solid fa-shield-halved"></i></div>
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/securityscorecard.svg" alt="Cybersecurity" class="collab-logo-img">
                   <div class="collab-title">EC-Council Academia</div>
                 </div>
-                <div class="collab-focus">Cybersecurity & Forensics</div>
+                <div class="collab-focus">Cybersecurity & Ethical Hacking</div>
                 <div class="collab-desc">
-                  Curriculum aligned with Ethical Hacking, Network Security Protocols, Threat Analysis, and digital forensics.
+                  Threat intelligence, defensive security operations, penetration testing, and digital forensics.
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- GitHub Campus Alliance Banner -->
           <div class="collab-highlight-box">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
-              <i class="fa-brands fa-github" style="font-size: 16px; color: var(--primary);"></i>
-              <span style="font-size: 12px; font-weight: 800; color: var(--primary);">GitHub Campus Global Program</span>
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;">
+              <span style="font-size: 11.5px; font-weight: 800; color: var(--primary);">GitHub Campus Global Partner Program</span>
             </div>
-            <p style="font-size: 11px; color: #475569; line-height: 1.4;">
-              Empowering students with industry-standard Git version control, GitHub Actions (CI/CD), and collaborative open-source workflows.
+            <p style="font-size: 10.5px; color: #475569; line-height: 1.35;">
+              Equipping every student with industry-standard Git version control, GitHub Actions automated CI/CD workflows, and collaborative enterprise repositories.
             </p>
           </div>
         </div>
