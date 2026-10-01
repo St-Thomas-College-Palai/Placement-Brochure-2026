@@ -73,17 +73,32 @@
       filter: drop-shadow(0 25px 50px rgba(7, 19, 38, 0.22));
     }
 
-    /* Zero Scrollbar Design - Strictly fit within 580px x 850px */
+    /* Fixed Clean Page Sheet */
     .page-sheet {
       width: 580px;
       height: 850px;
       background-color: var(--paper-sheet);
-      overflow: hidden !important; /* Disables all scrollbars completely */
+      overflow: hidden !important; /* Disables all scrollbars */
       position: relative;
       box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
     }
 
-    /* Turn Guide Indicators */
+    /* Full Artwork Covers (Front / Back) */
+    .artwork-cover-page {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #0b192c;
+    }
+
+    .artwork-cover-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
     .turn-guide {
       position: absolute;
       bottom: 12px;
@@ -106,25 +121,7 @@
     .turn-guide.left { left: 18px; }
 
     /* =========================================================
-       1. ARTWORK FULL COVERS (FRONT & BACK)
-       ========================================================= */
-    .artwork-cover-page {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      background: #0b192c;
-    }
-
-    .artwork-cover-page img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* =========================================================
-       2. EDITORIAL PAGES (LEADERSHIP & DEPARTMENT)
+       EDITORIAL PAGES (LEADERSHIP & DEPARTMENT)
        ========================================================= */
     .editorial-page {
       padding: 30px 24px;
@@ -152,7 +149,7 @@
       color: var(--primary);
       border-bottom: 2px solid var(--gold-filigree);
       padding-bottom: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: 1px;
       display: flex;
       justify-content: space-between;
@@ -171,19 +168,20 @@
     .leadership-stack {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
       flex-grow: 1;
-      justify-content: space-between;
-      margin-bottom: 6px;
+      justify-content: space-around;
+      margin-bottom: 4px;
     }
 
+    /* Common Horizontal Row Card Theme */
     .leader-row-card {
       background: #ffffff;
       border: 1px solid #e8e1d5;
-      padding: 10px 14px;
+      padding: 8px 14px;
       border-radius: 6px;
       border-left: 5px solid var(--gold-foil);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.03);
       display: flex;
       gap: 14px;
       align-items: center;
@@ -194,8 +192,8 @@
     }
 
     .leader-row-portrait {
-      width: 78px;
-      height: 98px;
+      width: 74px;
+      height: 92px;
       border-radius: 4px;
       border: 1.5px solid var(--gold-filigree);
       background-color: #f4efe6;
@@ -204,9 +202,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
+      font-size: 32px;
       color: #94a3b8;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .leader-row-portrait img {
@@ -223,7 +221,7 @@
 
     .leader-row-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.2;
@@ -234,15 +232,15 @@
       font-size: 10.5px;
       color: var(--gold-foil);
       font-weight: 700;
-      margin: 1px 0 4px 0;
+      margin: 1px 0 3px 0;
     }
 
     .leader-row-body p.quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
+      font-size: 12.5px;
       font-style: italic;
       color: #334155;
-      line-height: 1.4;
+      line-height: 1.38;
       text-align: justify;
     }
 
@@ -281,7 +279,7 @@
     }
 
     /* =========================================================
-       3. ZERO-SCROLL AUTOFIT STUDENT DOSSIER
+       ZERO-SCROLL AUTOFIT STUDENT DOSSIER
        ========================================================= */
     .profile-card-page {
       padding: 14px 12px;
@@ -303,7 +301,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden !important; /* Eliminates scrollbar permanently */
+      overflow: hidden !important;
     }
 
     .institution-header {
@@ -571,9 +569,7 @@
       flex-shrink: 0;
     }
 
-    /* =========================================================
-       4. RESPONSIVE MOBILE ADJUSTMENTS (VIVO X200)
-       ========================================================= */
+    /* Responsive Mobile Tweaks */
     @media (max-width: 768px) {
       body {
         padding: 2px;
@@ -660,11 +656,10 @@
   <div class="book-stage">
     <div id="flipbook">
 
-      <!-- ================= PAGE 1: FRONT COVER (ARTWORK IMAGE READY) ================= -->
+      <!-- ================= PAGE 1: FRONT COVER ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
-          <!-- ഫോട്ടോഷോപ്പിൽ ഡിസൈൻ ചെയ്ത front-cover.png ഉണ്ടെങ്കിൽ അത് നേരിട്ട് ലോഡ് ചെയ്യും -->
-          <img src="front-cover.jpg" alt="Front Cover" onerror="this.src='college.jpg';">
+          <img src="front-cover.jpg" alt="Front Cover" onerror="this.src='front-cover.png'; this.onerror=function(){this.src='college.jpg';};">
         </div>
       </div>
 
@@ -740,7 +735,7 @@
         </div>
       </div>
 
-      <!-- ================= PAGE 3: DEPARTMENT DESK ================= -->
+      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY TEAM) ================= -->
       <div class="page-sheet editorial-page">
         <div>
           <div class="page-lead-title">
@@ -749,7 +744,7 @@
           </div>
 
           <div class="leadership-stack">
-            <!-- Head of the Department: Arjun Ram Sankar -->
+            <!-- 1. HOD: Arjun Ram Sankar -->
             <div class="leader-row-card primary-accent">
               <div class="leader-row-portrait">
                 <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
@@ -763,7 +758,7 @@
               </div>
             </div>
 
-            <!-- Faculty: Jikki Jose -->
+            <!-- 2. Faculty: Jikki Jose -->
             <div class="leader-row-card">
               <div class="leader-row-portrait">
                 <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
@@ -776,23 +771,23 @@
                 </p>
               </div>
             </div>
-          </div>
-        </div>
 
-<!-- Faculty: Subin M Varghese -->
+            <!-- 3. Faculty: Subin M. Varghese -->
             <div class="leader-row-card">
               <div class="leader-row-portrait">
-                <img src="Subin.jpeg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
+                <img src="Subin.jpeg" alt="Subin M. Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user\'></i>';">
               </div>
               <div class="leader-row-body">
-                <h3>Dr. Subin M. Varghese</h3>
+                <h3>Subin M. Varghese</h3>
                 <span class="designation">Assistant Professor, Department of Computer Applications</span>
                 <p class="quote">
-                  "Dedicated to hands-on practical lab guidance, project reviews, and competitive skill training in modern programming frameworks."
+                  "Mentoring students in algorithmic thinking, data engineering concepts, and continuous industry-oriented development practices."
                 </p>
               </div>
             </div>
-          </div>      
+          </div>
+        </div>
+
         <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:6px; font-weight:600;">
           Continuous Faculty Mentorship & Lab Supervision
         </div>
@@ -877,8 +872,7 @@
       <!-- ================= BACK COVER (ARTWORK IMAGE READY) ================= -->
       <div class="page-sheet" data-density="hard">
         <div class="artwork-cover-page">
-          <!-- ഫോട്ടോഷോപ്പിൽ ഡിസൈൻ ചെയ്ത back-cover.png ഉണ്ടെങ്കിൽ അത് നേരിട്ട് ലോഡ് ചെയ്യും -->
-          <img src="back-cover.png" alt="Back Cover" onerror="this.src='college copy.png';">
+          <img src="back-cover.png" alt="Back Cover" onerror="this.src='back-cover.jpg'; this.onerror=function(){this.src='college copy.png';};">
         </div>
       </div>
 
@@ -888,7 +882,7 @@
   <script>
     let flipBook;
 
-    // students/ ഫോൾഡറിലുള്ള നിങ്ങളുടെ ഫയലുകളുടെ പേരുകൾ:
+    // students/ ഫോൾഡറിലുള്ള നിങ്ങളുടെ യഥാർത്ഥ HTML ഫയലുകളുടെ പേരുകൾ:
     const studentFiles = [
       'students/24BCA18_profile.html',
       'students/24UCOAP0922_PROFILE.html',
@@ -922,14 +916,14 @@
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
-            // Auto Fallback Engine for Student Photos
+            // Smart Auto Fallback Engine for Student Photos
             const imgElem = profileCard.querySelector('.photo-slot img');
             if (imgElem) {
               const originalSrc = imgElem.getAttribute('src') || '';
               const filename = originalSrc.split('/').pop().split('\\').pop();
               const baseName = filename.substring(0, filename.lastIndexOf('.')) || filename;
               
-              const extensions = ['.jpg', '.jpeg', '.png', '.JPG', '.PNG'];
+              const extensions = ['.jpeg', '.jpg', '.png', '.JPG', '.PNG'];
               let extIndex = 0;
 
               imgElem.src = 'photos/' + filename;
@@ -961,7 +955,7 @@
         }
       }
 
-      // Even page count check: ബാക്ക് കവർ കൃത്യമായി ഒറ്റയ്ക്ക് അടയാൻ പേജുകൾ ഇരട്ട സംഖ്യയാണെന്ന് ഉറപ്പുവരുത്തുന്നു
+      // Even page count check for seamless Back Cover closing
       const allPages = document.querySelectorAll('.page-sheet');
       if (allPages.length % 2 !== 0) {
         const blankPage = document.createElement('div');
