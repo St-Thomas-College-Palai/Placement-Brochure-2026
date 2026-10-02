@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BCA Placement Dossier | St. Thomas College Palai</title>
+
+  <!-- Luxury Typography Suite -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- StPageFlip Soft Paper Physics Engine -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+
+  <style>
+    :root {
+      --primary: #0b192c;
+      --secondary: #1e3e62;
+      --accent: #0066cc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --card-bg: #ffffff;
+      --body-bg: #f8fafc;
+      --paper-sheet: #fbf9f4;
+      --gold-foil: #946c24;
+      --gold-filigree: #d6be8c;
+      --gold-tint: #fcf8ee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 25%, #f6f8fb 0%, #cbd6e2 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      color: var(--text-main);
+      padding: 6px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(148, 108, 36, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .book-stage {
+      position: relative;
+      z-index: 10;
+      max-width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      filter: drop-shadow(0 25px 50px rgba(7, 19, 38, 0.22));
+    }
+
+    .page-sheet {
+      width: 580px;
+      height: 850px;
+      background-color: var(--paper-sheet);
+      overflow: hidden !important;
+      position: relative;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .turn-guide {
+      position: absolute;
+      bottom: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-foil);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 20;
+      opacity: 0.95;
+      background: rgba(251, 249, 244, 0.95);
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--gold-filigree);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .turn-guide.right { right: 16px; }
+    .turn-guide.left { left: 16px; }
+
+    /* =========================================================
+       1. ARTWORK FULL COVERS
+       ========================================================= */
+    .artwork-cover-page {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #0b192c;
+    }
+
+    .artwork-cover-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* =========================================================
+       2. EDITORIAL PAGES
+       ========================================================= */
+    .editorial-page {
+      padding: 24px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--paper-sheet);
+      border-right: 1px solid #e8e1d5;
+      overflow: hidden;
+    }
+
+    .editorial-page::after {
+      content: '';
+      position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1.5px solid rgba(214, 190, 140, 0.45);
+      pointer-events: none;
+    }
+
+    .page-lead-title {
+      font-family: 'Cinzel', serif;
+      font-size: 17.5px;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 2px solid var(--gold-filigree);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .lead-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--gold-foil);
+      text-transform: uppercase;
+    }
+
+    .leadership-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex-grow: 1;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .leader-row-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      padding: 9px 12px;
+      border-radius: 6px;
+      border-left: 4.5px solid var(--gold-foil);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .leader-row-card.primary-accent {
+      border-left-color: var(--primary);
+    }
+
+    .leader-row-portrait {
+      width: 74px;
+      height: 92px;
+      border-radius: 4px;
+      border: 1.5px solid var(--gold-filigree);
+      background-color: #f4efe6;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #94a3b8;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .leader-row-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .leader-row-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .leader-row-body h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .leader-row-body span.designation {
+      display: block;
+      font-size: 10px;
+      color: var(--gold-foil);
+      font-weight: 700;
+      margin: 1px 0 3px 0;
+    }
+
+    .leader-row-body p.quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12.5px;
+      font-style: italic;
+      color: #334155;
+      line-height: 1.35;
+      text-align: justify;
+    }
+
+    /* Faculty Grid */
+    .faculty-hex-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .faculty-mini-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-radius: 5px;
+      padding: 7px 9px;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border-left: 3px solid var(--gold-foil);
+    }
+
+    .faculty-mini-avatar {
+      width: 48px;
+      height: 58px;
+      border-radius: 3px;
+      border: 1px solid var(--gold-filigree);
+      background: #f4efe6;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #94a3b8;
+    }
+
+    .faculty-mini-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .faculty-mini-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .faculty-mini-info h4 {
+      font-size: 11.5px;
+      color: var(--primary);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .faculty-mini-info span.role {
+      display: block;
+      font-size: 9.5px;
+      color: var(--gold-foil);
+      font-weight: 700;
+      margin: 1px 0;
+    }
+
+    .faculty-mini-info span.spec {
+      display: block;
+      font-size: 9px;
+      color: #64748b;
+      line-height: 1.25;
+    }
+
+    /* Collaborations Styles */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+
+    .collab-card {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-radius: 5px;
+      padding: 8px 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+      border-top: 3px solid var(--gold-foil);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .collab-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .collab-logo-img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .collab-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.15;
+    }
+
+    .collab-focus {
+      font-size: 9.5px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .collab-desc {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    .collab-highlight-box {
+      background: #ffffff;
+      border: 1px solid #e8e1d5;
+      border-left: 4.5px solid var(--primary);
+      border-radius: 5px;
+      padding: 8px 10px;
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       3. ZERO-SCROLL AUTOFIT STUDENT DOSSIER
+       ========================================================= */
+    .profile-card-page {
+      padding: 14px 12px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .profile-card {
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden !important;
+    }
+
+    .institution-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 8px 14px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .inst-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #bfdbfe;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .batch-tag {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #fef08a;
+    }
+
+    .profile-top {
+      padding: 10px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 1px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    .photo-slot {
+      width: 82px;
+      height: 98px;
+      border-radius: 5px;
+      border: 2px solid var(--secondary);
+      background-color: #e2e8f0;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #94a3b8;
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .student-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .student-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 2px;
+    }
+
+    .target-role {
+      font-size: 11.5px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 8px;
+      font-size: 11px;
+      color: var(--text-main);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .profile-body {
+      padding: 8px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-grow: 1;
+      justify-content: space-around;
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 2px;
+    }
+
+    .objective-text {
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--text-main);
+      background: #fafaf9;
+      padding: 5px 8px;
+      border-radius: 4px;
+      border-left: 3px solid var(--accent);
+      text-align: justify;
+    }
+
+    .skills-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .skill-category {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      flex-wrap: wrap;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: var(--text-main);
+      min-width: 78px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .tag-item {
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .timeline-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 4px 8px;
+    }
+
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .timeline-duration {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .timeline-company {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 1px 0 2px 0;
+    }
+
+    .summary-points {
+      padding-left: 14px;
+      font-size: 10.5px;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      margin-top: 1px;
+    }
+
+    .academic-table th, 
+    .academic-table td {
+      border: 1px solid #e2e8f0;
+      padding: 3px 5px;
+      text-align: left;
+    }
+
+    .academic-table th {
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 9.5px;
+      text-transform: uppercase;
+    }
+
+    .score-highlight {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .cert-section {
+      font-size: 10px;
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: #581c87;
+      line-height: 1.3;
+    }
+
+    .profile-footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 6px 14px;
+      background: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       4. MOBILE OPTIMIZATION
+       ========================================================= */
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+      }
+
+      .book-stage {
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .page-sheet {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0;
+        padding: 8px 6px !important;
+      }
+
+      .editorial-page {
+        padding: 10px 8px !important;
+      }
+
+      .collab-grid {
+        grid-template-columns: 1fr !important;
+        gap: 5px !important;
+      }
+
+      .faculty-hex-grid {
+        grid-template-columns: 1fr !important;
+        gap: 5px !important;
+      }
+
+      .leader-row-card {
+        padding: 6px 8px !important;
+        gap: 8px !important;
+      }
+
+      .leader-row-portrait {
+        width: 54px !important;
+        height: 68px !important;
+      }
+
+      .leader-row-body h3 {
+        font-size: 11.5px !important;
+      }
+
+      .leader-row-body span.designation {
+        font-size: 9px !important;
+      }
+
+      .leader-row-body p.quote {
+        font-size: 10.5px !important;
+        line-height: 1.25 !important;
+      }
+
+      .profile-card-page {
+        padding: 4px !important;
+      }
+
+      .profile-footer {
+        display: none !important;
+      }
+
+      .institution-header {
+        padding: 5px 8px !important;
+      }
+
+      .profile-top {
+        padding: 6px 8px !important;
+        gap: 8px !important;
+      }
+
+      .photo-slot {
+        width: 60px !important;
+        height: 72px !important;
+      }
+
+      .student-name {
+        font-size: 13.5px !important;
+      }
+
+      .target-role {
+        font-size: 10.5px !important;
+        margin-bottom: 2px !important;
+      }
+
+      .contact-links {
+        font-size: 9.5px !important;
+        gap: 2px 6px !important;
+      }
+
+      .profile-body {
+        padding: 4px 6px !important;
+        gap: 4px !important;
+      }
+
+      .section-title {
+        font-size: 10px !important;
+        margin-bottom: 1px !important;
+      }
+
+      .objective-text {
+        font-size: 9.5px !important;
+        line-height: 1.25 !important;
+        padding: 3px 6px !important;
+      }
+
+      .academic-table {
+        font-size: 9.5px !important;
+      }
+
+      .turn-guide {
+        font-size: 9px !important;
+        bottom: 4px !important;
+        padding: 2px 8px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-stage">
+    <div id="flipbook">
+
+      <!-- ================= PAGE 1: FRONT COVER ================= -->
+      <div class="page-sheet" data-density="hard">
+        <div class="artwork-cover-page">
+          <img src="front-cover.png" alt="Front Cover" onerror="this.src='college.jpg';">
+        </div>
+      </div>
+
+      <!-- ================= PAGE 2: LEADERSHIP & ADMINISTRATION ================= -->
+      <div class="page-sheet editorial-page" data-density="hard">
+        <div>
+          <div class="page-lead-title">
+            <span>Leadership & Administration</span>
+            <span class="lead-tag">Governing Council</span>
+          </div>
+
+          <div class="leadership-stack">
+            <!-- 1. Principal -->
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
+                <img src="Principal.png" alt="Prof. (Dr.) Toji Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-row-body">
+                <h3>Prof. (Dr.) Toji Thomas</h3>
+                <span class="designation">Principal, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Our Computer Application graduates are trained to translate foundational logic into resilient, industry-scale engineering."
+                </p>
+              </div>
+            </div>
+
+            <!-- 2. Vice Principal -->
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
+                <img src="VicePrincipal.jpeg" alt="Rev. Dr. Salvin Kappiliparampil Thomas" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-row-body">
+                <h3>Rev. Dr. Salvin Kappiliparampil Thomas</h3>
+                <span class="designation">Vice Principal, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Academic rigor blended with practical industry curriculum makes our cohorts agile problem-solvers in modern corporate tech."
+                </p>
+              </div>
+            </div>
+
+            <!-- 3. Bursar -->
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
+                <img src="Mathew.png" alt="Rev. Fr. Mathew Allapattumedayil" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-row-body">
+                <h3>Rev. Fr. Mathew Allapattumedayil</h3>
+                <span class="designation">Bursar, St. Thomas College Palai</span>
+                <p class="quote">
+                  "Providing uncompromised computing infrastructure and high-throughput lab facilities to nurture technical mastery."
+                </p>
+              </div>
+            </div>
+
+            <!-- 4. Course Coordinator -->
+            <div class="leader-row-card">
+              <div class="leader-row-portrait">
+                <img src="Roshan.jpeg" alt="Rev. Fr. Roshan Chacko" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
+              </div>
+              <div class="leader-row-body">
+                <h3>Rev. Fr. Roshan Chacko</h3>
+                <span class="designation">Coordinator</span>
+                <p class="quote">
+                  "Fostering continuous mentorship and professional discipline to ensure our candidates excel in competitive hiring environments."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-family:'Playfair Display', serif; font-style:italic; font-size:12px; color:var(--gold-foil); text-align:center;">
+          Excellence in Technology & Character
+        </div>
+      </div>
+
+      <!-- ================= PAGE 3: DEPARTMENT DESK (HOD & FACULTY MENTORS) ================= -->
+      <div class="page-sheet editorial-page">
+        <div>
+          <div class="page-lead-title">
+            <span>Department Desk</span>
+            <span class="lead-tag">Academic Mentors</span>
+          </div>
+
+          <!-- Featured Head of the Department: Arjun Ram Sankar -->
+          <div class="leader-row-card primary-accent" style="margin-bottom: 8px;">
+            <div class="leader-row-portrait" style="width: 72px; height: 88px;">
+              <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+            </div>
+            <div class="leader-row-body">
+              <h3 style="font-size: 13.5px;">Arjun Ram Sankar</h3>
+              <span class="designation">Assistant Professor & Head of the Department</span>
+              <p class="quote" style="font-size: 12px; line-height: 1.35;">
+                "Our BCA graduates combine core computing fundamentals with intensive, industry-aligned training in Data Science. Equipped with sharp analytical skills and practical problem-solving capabilities, they are primed to deliver immediate technical impact.
+Reflecting modern industry demands, our evolving academic ecosystem integrates advanced coursework in data engineering alongside upcoming degree specializations in AI & Data Science and AI & Machine Learning. We warmly invite you to partner with us and discover top-tier talent."
+              </p>
+            </div>
+          </div>
+
+          <!-- Common Department & Faculty Header -->
+          <div style="font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1.5px solid var(--gold-filigree); padding-bottom: 2px; margin-bottom: 5px; display: flex; justify-content: space-between;">
+            <span>Faculty Mentors</span>
+            <span style="color: var(--gold-foil); font-size: 9.5px;">Dept. of Computer Applications</span>
+          </div>
+
+          <!-- 6 Faculty Members Grid -->
+          <div class="faculty-hex-grid">
+            <!-- 1. Jintu Joseph -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Jintu.jpg" alt="Jintu Joseph" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Jintu Joseph</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
+              </div>
+            </div>
+
+            <!-- 2. Jikki Jose -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Jikki Jose</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Project & Tech Mentor</span>
+              </div>
+            </div>
+
+            <!-- 3. Linta Baby (English Faculty & Mentor) -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Linta.jpeg" alt="Linta Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Linta Baby</h4>
+                <span class="role">Assistant Professor (English) & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Business Communication Mentor</span>
+              </div>
+            </div>
+
+            <!-- 4. Subin M Varghese -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Subin.jpeg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Subin M. Varghese</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
+              </div>
+            </div>
+
+            <!-- 5. Sandra Krishna P S -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Sandra.jpeg" alt="Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Sandra Krishna P. S.</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+              </div>
+            </div>
+
+            <!-- 6. Chaithra Sudheer -->
+            <div class="faculty-mini-card">
+              <div class="faculty-mini-avatar">
+                <img src="Chaithra.jpeg" alt="Chaithra Sudheer" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+              </div>
+              <div class="faculty-mini-info">
+                <h4>Chaithra Sudheer</h4>
+                <span class="role">Assistant Professor & Mentor</span>                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size:10.5px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:6px; font-weight:600;">
+          Dedicated Faculty Mentorship & Continuous Career Guidance
+        </div>
+      </div>
+
+      <!-- ================= PAGE 4: ACADEMIC & INDUSTRY COLLABORATIONS ================= -->
+      <div class="page-sheet editorial-page">
+        <div>
+          <div class="page-lead-title">
+            <span>Academic Collaborations</span>
+            <span class="lead-tag">Industry Alliances</span>
+          </div>
+
+          <p style="font-size:11.5px; line-height:1.45; color:#334155; margin-bottom:6px;">
+            The Department bridges academia and corporate expectations through official institutional alliances with world-leading technology pioneers:
+          </p>
+
+          <!-- 6-Alliance Balanced Grid -->
+          <div class="collab-grid">
+            <!-- 1. AWS Academy & Educate -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonwebservices.svg" alt="AWS" class="collab-logo-img">
+                  <div class="collab-title">AWS Academy & Educate</div>
+                </div>
+                <div class="collab-focus">Cloud Architecture & Serverless</div>
+                <div class="collab-desc">
+                  Curriculum covering AWS Cloud Architecture, Serverless computing, and Cloud Security.
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Google Cloud Career Launchpad -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlecloud.svg" alt="Google Cloud" class="collab-logo-img">
+                  <div class="collab-title">Google Cloud Launchpad</div>
+                </div>
+                <div class="collab-focus">GCP Infrastructure & AI/ML</div>
+                <div class="collab-desc">
+                  Career Readiness track focusing on GCP Cloud Engineering, BigQuery data pipelines, and scalable APIs.
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Red Hat Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/redhat.svg" alt="Red Hat" class="collab-logo-img">
+                  <div class="collab-title">Red Hat Academy</div>
+                </div>
+                <div class="collab-focus">Enterprise Linux & OpenShift</div>
+                <div class="collab-desc">
+                  Enterprise Linux (RHEL) system administration, containerization, and OpenShift Kubernetes workflows.
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Kubernetes (CNCF) Cloud Native Track -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg" alt="Kubernetes" class="collab-logo-img">
+                  <div class="collab-title">Kubernetes Cloud Native</div>
+                </div>
+                <div class="collab-focus">Container Orchestration & DevOps</div>
+                <div class="collab-desc">
+                  Microservices deployment, Docker container clustering, CI/CD pipelines, and cloud native scaling.
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Oracle Academy -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg" alt="Oracle" class="collab-logo-img">
+                  <div class="collab-title">Oracle Academy</div>
+                </div>
+                <div class="collab-focus">Databases & Java EE</div>
+                <div class="collab-desc">
+                  Relational Database Design, SQL/PL-SQL query tuning, and enterprise Java development standards.
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. EC-Council Academia -->
+            <div class="collab-card">
+              <div>
+                <div class="collab-header">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/securityscorecard.svg" alt="Cybersecurity" class="collab-logo-img">
+                  <div class="collab-title">EC-Council Academia</div>
+                </div>
+                <div class="collab-focus">Cybersecurity & Ethical Hacking</div>
+                <div class="collab-desc">
+                  Threat intelligence, defensive security operations, penetration testing, and digital forensics.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GitHub Campus Alliance Banner -->
+          <div class="collab-highlight-box">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;">
+              <span style="font-size: 11.5px; font-weight: 800; color: var(--primary);">GitHub Campus Global Partner Program</span>
+            </div>
+            <p style="font-size: 10.5px; color: #475569; line-height: 1.35;">
+              Equipping every student with industry-standard Git version control, GitHub Actions automated CI/CD workflows, and collaborative enterprise repositories.
+            </p>
+          </div>
+        </div>
+
+        <div class="turn-guide right">
+          Candidate Profiles <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- ================= PLACEHOLDER: DYNAMIC STUDENT PROFILES CONTAINER ================= -->
+      <div id="dynamic-student-pages" style="display:contents;"></div>
+
+      <!-- ================= RECRUITER PROTOCOL & PLACEMENT DRIVE ================= -->
+      <div class="page-sheet editorial-page">
+        <div>
+          <div class="page-lead-title">
+            <span>Recruiter Protocol</span>
+            <span class="lead-tag">Placement Drive</span>
+          </div>
+
+          <div class="leader-row-card" style="margin-bottom:12px; border-left-color:var(--gold-foil);">
+            <div style="font-size:13px; font-weight:800; color:var(--primary); margin-bottom:3px;">Hiring Framework</div>
+            <p style="font-size:11.5px; color:#475569; line-height:1.55;">
+              Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
+            </p>
+          </div>
+
+          <div class="page-lead-title" style="font-size:13.5px; margin-bottom:6px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:3px;">
+            <span>Department Accolades</span>
+            <span class="lead-tag">Track Record</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div style="background:#fff; border:1px solid #e8e1d5; padding:10px; border-radius:6px; text-align:center;">
+              <h4 style="font-size:11.5px; color:var(--primary); font-weight:800;">Top Tier Placements</h4>
+              <p style="font-size:10px; color:var(--gold-foil); font-weight:600;">MNCs & Product Labs</p>
+            </div>
+            <div style="background:#fff; border:1px solid #e8e1d5; padding:10px; border-radius:6px; text-align:center;">
+              <h4 style="font-size:11.5px; color:var(--primary); font-weight:800;">Active Repositories</h4>
+              <p style="font-size:10px; color:var(--gold-foil); font-weight:600;">Verified Student Work</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size:11px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:6px; font-weight:600;">
+          Seamless Recruitment Drives & Dedicated Interview Rooms
+        </div>
+      </div>
+
+      <!-- ================= BACK COVER ================= -->
+      <div class="page-sheet" data-density="hard">
+        <div class="artwork-cover-page">
+          <img src="back-cover.png" alt="Back Cover" onerror="this.src='college copy.png';">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let flipBook;
+
+    // സ്ക്രീൻഷോട്ടിൽ കണ്ട കൃത്യമായ 21 വിദ്യാർത്ഥികളുടെ ഫയൽ ലിസ്റ്റ്
+    const studentFiles = [
+      'students/24BCA08_Profile.html',
+      'students/24BCA18_profile.html',
+      'students/24BCA21_profile.html',
+      'students/24BCA27_profile.html',
+      'students/24BCA28_profile.html',
+      'students/24ucoap0935_Profile.html',
+      'students/24UCOAP0901_profile.html',
+      'students/24UCOAP0904_profile.html',
+      'students/24UCOAP0904_profile(1).html',
+      'students/24UCOAP0907_profile.html',
+      'students/24UCOAP0909_profile.html',
+      'students/24UCOAP0912_profile.html',
+      'students/24UCOAP0915_profile.html',
+      'students/24UCOAP0917_Profile.html',
+      'students/24UCOAP0926_profile.html',
+      'students/24UCOAP0934_profile.html',
+      'students/24UCOAP0937_profile.html',
+      'students/24UCOAP0938_profile.html',
+      'students/24UCOAP0939_Profile .html',
+      'students/25UG2535_profile.html',
+      'students/26BCA1226_Profile.html',
+      'students/26UG1202_Profile.html',
+      'students/26UG1203_profile.html',
+      'students/26UG1209_Profile.html',
+      'students/26UG1214_Profile.html',
+      'students/26UG1222_profile.html',
+      'students/26UG1232_Profile.html'
+    ];
+
+    async function loadDynamicStudents() {
+      const container = document.getElementById('dynamic-student-pages');
+      
+      for (const filePath of studentFiles) {
+        try {
+          const res = await fetch(encodeURI(filePath));
+          if (!res.ok) continue;
+          const htmlText = await res.text();
+          
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlText, 'text/html');
+          const profileCard = doc.querySelector('.profile-card');
+          
+          if (profileCard) {
+            // Auto Fallback Engine for Student Photos
+            const imgElem = profileCard.querySelector('.photo-slot img');
+            if (imgElem) {
+              const originalSrc = imgElem.getAttribute('src') || '';
+              let filename = originalSrc.split('/').pop().split('\\').pop();
+              
+              // ഫയൽ നെയിമിൽ നിന്നുള്ള റോൾ നമ്പർ വേർതിരിക്കുന്നു
+              let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
+              if (roll.endsWith('.')) roll = roll.slice(0, -1);
+              if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
+
+              // സാധ്യമായ എല്ലാ ഫോട്ടോ പാത്തുകളും ടെസ്റ്റ് ചെയ്യുന്നു
+              const candidates = [
+                'photos/' + filename,
+                'photos/' + roll + '.jpg',
+                'photos/' + roll + '.jpeg',
+                'photos/' + roll + '.png',
+                'photos/' + roll + '.JPG',
+                'photos/' + roll + '..jpg',
+                'photos/' + roll + '.jpg.jpeg',
+                'photos/' + roll + '(1).jpg'
+              ];
+              
+              let cIndex = 0;
+              imgElem.src = candidates[cIndex++];
+
+              imgElem.onerror = function() {
+                if (cIndex < candidates.length) {
+                  this.src = candidates[cIndex++];
+                } else {
+                  this.style.display = 'none';
+                  if (this.parentElement) {
+                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
+                  }
+                }
+              };
+            }
+
+            const pageDiv = document.createElement('div');
+            pageDiv.className = 'page-sheet';
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'profile-card-page';
+            wrapper.appendChild(profileCard);
+            
+            pageDiv.appendChild(wrapper);
+            container.appendChild(pageDiv);
+          }
+        } catch (e) {
+          console.warn('Could not load profile:', filePath, e);
+        }
+      }
+
+      // Even page count check for seamless Back Cover closing
+      const allPages = document.querySelectorAll('.page-sheet');
+      if (allPages.length % 2 !== 0) {
+        const blankPage = document.createElement('div');
+        blankPage.className = 'page-sheet editorial-page';
+        blankPage.innerHTML = `
+          <div>
+            <div class="page-lead-title"><span>Student Notes</span><span class="lead-tag">Recruiter Remarks</span></div>
+            <div style="border: 1.5px dashed var(--gold-filigree); height: 600px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
+              <i class="fa-solid fa-pen-to-square"></i> Recruiter Interview Assessment & Placement Notes
+            </div>
+          </div>
+          <div style="font-size:11px; color:#64748b; text-align:center;">St. Thomas College Palai • BCA Placement Cell</div>
+        `;
+        const backCover = document.querySelectorAll('.page-sheet')[document.querySelectorAll('.page-sheet').length - 1];
+        document.getElementById('flipbook').insertBefore(blankPage, backCover);
+      }
+
+      initFlipBook();
+    }
+
+    function initFlipBook() {
+      const bookElem = document.getElementById('flipbook');
+      const isMobile = window.innerWidth <= 768;
+
+      const pageWidth = isMobile ? window.innerWidth : 580;
+      const pageHeight = isMobile ? window.innerHeight : 850;
+
+      flipBook = new St.PageFlip(bookElem, {
+        width: pageWidth,
+        height: pageHeight,
+        size: 'fixed',
+        minWidth: 320,
+        maxWidth: 680,
+        minHeight: 480,
+        maxHeight: 920,
+        maxShadowOpacity: 0.35,
+        showCover: true,
+        usePortrait: isMobile,
+        mobileScrollSupport: true,
+        swipeDistance: 60,
+        autoSize: true
+      });
+
+      flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
+    }
+
+    window.addEventListener('DOMContentLoaded', loadDynamicStudents);
+
+    document.addEventListener('keydown', (e) => {
+      if (!flipBook) return;
+      if (e.key === 'ArrowRight') flipBook.flipNext();
+      if (e.key === 'ArrowLeft') flipBook.flipPrev();
+    });
+  </script>
+</body>
+</html>
