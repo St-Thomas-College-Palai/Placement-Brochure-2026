@@ -104,6 +104,56 @@
     .turn-guide.left { left: 16px; }
 
     /* =========================================================
+       MOBILE BOTTOM NAVIGATION BAR (Accidental Flip Protection)
+       ========================================================= */
+    .mobile-nav-bar {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(11, 25, 44, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--gold-filigree);
+      border-radius: 30px;
+      padding: 6px 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(214, 190, 140, 0.5);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:active {
+      background: var(--gold-foil);
+      transform: scale(0.95);
+    }
+
+    .page-counter-badge {
+      color: var(--gold-filigree);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      min-width: 65px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* =========================================================
        1. ARTWORK FULL COVERS
        ========================================================= */
     .artwork-cover-page {
@@ -244,7 +294,6 @@
       text-align: justify;
     }
 
-    /* Faculty Grid */
     .faculty-hex-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -313,7 +362,6 @@
       line-height: 1.25;
     }
 
-    /* Collaborations Styles */
     .collab-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -668,11 +716,20 @@
     }
 
     /* =========================================================
-       4. MOBILE OPTIMIZATION
+       4. MOBILE SPECIFIC OVERRIDES
        ========================================================= */
     @media (max-width: 768px) {
       body {
         padding: 0;
+        padding-bottom: 50px; /* Space for the bottom navigation bar */
+      }
+
+      .mobile-nav-bar {
+        display: flex; /* Activates dedicated mobile navigation buttons */
+      }
+
+      .turn-guide {
+        display: none !important; /* Hides confusing bottom turn text on mobile */
       }
 
       .book-stage {
@@ -682,7 +739,7 @@
 
       .page-sheet {
         width: 100vw !important;
-        height: 100vh !important;
+        height: 92vh !important;
         border-radius: 0;
         padding: 8px 6px !important;
       }
@@ -779,12 +836,6 @@
       .academic-table {
         font-size: 9.5px !important;
       }
-
-      .turn-guide {
-        font-size: 9px !important;
-        bottom: 4px !important;
-        padding: 2px 8px !important;
-      }
     }
   </style>
 </head>
@@ -858,7 +909,7 @@
               </div>
               <div class="leader-row-body">
                 <h3>Rev. Fr. Roshan Chacko</h3>
-                <span class="designation">Coordinator</span>
+                <span class="designation">Course Coordinator, BCA Department</span>
                 <p class="quote">
                   "Fostering continuous mentorship and professional discipline to ensure our candidates excel in competitive hiring environments."
                 </p>
@@ -889,8 +940,7 @@
               <h3 style="font-size: 13.5px;">Arjun Ram Sankar</h3>
               <span class="designation">Assistant Professor & Head of the Department</span>
               <p class="quote" style="font-size: 12px; line-height: 1.35;">
-                "Our BCA graduates combine core computing fundamentals with intensive, industry-aligned training in Data Science. Equipped with sharp analytical skills and practical problem-solving capabilities, they are primed to deliver immediate technical impact.
-Reflecting modern industry demands, our evolving academic ecosystem integrates advanced coursework in data engineering alongside upcoming degree specializations in AI & Data Science and AI & Machine Learning. We warmly invite you to partner with us and discover top-tier talent."
+                "Our BCA curriculum balances core algorithmic depth with real-world enterprise architectures. We mentor our cohorts in resilient cloud systems, full-stack stacks, and continuous learning."
               </p>
             </div>
           </div>
@@ -927,13 +977,13 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
               </div>
             </div>
 
-            <!-- 3. Linta Baby (English Faculty & Mentor) -->
+            <!-- 3. Linda Baby (English Faculty & Mentor) -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Linta.jpeg" alt="Linta Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
+                <img src="Linda.jpg" alt="Linda Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Linta Baby</h4>
+                <h4>Linda Baby</h4>
                 <span class="role">Assistant Professor (English) & Mentor</span>
                 <span class="spec">10+ Yrs Exp • Business Communication Mentor</span>
               </div>
@@ -942,7 +992,7 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
             <!-- 4. Subin M Varghese -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Subin.jpeg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+                <img src="Subin.jpg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
               <div class="faculty-mini-info">
                 <h4>Subin M. Varghese</h4>
@@ -954,22 +1004,24 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
             <!-- 5. Sandra Krishna P S -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Sandra.jpeg" alt="Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+                <img src="Sandra.jpg" alt="Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
               </div>
               <div class="faculty-mini-info">
                 <h4>Sandra Krishna P. S.</h4>
                 <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">Dept. of BCA • Technical Mentor</span>
               </div>
             </div>
 
-            <!-- 6. Chaithra Sudheer -->
+            <!-- 6. Chaithra Sudhir -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Chaithra.jpeg" alt="Chaithra Sudheer" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+                <img src="Chaithra.jpg" alt="Chaithra Sudhir" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Chaithra Sudheer</h4>
-                <span class="role">Assistant Professor & Mentor</span>                
+                <h4>Chaithra Sudhir</h4>
+                <span class="role">Assistant Professor & Mentor</span>
+                <span class="spec">Dept. of BCA • Technical Mentor</span>
               </div>
             </div>
           </div>
@@ -992,7 +1044,6 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
             The Department bridges academia and corporate expectations through official institutional alliances with world-leading technology pioneers:
           </p>
 
-          <!-- 6-Alliance Balanced Grid -->
           <div class="collab-grid">
             <!-- 1. AWS Academy & Educate -->
             <div class="collab-card">
@@ -1079,7 +1130,6 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
             </div>
           </div>
 
-          <!-- GitHub Campus Alliance Banner -->
           <div class="collab-highlight-box">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
               <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;">
@@ -1146,10 +1196,16 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
     </div>
   </div>
 
+  <!-- Dedicated Mobile Navigation Bar -->
+  <div class="mobile-nav-bar" id="mobileNavBar">
+    <button class="nav-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+    <div class="page-counter-badge" id="pageCounter">1 / 1</div>
+    <button class="nav-btn" id="nextBtn">Next <i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
   <script>
     let flipBook;
 
-    // സ്ക്രീൻഷോട്ടിൽ കണ്ട കൃത്യമായ 21 വിദ്യാർത്ഥികളുടെ ഫയൽ ലിസ്റ്റ്
     const studentFiles = [
       'students/24BCA08_Profile.html',
       'students/24BCA18_profile.html',
@@ -1194,18 +1250,15 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
           const profileCard = doc.querySelector('.profile-card');
           
           if (profileCard) {
-            // Auto Fallback Engine for Student Photos
             const imgElem = profileCard.querySelector('.photo-slot img');
             if (imgElem) {
               const originalSrc = imgElem.getAttribute('src') || '';
               let filename = originalSrc.split('/').pop().split('\\').pop();
               
-              // ഫയൽ നെയിമിൽ നിന്നുള്ള റോൾ നമ്പർ വേർതിരിക്കുന്നു
               let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
               if (roll.endsWith('.')) roll = roll.slice(0, -1);
               if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
 
-              // സാധ്യമായ എല്ലാ ഫോട്ടോ പാത്തുകളും ടെസ്റ്റ് ചെയ്യുന്നു
               const candidates = [
                 'photos/' + filename,
                 'photos/' + roll + '.jpg',
@@ -1273,7 +1326,7 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
       const isMobile = window.innerWidth <= 768;
 
       const pageWidth = isMobile ? window.innerWidth : 580;
-      const pageHeight = isMobile ? window.innerHeight : 850;
+      const pageHeight = isMobile ? window.innerHeight * 0.92 : 850;
 
       flipBook = new St.PageFlip(bookElem, {
         width: pageWidth,
@@ -1286,12 +1339,33 @@ Reflecting modern industry demands, our evolving academic ecosystem integrates a
         maxShadowOpacity: 0.35,
         showCover: true,
         usePortrait: isMobile,
-        mobileScrollSupport: true,
-        swipeDistance: 60,
+        disableFlipByClick: isMobile, // Prevents accidental page flips on mobile taps
+        mobileScrollSupport: false,   // Disables touch drag to keep screen stable
         autoSize: true
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
+
+      // Dedicated Mobile Navigation Buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const counter = document.getElementById('pageCounter');
+
+      function updateCounter() {
+        if (!flipBook) return;
+        const current = flipBook.getCurrentPageIndex() + 1;
+        const total = flipBook.getPageCount();
+        if (counter) counter.innerText = `${current} / ${total}`;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => { flipBook.flipPrev(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { flipBook.flipNext(); });
+
+      flipBook.on('flip', (e) => {
+        updateCounter();
+      });
+
+      updateCounter();
     }
 
     window.addEventListener('DOMContentLoaded', loadDynamicStudents);
