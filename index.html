@@ -388,9 +388,9 @@
       margin-top: 4px;
     }
 
-    /* STUDENT PROFILE DOSSIER (ORIGINAL RESTORED FORMATTING) */
+    /* STUDENT PROFILE CARD (CLEAN & RESTORED) */
     .profile-card-page {
-      padding: 6px;
+      padding: 8px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -411,7 +411,7 @@
 
     .institution-header {
       background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      padding: 6px 10px;
+      padding: 6px 12px;
       color: #ffffff;
       display: flex;
       justify-content: space-between;
@@ -440,7 +440,7 @@
     }
 
     .profile-top {
-      padding: 6px 10px;
+      padding: 6px 12px;
       display: flex;
       gap: 10px;
       align-items: center;
@@ -514,9 +514,8 @@
       font-weight: 600;
     }
 
-    /* FULL FLUID VERTICAL SCROLL BODY */
     .profile-body {
-      padding: 6px 10px;
+      padding: 6px 12px;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -661,6 +660,11 @@
       border-radius: 4px;
       color: #581c87;
       line-height: 1.2;
+    }
+
+    /* COMPLETELY REMOVED / HIDDEN FOOTER TO PREVENT UGLY OVERLAYS */
+    .profile-footer {
+      display: none !important;
     }
   </style>
 </head>
@@ -1283,8 +1287,8 @@
 
       let pageWidth, pageHeight;
       if (isMobile) {
-        pageWidth = window.innerWidth * 0.96;
-        pageHeight = window.innerHeight * 0.94;
+        pageWidth = Math.floor(window.innerWidth * 0.96);
+        pageHeight = Math.floor(window.innerHeight * 0.96);
       } else {
         pageWidth = 560;
         pageHeight = 820;
@@ -1295,8 +1299,8 @@
         height: pageHeight,
         size: 'fixed',
         minWidth: 300,
-        maxWidth: 680,
-        minHeight: 450,
+        maxWidth: 700,
+        minHeight: 400,
         maxHeight: 900,
         maxShadowOpacity: 0.35,
         showCover: true,
@@ -1307,50 +1311,11 @@
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
-
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const counter = document.getElementById('pageCounter');
-
-      function updateCounter() {
-        if (!flipBook) return;
-        const current = flipBook.getCurrentPageIndex() + 1;
-        const total = flipBook.getPageCount();
-        if (counter) counter.innerText = `${current} / ${total}`;
-      }
-
-      if (prevBtn) {
-        prevBtn.onclick = () => { flipBook.flipPrev(); };
-      }
-      if (nextBtn) {
-        nextBtn.onclick = () => { flipBook.flipNext(); };
-      }
-
-      flipBook.on('flip', (e) => {
-        updateCounter();
-      });
-
-      flipBook.on('changeState', (e) => {
-        updateCounter();
-      });
-
-      updateCounter();
     }
-
-    // Dynamic Viewport Resize
-    window.addEventListener('resize', () => {
-      if (flipBook) {
-        const isMobile = window.innerWidth <= 768;
-        const w = isMobile ? (window.innerWidth * 0.96) : 560;
-        const h = isMobile ? (window.innerHeight * 0.94) : 820;
-        try {
-          flipBook.update({ width: w, height: h, usePortrait: isMobile });
-        } catch (e) {}
-      }
-    });
 
     window.addEventListener('DOMContentLoaded', loadDynamicStudents);
 
+    // Keyboard navigation for desktop
     document.addEventListener('keydown', (e) => {
       if (!flipBook) return;
       if (e.key === 'ArrowRight') flipBook.flipNext();
