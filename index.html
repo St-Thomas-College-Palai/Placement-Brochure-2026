@@ -104,7 +104,7 @@
     .turn-guide.left { left: 16px; }
 
     /* =========================================================
-       MOBILE BOTTOM NAVIGATION BAR (Accidental Flip Protection)
+       MOBILE BOTTOM NAVIGATION BAR
        ========================================================= */
     .mobile-nav-bar {
       display: none;
@@ -154,7 +154,7 @@
     }
 
     /* =========================================================
-       1. ARTWORK FULL COVERS
+       FULL-PAGE ARTWORK (COVERS & BATCH DIVIDERS)
        ========================================================= */
     .artwork-cover-page {
       width: 100%;
@@ -171,8 +171,56 @@
       display: block;
     }
 
+    .divider-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      background: radial-gradient(circle at center, #1e3e62 0%, #0b192c 100%);
+      color: #ffffff;
+      position: relative;
+    }
+
+    .divider-fallback::after {
+      content: '';
+      position: absolute;
+      top: 18px; left: 18px; right: 18px; bottom: 18px;
+      border: 2px solid var(--gold-filigree);
+      pointer-events: none;
+    }
+
+    .divider-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--gold-filigree);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .divider-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .divider-sub {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      color: #94a3b8;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
     /* =========================================================
-       2. EDITORIAL PAGES
+       EDITORIAL PAGES
        ========================================================= */
     .editorial-page {
       padding: 24px 20px;
@@ -355,13 +403,6 @@
       margin: 1px 0;
     }
 
-    .faculty-mini-info span.spec {
-      display: block;
-      font-size: 9px;
-      color: #64748b;
-      line-height: 1.25;
-    }
-
     .collab-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -425,7 +466,7 @@
     }
 
     /* =========================================================
-       3. ZERO-SCROLL AUTOFIT STUDENT DOSSIER
+       ZERO-SCROLL AUTOFIT STUDENT DOSSIER
        ========================================================= */
     .profile-card-page {
       padding: 14px 12px;
@@ -716,20 +757,20 @@
     }
 
     /* =========================================================
-       4. MOBILE SPECIFIC OVERRIDES
+       MOBILE SPECIFIC OVERRIDES
        ========================================================= */
     @media (max-width: 768px) {
       body {
         padding: 0;
-        padding-bottom: 50px; /* Space for the bottom navigation bar */
+        padding-bottom: 50px;
       }
 
       .mobile-nav-bar {
-        display: flex; /* Activates dedicated mobile navigation buttons */
+        display: flex;
       }
 
       .turn-guide {
-        display: none !important; /* Hides confusing bottom turn text on mobile */
+        display: none !important;
       }
 
       .book-stage {
@@ -931,13 +972,13 @@
             <span class="lead-tag">Academic Mentors</span>
           </div>
 
-          <!-- Featured Head of the Department: Arjun Ram Sankar -->
+          <!-- Featured Head of the Department: Mr. Arjun Ram Sankar -->
           <div class="leader-row-card primary-accent" style="margin-bottom: 8px;">
             <div class="leader-row-portrait" style="width: 72px; height: 88px;">
-              <img src="Arjun.jpeg" alt="Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+              <img src="Arjun.jpeg" alt="Mr. Arjun Ram Sankar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
             </div>
             <div class="leader-row-body">
-              <h3 style="font-size: 13.5px;">Arjun Ram Sankar</h3>
+              <h3 style="font-size: 13.5px;">Mr. Arjun Ram Sankar</h3>
               <span class="designation">Assistant Professor & Head of the Department</span>
               <p class="quote" style="font-size: 12px; line-height: 1.35;">
                 "Our BCA curriculum balances core algorithmic depth with real-world enterprise architectures. We mentor our cohorts in resilient cloud systems, full-stack stacks, and continuous learning."
@@ -951,77 +992,71 @@
             <span style="color: var(--gold-foil); font-size: 9.5px;">Dept. of Computer Applications</span>
           </div>
 
-          <!-- 6 Faculty Members Grid -->
+          <!-- 6 Faculty Members Grid (Titles & Designations Cleaned) -->
           <div class="faculty-hex-grid">
-            <!-- 1. Jintu Joseph -->
+            <!-- 1. Ms. Jintu Joseph -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Jintu.jpg" alt="Jintu Joseph" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+                <img src="Jintu.jpg" alt="Ms. Jintu Joseph" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Jintu Joseph</h4>
+                <h4>Ms. Jintu Joseph</h4>
                 <span class="role">Assistant Professor & Mentor</span>
-                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
               </div>
             </div>
 
-            <!-- 2. Jikki Jose -->
+            <!-- 2. Ms. Jikki Jose -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Jikki.jpeg" alt="Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+                <img src="Jikki.jpeg" alt="Ms. Jikki Jose" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Jikki Jose</h4>
+                <h4>Ms. Jikki Jose</h4>
                 <span class="role">Assistant Professor & Mentor</span>
-                <span class="spec">10+ Yrs Exp • Project & Tech Mentor</span>
               </div>
             </div>
 
-            <!-- 3. Linda Baby (English Faculty & Mentor) -->
+            <!-- 3. Ms. Linta Baby -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Linda.jpg" alt="Linda Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
+                <img src="Linta.jpeg" alt="Ms. Linta Baby" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-book-open-reader\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Linda Baby</h4>
+                <h4>Ms. Linta Baby</h4>
                 <span class="role">Assistant Professor (English) & Mentor</span>
-                <span class="spec">10+ Yrs Exp • Business Communication Mentor</span>
               </div>
             </div>
 
-            <!-- 4. Subin M Varghese -->
+            <!-- 4. Dr. Subin M Varghese -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Subin.jpg" alt="Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
+                <img src="Subin.jpeg" alt="Dr. Subin M Varghese" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-chalkboard-user\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Subin M. Varghese</h4>
+                <h4>Dr. Subin M. Varghese</h4>
                 <span class="role">Assistant Professor & Mentor</span>
-                <span class="spec">10+ Yrs Exp • Senior Academic Mentor</span>
               </div>
             </div>
 
-            <!-- 5. Sandra Krishna P S -->
+            <!-- 5. Ms. Sandra Krishna P S -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Sandra.jpg" alt="Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+                <img src="Sandra.jpeg" alt="Ms. Sandra Krishna P S" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Sandra Krishna P. S.</h4>
+                <h4>Ms. Sandra Krishna P. S.</h4>
                 <span class="role">Assistant Professor & Mentor</span>
-                <span class="spec">Dept. of BCA • Technical Mentor</span>
               </div>
             </div>
 
-            <!-- 6. Chaithra Sudhir -->
+            <!-- 6. Ms. Chaithra Sudheer -->
             <div class="faculty-mini-card">
               <div class="faculty-mini-avatar">
-                <img src="Chaithra.jpg" alt="Chaithra Sudhir" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
+                <img src="Chaithra.jpeg" alt="Ms. Chaithra Sudheer" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-graduate\'></i>';">
               </div>
               <div class="faculty-mini-info">
-                <h4>Chaithra Sudhir</h4>
+                <h4>Ms. Chaithra Sudheer</h4>
                 <span class="role">Assistant Professor & Mentor</span>
-                <span class="spec">Dept. of BCA • Technical Mentor</span>
               </div>
             </div>
           </div>
@@ -1146,7 +1181,7 @@
         </div>
       </div>
 
-      <!-- ================= PLACEHOLDER: DYNAMIC STUDENT PROFILES CONTAINER ================= -->
+      <!-- ================= PLACEHOLDER: DYNAMIC BATCH & STUDENT CONTAINERS ================= -->
       <div id="dynamic-student-pages" style="display:contents;"></div>
 
       <!-- ================= RECRUITER PROTOCOL & PLACEMENT DRIVE ================= -->
@@ -1206,97 +1241,199 @@
   <script>
     let flipBook;
 
-    const studentFiles = [
-      'students/24BCA08_Profile.html',
-      'students/24BCA18_profile.html',
-      'students/24BCA21_profile.html',
-      'students/24BCA27_profile.html',
-      'students/24BCA28_profile.html',
-      'students/24ucoap0935_Profile.html',
-      'students/24UCOAP0901_profile.html',
-      'students/24UCOAP0904_profile.html',
-      'students/24UCOAP0904_profile(1).html',
-      'students/24UCOAP0907_profile.html',
-      'students/24UCOAP0909_profile.html',
-      'students/24UCOAP0912_profile.html',
-      'students/24UCOAP0915_profile.html',
-      'students/24UCOAP0917_Profile.html',
-      'students/24UCOAP0926_profile.html',
-      'students/24UCOAP0934_profile.html',
-      'students/24UCOAP0937_profile.html',
-      'students/24UCOAP0938_profile.html',
-      'students/24UCOAP0939_Profile .html',
-      'students/25UG2535_profile.html',
-      'students/26BCA1226_Profile.html',
-      'students/26UG1202_Profile.html',
-      'students/26UG1203_profile.html',
-      'students/26UG1209_Profile.html',
-      'students/26UG1214_Profile.html',
-      'students/26UG1222_profile.html',
-      'students/26UG1232_Profile.html'
+    // ബാച്ചുകളും സ്പെഷ്യലൈസേഷനുകളും തിരിച്ചുള്ള ഘടന
+    const batchStructures = [
+      // 1. Batch 2024 - 2027 (General BCA)
+      {
+        batchTitle: 'Batch 2024 - 2027',
+        passoutYear: 'Passing Out: 2026 - 2027',
+        mainImage: 'batch-2024.png',
+        sections: [
+          {
+            specTitle: 'Bachelor of Computer Applications',
+            specImage: 'batch-2024.png',
+            files: [
+              'students/24BCA08_Profile.html',
+              'students/24BCA18_profile.html',
+              'students/24BCA19_Profile.html',
+              'students/24BCA21_profile.html',
+              'students/24BCA22_Profile.html',
+              'students/24BCA27_profile.html',
+              'students/24BCA28_profile.html',
+              'students/24BCA30_Profile.html',
+              'students/24UCOAP0901_profile.html',
+              'students/24UCOAP0904_profile.html',
+              'students/24UCOAP0904_profile(1).html',
+              'students/24UCOAP0907_profile.html',
+              'students/24UCOAP0909_profile.html',
+              'students/24UCOAP0910_Profile.html',
+              'students/24UCOAP0912_profile.html',
+              'students/24UCOAP0913_Profile.html',
+              'students/24UCOAP0915_profile.html',
+              'students/24UCOAP0916_Profile.html',
+              'students/24UCOAP0917_Profile.html',
+              'students/24UCOAP0920_Profile.html',
+              'students/24UCOAP0923_Profile.html',
+              'students/24UCOAP0926_profile.html',
+              'students/24UCOAP0929_Profile.html',
+              'students/24UCOAP0931_Profile.html',
+              'students/24UCOAP0932_Profile.html',
+              'students/24UCOAP0933_Profile.html',
+              'students/24UCOAP0934_profile.html',
+              'students/24ucoap0935_Profile.html',
+              'students/24UCOAP0937_profile.html',
+              'students/24UCOAP0938_profile.html',
+              'students/24UCOAP0939_Profile .html',
+              'students/24UCOAP0940_Profile.html',
+              'students/24ubca905_Profile.html'
+            ]
+          }
+        ]
+      },
+
+      // 2. Batch 2025 - 2028 (Dual Specializations)
+      {
+        batchTitle: 'Batch 2025 - 2028',
+        passoutYear: 'Passing Out: 2027 - 2028',
+        mainImage: 'batch-2025.png',
+        sections: [
+          {
+            specTitle: 'AI & Data Science (Roll: 01 - 40)',
+            specImage: 'batch-2025-aids.png',
+            files: [
+              'students/25ug2502_Profile.html',
+              'students/25UG2528_Profile.html',
+              'students/25UG2535_profile.html'
+            ]
+          },
+          {
+            specTitle: 'AI & Machine Learning (Roll: 41 - 80)',
+            specImage: 'batch-2025-aiml.png',
+            files: [
+              'students/25UG2561_Profile.html',
+              'students/25UG2573_Profile.html',
+              'students/25UG2583_Profile.html'
+            ]
+          }
+        ]
+      },
+
+      // 3. Batch 2026 - 2029 (Dual Specializations)
+      {
+        batchTitle: 'Batch 2026 - 2029',
+        passoutYear: 'Passing Out: 2029 - 2030',
+        mainImage: 'batch-2026.png',
+        sections: [
+          {
+            specTitle: 'AI & Data Science (Roll: 01 - 40)',
+            specImage: 'batch-2026-aids.png',
+            files: [
+              'students/26UG1202_Profile.html',
+              'students/26UG1203_profile.html',
+              'students/26UG1209_Profile.html',
+              'students/26UG1214_Profile.html',
+              'students/26UG1222_profile.html',
+              'students/26UG1226_profile.html',
+              'students/26BCA1226_Profile.html',
+              'students/26UG1232_Profile.html'
+            ]
+          },
+          {
+            specTitle: 'AI & Machine Learning (Roll: 41 - 80)',
+            specImage: 'batch-2026-aiml.png',
+            files: [
+              // ഭാവിയിൽ വരുന്ന 41-80 വിദ്യാർത്ഥികളുടെ ഫയലുകൾ ഇവിടെ ചേർക്കാം
+            ]
+          }
+        ]
+      }
     ];
 
     async function loadDynamicStudents() {
       const container = document.getElementById('dynamic-student-pages');
       
-      for (const filePath of studentFiles) {
-        try {
-          const res = await fetch(encodeURI(filePath));
-          if (!res.ok) continue;
-          const htmlText = await res.text();
-          
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(htmlText, 'text/html');
-          const profileCard = doc.querySelector('.profile-card');
-          
-          if (profileCard) {
-            const imgElem = profileCard.querySelector('.photo-slot img');
-            if (imgElem) {
-              const originalSrc = imgElem.getAttribute('src') || '';
-              let filename = originalSrc.split('/').pop().split('\\').pop();
-              
-              let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
-              if (roll.endsWith('.')) roll = roll.slice(0, -1);
-              if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
+      for (const batch of batchStructures) {
+        for (const sec of batch.sections) {
+          if (!sec.files || sec.files.length === 0) continue;
 
-              const candidates = [
-                'photos/' + filename,
-                'photos/' + roll + '.jpg',
-                'photos/' + roll + '.jpeg',
-                'photos/' + roll + '.png',
-                'photos/' + roll + '.JPG',
-                'photos/' + roll + '..jpg',
-                'photos/' + roll + '.jpg.jpeg',
-                'photos/' + roll + '(1).jpg'
-              ];
-              
-              let cIndex = 0;
-              imgElem.src = candidates[cIndex++];
+          // Specialization Divider Page (Image-ready with fallback)
+          const dividerDiv = document.createElement('div');
+          dividerDiv.className = 'page-sheet';
+          dividerDiv.setAttribute('data-density', 'hard');
+          
+          dividerDiv.innerHTML = `
+            <div class="artwork-cover-page">
+              <img src="${sec.specImage}" alt="${sec.specTitle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="divider-fallback" style="display:none;">
+                <span class="divider-tag">${batch.batchTitle}</span>
+                <h2 class="divider-title">${sec.specTitle}</h2>
+                <div class="divider-sub">${batch.passoutYear}</div>
+              </div>
+            </div>
+          `;
+          container.appendChild(dividerDiv);
 
-              imgElem.onerror = function() {
-                if (cIndex < candidates.length) {
-                  this.src = candidates[cIndex++];
-                } else {
-                  this.style.display = 'none';
-                  if (this.parentElement) {
-                    this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
-                  }
+          // Load Student Profiles in this stream
+          for (const filePath of sec.files) {
+            try {
+              const res = await fetch(encodeURI(filePath));
+              if (!res.ok) continue;
+              const htmlText = await res.text();
+              
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(htmlText, 'text/html');
+              const profileCard = doc.querySelector('.profile-card');
+              
+              if (profileCard) {
+                const imgElem = profileCard.querySelector('.photo-slot img');
+                if (imgElem) {
+                  const originalSrc = imgElem.getAttribute('src') || '';
+                  let filename = originalSrc.split('/').pop().split('\\').pop();
+                  
+                  let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
+                  if (roll.endsWith('.')) roll = roll.slice(0, -1);
+                  if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
+
+                  const candidates = [
+                    'photos/' + filename,
+                    'photos/' + roll + '.jpg',
+                    'photos/' + roll + '.jpeg',
+                    'photos/' + roll + '.png',
+                    'photos/' + roll + '.JPG',
+                    'photos/' + roll + '..jpg',
+                    'photos/' + roll + '.jpg.jpeg',
+                    'photos/' + roll + '(1).jpg'
+                  ];
+                  
+                  let cIndex = 0;
+                  imgElem.src = candidates[cIndex++];
+
+                  imgElem.onerror = function() {
+                    if (cIndex < candidates.length) {
+                      this.src = candidates[cIndex++];
+                    } else {
+                      this.style.display = 'none';
+                      if (this.parentElement) {
+                        this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:32px; color:#94a3b8;"></i>';
+                      }
+                    }
+                  };
                 }
-              };
-            }
 
-            const pageDiv = document.createElement('div');
-            pageDiv.className = 'page-sheet';
-            
-            const wrapper = document.createElement('div');
-            wrapper.className = 'profile-card-page';
-            wrapper.appendChild(profileCard);
-            
-            pageDiv.appendChild(wrapper);
-            container.appendChild(pageDiv);
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page-sheet';
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'profile-card-page';
+                wrapper.appendChild(profileCard);
+                
+                pageDiv.appendChild(wrapper);
+                container.appendChild(pageDiv);
+              }
+            } catch (e) {
+              console.warn('Could not load profile:', filePath, e);
+            }
           }
-        } catch (e) {
-          console.warn('Could not load profile:', filePath, e);
         }
       }
 
@@ -1339,14 +1476,13 @@
         maxShadowOpacity: 0.35,
         showCover: true,
         usePortrait: isMobile,
-        disableFlipByClick: isMobile, // Prevents accidental page flips on mobile taps
-        mobileScrollSupport: false,   // Disables touch drag to keep screen stable
+        disableFlipByClick: isMobile,
+        mobileScrollSupport: false,
         autoSize: true
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
 
-      // Dedicated Mobile Navigation Buttons
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
       const counter = document.getElementById('pageCounter');
