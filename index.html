@@ -46,6 +46,53 @@
       color: var(--text-main);
     }
 
+    /* PRELOADER SCREEN (ELIMINATES PAGE FLICKER AND BROKEN ALIGNMENT) */
+    #page-preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0b192c;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(214, 190, 140, 0.2);
+      border-top-color: var(--gold-filigree);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    .loader-title {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      letter-spacing: 2.5px;
+      color: var(--gold-filigree);
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .loader-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     body::before {
       content: '';
       position: fixed;
@@ -68,6 +115,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease-in;
     }
 
     .book-stage {
@@ -388,7 +437,7 @@
       margin-top: 6px;
     }
 
-    /* ENHANCED STUDENT PROFILE CARD (OPTIMAL HR READABILITY & ZERO AIR SPACE) */
+    /* ENHANCED STUDENT PROFILE CARD */
     .profile-card-page {
       padding: 12px 14px;
       height: 100%;
@@ -406,7 +455,7 @@
       border: 1px solid #cbd5e1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Expands and fills the entire card evenly */
+      justify-content: space-between;
       overflow: hidden !important;
     }
 
@@ -519,7 +568,7 @@
       padding: 10px 14px 14px 14px;
       display: flex;
       flex-direction: column;
-      gap: 8px; /* Balanced spacing filling out all negative space */
+      gap: 8px;
       flex-grow: 1;
       justify-content: space-around;
       overflow-y: auto !important;
@@ -671,7 +720,7 @@
     /* RESPONSIVE SCALING FOR PHONES */
     @media (max-width: 768px) {
       .profile-card-page {
-        padding: 5px !important;
+        padding: 6px !important;
       }
       .profile-top {
         padding: 6px 8px !important;
@@ -708,7 +757,14 @@
 </head>
 <body>
 
-  <div class="app-viewport">
+  <!-- ROYAL PRELOADER (HIDES PAGE FLICKERS & LOADS BEAUTIFULLY) -->
+  <div id="page-preloader">
+    <div class="loader-spinner"></div>
+    <div class="loader-title">St. Thomas College Palai</div>
+    <div class="loader-sub">Preparing BCA Placement Dossier...</div>
+  </div>
+
+  <div class="app-viewport" id="appViewport">
     <div class="book-stage">
       <div id="flipbook">
 
@@ -1300,7 +1356,7 @@
                     } else {
                       this.style.display = 'none';
                       if (this.parentElement) {
-                        this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:30px; color:#94a3b8;"></i>';
+                        this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:28px; color:#94a3b8;"></i>';
                       }
                     }
                   };
@@ -1397,6 +1453,19 @@
       });
 
       flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
+
+      // HIDE PRELOADER AND REVEAL BOOK SMOOTHLY
+      setTimeout(() => {
+        const preloader = document.getElementById('page-preloader');
+        const viewport = document.getElementById('appViewport');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          preloader.style.visibility = 'hidden';
+        }
+        if (viewport) {
+          viewport.style.opacity = '1';
+        }
+      }, 600);
     }
 
     // Dynamic Viewport Resize
