@@ -46,7 +46,7 @@
       color: var(--text-main);
     }
 
-    /* EXECUTIVE BRANDING LOADER */
+    /* INSTANT LIGHTWEIGHT PRELOADER */
     #page-preloader {
       position: fixed;
       top: 0;
@@ -59,22 +59,22 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .loader-spinner {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border: 3px solid rgba(214, 190, 140, 0.2);
       border-top-color: var(--gold-filigree);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .loader-title {
       font-family: 'Cinzel', serif;
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 2px;
       color: var(--gold-filigree);
       text-transform: uppercase;
@@ -85,7 +85,7 @@
     .loader-sub {
       font-size: 11px;
       color: #94a3b8;
-      margin-top: 6px;
+      margin-top: 5px;
       letter-spacing: 1px;
     }
 
@@ -116,7 +116,7 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      transition: opacity 0.4s ease-in;
+      transition: opacity 0.3s ease-in;
     }
 
     .book-stage {
@@ -717,6 +717,7 @@
       display: none !important;
     }
 
+    /* RESPONSIVE PHONES */
     @media (max-width: 768px) {
       .profile-card-page {
         padding: 5px !important;
@@ -756,11 +757,11 @@
 </head>
 <body>
 
-  <!-- EXECUTIVE BRANDING LOADER -->
+  <!-- EXECUTIVE BRANDED INSTANT PRELOADER -->
   <div id="page-preloader">
     <div class="loader-spinner"></div>
     <div class="loader-title">St. Thomas College Palai</div>
-    <div class="loader-sub">Digital Placement Dossier 2026–27</div>
+    <div class="loader-sub">Placement Dossier • BCA Department</div>
   </div>
 
   <div class="app-viewport" id="appViewport">
@@ -1009,4 +1010,472 @@
                 <div>
                   <div class="collab-header">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg" alt="Kubernetes" class="collab-logo-img">
-                    <div class="col
+                    <div class="collab-title">Kubernetes Cloud Native</div>
+                  </div>
+                  <div class="collab-focus">Container Orchestration & DevOps</div>
+                  <div class="collab-desc">
+                    Microservices deployment, Docker container clustering, CI/CD pipelines, and cloud native scaling.
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Oracle Academy -->
+              <div class="collab-card">
+                <div>
+                  <div class="collab-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg" alt="Oracle" class="collab-logo-img">
+                    <div class="collab-title">Oracle Academy</div>
+                  </div>
+                  <div class="collab-focus">Databases & Java EE</div>
+                  <div class="collab-desc">
+                    Relational Database Design, SQL/PL-SQL query tuning, and enterprise Java development standards.
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. EC-Council Academia -->
+              <div class="collab-card">
+                <div>
+                  <div class="collab-header">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/securityscorecard.svg" alt="Cybersecurity" class="collab-logo-img">
+                    <div class="collab-title">EC-Council Academia</div>
+                  </div>
+                  <div class="collab-focus">Cybersecurity & Ethical Hacking</div>
+                  <div class="collab-desc">
+                    Threat intelligence, defensive security operations, penetration testing, and digital forensics.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="collab-highlight-box">
+              <div style="display: flex; align-items: center; gap: 7px; margin-bottom: 2px;">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 16px; height: 16px; object-fit: contain;">
+                <span style="font-size: 11px; font-weight: 800; color: var(--primary);">GitHub Campus Global Partner Program</span>
+              </div>
+              <p style="font-size: 10px; color: #475569; line-height: 1.35;">
+                Equipping every student with industry-standard Git version control, GitHub Actions automated CI/CD workflows, and collaborative enterprise repositories.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PLACEHOLDER: DYNAMIC BATCH & STUDENT CONTAINERS ================= -->
+        <div id="dynamic-student-pages" style="display:contents;"></div>
+
+        <!-- ================= RECRUITER PROTOCOL & PLACEMENT DRIVE ================= -->
+        <div class="page-sheet editorial-page">
+          <div>
+            <div class="page-lead-title">
+              <span>Recruiter Protocol</span>
+              <span class="lead-tag">Placement Drive</span>
+            </div>
+
+            <div class="leader-row-card" style="margin-bottom: 10px; border-left-color:var(--gold-foil);">
+              <div style="font-size:12.5px; font-weight:800; color:var(--primary); margin-bottom:2px;">Hiring Framework</div>
+              <p style="font-size:11px; color:#475569; line-height:1.45;">
+                Recruiters are invited for both On-Campus and Virtual recruitment modes. Pre-Placement Talks, Online Assessments, and Technical Interviews can be scheduled seamlessly.
+              </p>
+            </div>
+
+            <div class="page-lead-title" style="font-size:12.5px; margin-bottom:5px; border-bottom:1.5px solid var(--gold-filigree); padding-bottom:3px;">
+              <span>Department Accolades</span>
+              <span class="lead-tag">Track Record</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+              <div style="background:#fff; border:1px solid #e8e1d5; padding:7px; border-radius:6px; text-align:center;">
+                <h4 style="font-size:10.5px; color:var(--primary); font-weight:800;">Top Tier Placements</h4>
+                <p style="font-size:9px; color:var(--gold-foil); font-weight:600;">MNCs & Product Labs</p>
+              </div>
+              <div style="background:#fff; border:1px solid #e8e1d5; padding:7px; border-radius:6px; text-align:center;">
+                <h4 style="font-size:10.5px; color:var(--primary); font-weight:800;">Active Repositories</h4>
+                <p style="font-size:9px; color:var(--gold-foil); font-weight:600;">Verified Student Work</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size:9.5px; color:#64748b; text-align:center; border-top:1.5px solid #ede6da; padding-top:4px; font-weight:600;">
+            Seamless Recruitment Drives & Dedicated Interview Rooms
+          </div>
+        </div>
+
+        <!-- ================= PAGE LAST: BACK COVER ================= -->
+        <div class="page-sheet" data-density="hard">
+          <div class="artwork-cover-page">
+            <img src="back-cover.png" alt="Back Cover" onerror="this.src='college copy.png';">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let flipBook;
+
+    const batchStructures = [
+      // 1. Batch 2024 - 2027 (General BCA)
+      {
+        batchTitle: 'Batch 2024 - 2027',
+        passoutYear: 'Passing Out: 2026 - 2027',
+        mainImage: 'batch-2024.png',
+        sections: [
+          {
+            specTitle: 'Bachelor of Computer Applications',
+            specImage: 'batch-2024.png',
+            files: [
+              'students/24BCA08_Profile.html',
+              'students/24BCA18_profile.html',
+              'students/24BCA19_Profile.html',
+              'students/24BCA21_profile.html',
+              'students/24BCA22_Profile.html',
+              'students/24BCA27_profile.html',
+              'students/24BCA28_profile.html',
+              'students/24BCA30_Profile.html',
+              'students/24UCOAP0901_profile.html',
+              'students/24UCOAP0904_profile.html',
+              'students/24UCOAP0904_profile(1).html',
+              'students/24UCOAP0907_profile.html',
+              'students/24UCOAP0909_profile.html',
+              'students/24UCOAP0910_Profile.html',
+              'students/24UCOAP0912_profile.html',
+              'students/24UCOAP0913_Profile.html',
+              'students/24UCOAP0915_profile.html',
+              'students/24UCOAP0916_Profile.html',
+              'students/24UCOAP0917_Profile.html',
+              'students/24UCOAP0920_Profile.html',
+              'students/24UCOAP0923_Profile.html',
+              'students/24UCOAP0926_profile.html',
+              'students/24UCOAP0929_Profile.html',
+              'students/24UCOAP0931_Profile.html',
+              'students/24UCOAP0932_Profile.html',
+              'students/24UCOAP0933_Profile.html',
+              'students/24UCOAP0934_profile.html',
+              'students/24ucoap0935_Profile.html',
+              'students/24UCOAP0937_profile.html',
+              'students/24UCOAP0938_profile.html',
+              'students/24UCOAP0939_Profile .html',
+              'students/24UCOAP0939_Profile.html',
+              'students/24UCOAP0940_Profile.html',
+              'students/24ubca905_Profile.html',
+              'students/24ucoap0905.html'
+            ]
+          }
+        ]
+      },
+
+      // 2. Batch 2025 - 2028 (Dual Specializations)
+      {
+        batchTitle: 'Batch 2025 - 2028',
+        passoutYear: 'Passing Out: 2027 - 2028',
+        mainImage: 'batch-2025.png',
+        sections: [
+          {
+            specTitle: 'AI & Data Science (Roll: 01 - 40)',
+            specImage: 'batch-2025-aids.png',
+            files: [
+              'students/25UG2501_PROFILE.HTML.HTML',
+              'students/25UG2501_profile.html',
+              'students/25UG2501.html',
+              'students/25ug2502_Profile.html',
+              'students/25UG2502.html',
+              'students/25UG2503.html',
+              'students/25UG2503_profile.html',
+              'students/25UG2507.html',
+              'students/25UG2507_profile.html',
+              'students/25UG2510_Profile.html.html',
+              'students/25UG2510_Profile.html',
+              'students/25UG2510.html',
+              'students/25UG2525.html',
+              'students/25UG2525_profile.html',
+              'students/25UG2528_Profile.html',
+              'students/25UG2528.html',
+              'students/25UG2535_profile.html',
+              'students/25UG2535.html'
+            ]
+          },
+          {
+            specTitle: 'AI & Machine Learning (Roll: 41 - 80)',
+            specImage: 'batch-2025-aiml.png',
+            files: [
+              'students/25UG2547_Profile.html',
+              'students/25UG2547.html',
+              'students/25UG2561_Profile.html',
+              'students/25UG2561.html',
+              'students/25UG2563.html',
+              'students/25UG2563_profile.html',
+              'students/25UG2573_Profile.html',
+              'students/25UG2573.html',
+              'students/25UG2583_Profile.html',
+              'students/25UG2583.html'
+            ]
+          }
+        ]
+      },
+
+      // 3. Batch 2026 - 2029 (Dual Specializations)
+      {
+        batchTitle: 'Batch 2026 - 2029',
+        passoutYear: 'Passing Out: 2029 - 2030',
+        mainImage: 'batch-2026.png',
+        sections: [
+          {
+            specTitle: 'AI & Data Science (Roll: 01 - 40)',
+            specImage: 'batch-2026-aids.png',
+            files: [
+              'students/26BCA1226_Profile.html',
+              'students/26UG1201_profile.html',
+              'students/26UG1201_Profile.html',
+              'students/26UG1202_Profile.html',
+              'students/26UG1202_profile.html',
+              'students/26UG1203_profile.html',
+              'students/26UG1203_Profile.html',
+              'students/26UG1204_profile.html',
+              'students/26UG1204_Profile.html',
+              'students/26UG1205_profile.html',
+              'students/26UG1205_Profile.html',
+              'students/26UG1206_profile.html',
+              'students/26UG1206_Profile.html',
+              'students/26UG1207_profile.html',
+              'students/26UG1207_Profile.html',
+              'students/26UG1208_profile.html',
+              'students/26UG1208_Profile.html',
+              'students/26UG1209_Profile.html',
+              'students/26UG1209_profile.html',
+              'students/26UG1210_profile.html',
+              'students/26UG1210_Profile.html',
+              'students/26UG1211_profile.html',
+              'students/26UG1211_Profile.html',
+              'students/26UG1212_profile.html',
+              'students/26UG1212_Profile.html',
+              'students/26UG1213_profile.html',
+              'students/26UG1213_Profile.html',
+              'students/26UG1214_Profile.html',
+              'students/26UG1214_profile.html',
+              'students/26UG1215_profile.html',
+              'students/26UG1215_Profile.html',
+              'students/26UG1216_profile.html',
+              'students/26UG1216_Profile.html',
+              'students/26UG1217_profile.html',
+              'students/26UG1217_Profile.html',
+              'students/26UG1218_profile.html',
+              'students/26UG1218_Profile.html',
+              'students/26UG1219_profile.html',
+              'students/26UG1219_Profile.html',
+              'students/26UG1220_profile.html',
+              'students/26UG1220_Profile.html',
+              'students/26UG1221_profile.html',
+              'students/26UG1221_Profile.html',
+              'students/26UG1222_profile.html',
+              'students/26UG1222_Profile.html',
+              'students/26UG1223_profile.html',
+              'students/26UG1223_Profile.html',
+              'students/26UG1224_profile.html',
+              'students/26UG1224_Profile.html',
+              'students/26UG1225_profile.html',
+              'students/26UG1225_Profile.html',
+              'students/26UG1226_profile.html',
+              'students/26UG1226_Profile.html',
+              'students/26UG1227_profile.html',
+              'students/26UG1227_Profile.html',
+              'students/26UG1228_profile.html',
+              'students/26UG1228_Profile.html',
+              'students/26UG1229_profile.html',
+              'students/26UG1229_Profile.html',
+              'students/26UG1230_profile.html',
+              'students/26UG1230_Profile.html',
+              'students/26UG1231_profile.html',
+              'students/26UG1231_Profile.html',
+              'students/26UG1232_Profile.html',
+              'students/26UG1232_profile.html'
+            ]
+          },
+          {
+            specTitle: 'AI & Machine Learning (Roll: 41 - 80)',
+            specImage: 'batch-2026-aiml.png',
+            files: []
+          }
+        ]
+      }
+    ];
+
+    // LIGHTNING FAST PARALLEL FILE LOADER
+    async function fetchSingleProfile(filePath) {
+      try {
+        const res = await fetch(encodeURI(filePath));
+        if (!res.ok) return null;
+        const htmlText = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        const profileCard = doc.querySelector('.profile-card');
+        
+        if (profileCard) {
+          const imgElem = profileCard.querySelector('.photo-slot img');
+          if (imgElem) {
+            const originalSrc = imgElem.getAttribute('src') || '';
+            let filename = originalSrc.split('/').pop().split('\\').pop();
+            let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
+            if (roll.endsWith('.')) roll = roll.slice(0, -1);
+            if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
+
+            // Immediate fast load with safe error fallback
+            imgElem.src = 'photos/' + filename;
+            imgElem.onerror = function() {
+              this.src = 'photos/' + roll + '.jpg';
+              this.onerror = function() {
+                this.style.display = 'none';
+                if (this.parentElement) {
+                  this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:28px; color:#94a3b8;"></i>';
+                }
+              };
+            };
+          }
+
+          const pageDiv = document.createElement('div');
+          pageDiv.className = 'page-sheet';
+          const wrapper = document.createElement('div');
+          wrapper.className = 'profile-card-page';
+          wrapper.appendChild(profileCard);
+          pageDiv.appendChild(wrapper);
+          return pageDiv;
+        }
+      } catch (e) {
+        return null;
+      }
+      return null;
+    }
+
+    async function loadDynamicStudents() {
+      const container = document.getElementById('dynamic-student-pages');
+      const loadedFileTracker = new Set();
+      
+      for (const batch of batchStructures) {
+        for (const sec of batch.sections) {
+          if (!sec.files || sec.files.length === 0) continue;
+
+          // PARALLEL FAST FETCHING FOR THIS STREAM
+          const uniqueFiles = [];
+          for (const f of sec.files) {
+            const normalizedKey = f.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (!loadedFileTracker.has(normalizedKey)) {
+              loadedFileTracker.add(normalizedKey);
+              uniqueFiles.push(f);
+            }
+          }
+
+          // Fetch all profiles in parallel concurrently
+          const results = await Promise.all(uniqueFiles.map(f => fetchSingleProfile(f)));
+          const validPages = results.filter(p => p !== null);
+
+          if (validPages.length > 0) {
+            // Divider artwork page
+            const dividerDiv = document.createElement('div');
+            dividerDiv.className = 'page-sheet';
+            dividerDiv.setAttribute('data-density', 'hard');
+            dividerDiv.innerHTML = `
+              <div class="artwork-cover-page">
+                <img src="${sec.specImage}" alt="${sec.specTitle}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="divider-fallback" style="display:none;">
+                  <span class="divider-tag">${batch.batchTitle}</span>
+                  <h2 class="divider-title">${sec.specTitle}</h2>
+                  <div class="divider-sub">${batch.passoutYear}</div>
+                </div>
+              </div>
+            `;
+            container.appendChild(dividerDiv);
+
+            for (const page of validPages) {
+              container.appendChild(page);
+            }
+          }
+        }
+      }
+
+      // Ensure Even page count for single back cover closing
+      const allPages = document.querySelectorAll('.page-sheet');
+      if (allPages.length % 2 !== 0) {
+        const blankPage = document.createElement('div');
+        blankPage.className = 'page-sheet editorial-page';
+        blankPage.innerHTML = `
+          <div>
+            <div class="page-lead-title"><span>Student Notes</span><span class="lead-tag">Recruiter Remarks</span></div>
+            <div style="border: 1.5px dashed var(--gold-filigree); height: 500px; border-radius: 6px; padding: 20px; color: #94a3b8; font-size: 13px;">
+              <i class="fa-solid fa-pen-to-square"></i> Recruiter Interview Assessment & Placement Notes
+            </div>
+          </div>
+          <div style="font-size:11px; color:#64748b; text-align:center;">St. Thomas College Palai • BCA Placement Cell</div>
+        `;
+        const backCover = document.querySelectorAll('.page-sheet')[document.querySelectorAll('.page-sheet').length - 1];
+        document.getElementById('flipbook').insertBefore(blankPage, backCover);
+      }
+
+      initFlipBook();
+    }
+
+    function initFlipBook() {
+      const bookElem = document.getElementById('flipbook');
+      const isMobile = window.innerWidth <= 768;
+
+      let pageWidth, pageHeight;
+      if (isMobile) {
+        pageWidth = Math.floor(window.innerWidth * 0.96);
+        pageHeight = Math.floor(window.innerHeight * 0.95);
+      } else {
+        pageWidth = 620;
+        pageHeight = 880;
+      }
+
+      flipBook = new St.PageFlip(bookElem, {
+        width: pageWidth,
+        height: pageHeight,
+        size: 'fixed',
+        minWidth: 320,
+        maxWidth: 720,
+        minHeight: 450,
+        maxHeight: 1000,
+        maxShadowOpacity: 0.35,
+        showCover: true,
+        usePortrait: isMobile,
+        disableFlipByClick: false,
+        mobileScrollSupport: true,
+        autoSize: true
+      });
+
+      flipBook.loadFromHTML(document.querySelectorAll('.page-sheet'));
+
+      // INSTANTLY REVEAL BOOK (NO WAITING TIME)
+      const preloader = document.getElementById('page-preloader');
+      const viewport = document.getElementById('appViewport');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+      }
+      if (viewport) {
+        viewport.style.opacity = '1';
+      }
+    }
+
+    // Viewport Resize Auto-fit
+    window.addEventListener('resize', () => {
+      if (flipBook) {
+        const isMobile = window.innerWidth <= 768;
+        const w = isMobile ? Math.floor(window.innerWidth * 0.96) : 620;
+        const h = isMobile ? Math.floor(window.innerHeight * 0.95) : 880;
+        try {
+          flipBook.update({ width: w, height: h, usePortrait: isMobile });
+        } catch (e) {}
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', loadDynamicStudents);
+
+    // Keyboard Arrow Keys
+    document.addEventListener('keydown', (e) => {
+      if (!flipBook) return;
+      if (e.key === 'ArrowRight') flipBook.flipNext();
+      if (e.key === 'ArrowLeft') flipBook.flipPrev();
+    });
+  </script>
+</body>
+</html>
