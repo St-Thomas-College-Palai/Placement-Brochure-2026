@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manuel George - BCA Placement Profile</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f2747;
+            --secondary: #1d4ed8;
+            --accent: #2563eb;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --text: #334155;
+            --muted: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f7;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* MAIN CONTAINER */
+
+        .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 10px 35px rgba(15, 39, 71, 0.12);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* INSTITUTION HEADER */
+
+        .institution-header {
+            background: linear-gradient(135deg, #0f2747, #173f73, #1d4ed8);
+            color: white;
+            padding: 14px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .institution-name {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .institution-name i {
+            font-size: 17px;
+        }
+
+        .batch {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* PROFILE HEADER */
+
+        .profile-header {
+            padding: 30px 35px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f1f5f9;
+            box-shadow: 0 4px 15px rgba(15,39,71,0.15);
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            color: var(--primary);
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            color: var(--accent);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .profile-description {
+            font-size: 13px;
+            color: var(--muted);
+            max-width: 700px;
+        }
+
+        /* CONTACT INFORMATION */
+
+        .contact-info {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #475569;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+        }
+
+        .contact-item a {
+            color: #475569;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* CONTENT */
+
+        .content {
+            padding: 30px 35px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 15px;
+        }
+
+        /* CAREER OBJECTIVE */
+
+        .objective {
+            background: #f8fafc;
+            border-left: 4px solid var(--accent);
+            padding: 15px 17px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #475569;
+            text-align: justify;
+        }
+
+        /* EDUCATION */
+
+        .education-item {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            background: white;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .education-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .education-institution {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .education-year {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .education-mark {
+            font-size: 11px;
+            color: #475569;
+            margin-top: 4px;
+        }
+
+        /* INTERNSHIP */
+
+        .internship {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .internship-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .internship-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .internship-company {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .internship-date {
+            font-size: 10px;
+            color: var(--accent);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .technology-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .technology {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #dbeafe;
+            padding: 5px 9px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .internship-points {
+            margin: 12px 0 0 17px;
+            font-size: 11px;
+            color: #475569;
+        }
+
+        .internship-points li {
+            margin-bottom: 4px;
+        }
+
+        /* PROJECTS */
+
+        .project-item {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: white;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .project-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .project-type {
+            font-size: 10px;
+            color: var(--accent);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 10px;
+            text-align: justify;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .project-links a {
+            font-size: 11px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* TECHNICAL SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .skill-category {
+            border: 1px solid var(--border);
+            padding: 12px 14px;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .skill-category h4 {
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 4px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: #475569;
+        }
+
+        /* CERTIFICATIONS */
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .certification {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 12px 14px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .certification i {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .certification small {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        .profile-footer {
+            border-top: 1px solid var(--border);
+            background: #f8fafc;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .footer-left,
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .profile-footer i {
+            color: var(--accent);
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 700px) {
+
+            .profile-container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .institution-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+
+            .profile-info h1 {
+                font-size: 25px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .education-top,
+            .internship-header,
+            .project-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .profile-footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="profile-container">
+
+    <!-- INSTITUTION HEADER -->
+
+    <div class="institution-header">
+
+        <div class="institution-name">
+            <i class="fa-solid fa-graduation-cap"></i>
+            St. Thomas College Palai (Autonomous) | BCA
+        </div>
+
+        <div class="batch">
+            Batch 2026 - 2027
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE HEADER -->
+
+    <div class="profile-header">
+
+        <img src="photo.jpg"
+             alt="Manuel George"
+             class="profile-image">
+
+        <div class="profile-info">
+
+            <h1>Manuel George</h1>
+
+            <div class="profile-role">
+                Aspiring Software Developer | BCA Student
+            </div>
+
+            <div class="profile-description">
+
+                BCA student with a solid understanding of Python, web
+                development and database management, and hands-on
+                experience from a web development internship.
+
+            </div>
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:manuelgeorge2005@gmail.com">
+                        manuelgeorge2005@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    +91 9495530534
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Kozhikode, Kerala
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <a href="https://github.com/manuelgeorge91"
+                       target="_blank">
+                        GitHub
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/manuel-george-b36815262"
+                       target="_blank">
+                        LinkedIn
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="content">
+
+
+        <!-- CAREER OBJECTIVE -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-bullseye"></i>
+                Career Objective
+            </div>
+
+            <div class="objective">
+
+                BCA student at St. Thomas College Palai with a solid
+                understanding of Python, web development and database
+                management. Seeking an opportunity to work with a
+                forward-thinking software team where I can use my technical
+                knowledge, problem-solving abilities and internship
+                experience to build efficient and scalable software
+                solutions.
+
+            </div>
+
+        </div>
+
+
+        <!-- EDUCATION -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Education
+            </div>
+
+            <!-- BCA -->
+
+            <div class="education-item">
+
+                <div class="education-top">
+
+                    <div>
+                        <div class="education-title">
+                            Bachelor of Computer Applications (BCA) – Pursuing
+                        </div>
+
+                        <div class="education-institution">
+                            St. Thomas College Palai (Autonomous)
+                        </div>
+                    </div>
+
+                    <div class="education-year">
+                        2028
+                    </div>
+
+                </div>
+
+                <div class="education-mark">
+                    Till 4th Sem
+                </div>
+
+            </div>
+
+            <!-- CLASS XII -->
+
+            <div class="education-item">
+
+                <div class="education-top">
+
+                    <div>
+                        <div class="education-title">
+                            Class XII
+                        </div>
+
+                        <div class="education-institution">
+                            GHSS VELLIYODE(Kerala Board)
+                        </div>
+                    </div>
+
+                    <div class="education-year">
+                        2024
+                    </div>
+
+                </div>
+
+                <div class="education-mark">
+                    Percentage: 86%
+                </div>
+
+            </div>
+
+            <!-- CLASS X -->
+
+            <div class="education-item">
+
+                <div class="education-top">
+
+                    <div>
+                        <div class="education-title">
+                            Class X
+                        </div>
+
+                        <div class="education-institution">
+                            St George's HS VILANGAD(Kerala Board)
+                        </div>
+                    </div>
+
+                    <div class="education-year">
+                        2022
+                    </div>
+
+                </div>
+
+                <div class="education-mark">
+                    Percentage: 89%
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTERNSHIP -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-briefcase"></i>
+                Internship
+            </div>
+
+            <div class="internship">
+
+                <div class="internship-header">
+
+                    <div>
+                        <div class="internship-title">
+                            Web Development Intern
+                        </div>
+
+                        <div class="internship-company">
+                            SoftLoom IT Solutions, Kochi, Kerala
+                        </div>
+                    </div>
+
+                    <div class="internship-date">
+                        April 2026 – July 2026
+                    </div>
+
+                </div>
+
+                <div class="technology-list">
+
+                    <span class="technology">HTML5</span>
+                    <span class="technology">CSS3</span>
+                    <span class="technology">JavaScript</span>
+                    <span class="technology">MySQL</span>
+                    <span class="technology">Git</span>
+
+                </div>
+
+                <ul class="internship-points">
+
+                    <li>Developed and optimized frontend UI components using HTML5, modern CSS and JavaScript.</li>
+                    <li>Handled database integration using MySQL and followed standard Git branching workflows.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECTS -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-diagram-project"></i>
+                Projects
+            </div>
+
+            <div class="project-item">
+
+                <div class="project-header">
+
+                    <div class="project-title">
+                        Employee Management System
+                    </div>
+
+                    <div class="project-type">
+                        Web Development Project
+                    </div>
+
+                </div>
+
+                <div class="project-description">
+
+                    Built a Django-based web application that allows users
+                    to securely log in and perform add, view, edit and
+                    delete operations on employee records.
+
+                </div>
+
+                <div class="technology-list">
+
+                    <span class="technology">Python</span>
+                    <span class="technology">Django</span>
+                    <span class="technology">MySQL</span>
+
+                </div>
+
+                <div class="project-links">
+
+                    <a href="https://github.com/manuelgeorge91/Employee-Management"
+                       target="_blank">
+
+                        <i class="fa-brands fa-github"></i>
+                        View on GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TECHNICAL SKILLS -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-laptop-code"></i>
+                Technical Skills
+            </div>
+
+            <div class="skills-grid">
+
+                <!-- LANGUAGES -->
+
+                <div class="skill-category">
+
+                    <h4>Languages</h4>
+
+                    <div class="skill-list">
+                        <span class="skill">Python</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">C</span>
+                        <span class="skill">C++</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">SQL</span>
+                    </div>
+
+                </div>
+
+                <!-- WEB -->
+
+                <div class="skill-category">
+
+                    <h4>Web Technologies</h4>
+
+                    <div class="skill-list">
+                        <span class="skill">HTML5</span>
+                        <span class="skill">CSS3</span>
+                        <span class="skill">Bootstrap</span>
+                        <span class="skill">React (basics)</span>
+                    </div>
+
+                </div>
+
+                <!-- DATABASE -->
+
+                <div class="skill-category">
+
+                    <h4>Database</h4>
+
+                    <div class="skill-list">
+                        <span class="skill">MySQL</span>
+                        <span class="skill">MongoDB</span>
+                    </div>
+
+                </div>
+
+                <!-- TOOLS -->
+
+                <div class="skill-category">
+
+                    <h4>Tools</h4>
+
+                    <div class="skill-list">
+                        <span class="skill">VS Code</span>
+                        <span class="skill">Git &amp; GitHub</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CERTIFICATIONS -->
+
+        <div class="section">
+
+            <div class="section-title">
+                <i class="fa-solid fa-award"></i>
+                Certifications
+            </div>
+
+            <div class="certifications">
+
+                <div class="certification">
+                    <i class="fa-brands fa-python"></i>
+                    <div>
+                        Python Programming
+                        <small>NPTEL</small>
+                    </div>
+                </div>
+
+                <div class="certification">
+                    <i class="fa-solid fa-code"></i>
+                    <div>
+                        Responsive Web Design
+                        <small>freeCodeCamp</small>
+                    </div>
+                </div>
+
+                <div class="certification">
+                    <i class="fa-solid fa-database"></i>
+                    <div>
+                        SQL Database Fundamentals
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="profile-footer">
+
+        <div class="footer-left">
+            <i class="fa-solid fa-id-card"></i>
+            Roll No: 24UCOAP0927
+        </div>
+
+        <div class="footer-right">
+            <i class="fa-solid fa-building-columns"></i>
+            Dept. of Computer Applications |
+            St. Thomas College Palai
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
