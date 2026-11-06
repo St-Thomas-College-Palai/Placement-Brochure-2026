@@ -1306,76 +1306,94 @@
       }
     ];
 
-    // LIGHTNING FAST PARALLEL FILE LOADER
+    // LOAD ONE STUDENT PROFILE. Failures are logged with the exact file path.
     async function fetchSingleProfile(filePath) {
       try {
-        const res = await fetch(encodeURI(filePath));
-        if (!res.ok) return null;
-        const htmlText = await res.text();
+        const response = await fetch(filePath, { cache: 'no-cache' });
+        if (!response.ok) {
+          console.error('PROFILE FILE COULD NOT BE LOADED:', filePath, response.status);
+          return { page: null, filePath, error: `HTTP ${response.status}` };
+        }
+
+        const htmlText = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
         const profileCard = doc.querySelector('.profile-card');
-        
-        if (profileCard) {
-          const imgElem = profileCard.querySelector('.photo-slot img');
-          if (imgElem) {
-            const originalSrc = imgElem.getAttribute('src') || '';
-            let filename = originalSrc.split('/').pop().split('\\').pop();
-            let roll = filename.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '').trim();
-            if (roll.endsWith('.')) roll = roll.slice(0, -1);
-            if (roll.endsWith('.jpg')) roll = roll.replace('.jpg', '');
 
-            // Immediate fast load with safe error fallback
-            imgElem.src = 'photos/' + filename;
-            imgElem.onerror = function() {
-              this.src = 'photos/' + roll + '.jpg';
-              this.onerror = function() {
-                this.style.display = 'none';
-                if (this.parentElement) {
-                  this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:28px; color:#94a3b8;"></i>';
-                }
-              };
-            };
-          }
-
-          const pageDiv = document.createElement('div');
-          pageDiv.className = 'page-sheet';
-          const wrapper = document.createElement('div');
-          wrapper.className = 'profile-card-page';
-          wrapper.appendChild(profileCard);
-          pageDiv.appendChild(wrapper);
-          return pageDiv;
+        if (!profileCard) {
+          console.error('PROFILE CARD (.profile-card) NOT FOUND:', filePath);
+          return { page: null, filePath, error: 'Expected .profile-card element was not found' };
         }
-      } catch (e) {
-        return null;
+
+        // Keep the existing photo-path handling used by the brochure.
+        const imgElem = profileCard.querySelector('.photo-slot img');
+        if (imgElem) {
+          const originalSrc = imgElem.getAttribute('src') || '';
+          let filename = originalSrc.split('/').pop().split('\\').pop();
+          let roll = filename.replace(/\.(jpg|jpeg|png)$/i, '').trim();
+          if (roll.endsWith('.')) roll = roll.slice(0, -1);
+          if (roll.toLowerCase().endsWith('.jpg')) roll = roll.slice(0, -4);
+
+          imgElem.src = 'photos/' + filename;
+          imgElem.onerror = function () {
+            this.onerror = function () {
+              this.style.display = 'none';
+              if (this.parentElement) {
+                this.parentElement.innerHTML = '<i class="fa-solid fa-user" style="font-size:28px; color:#94a3b8;"></i>';
+              }
+            };
+            this.src = 'photos/' + roll + '.jpg';
+          };
+        }
+
+        const pageDiv = document.createElement('div');
+        pageDiv.className = 'page-sheet';
+        pageDiv.dataset.profileFile = filePath;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'profile-card-page';
+        wrapper.appendChild(profileCard);
+        pageDiv.appendChild(wrapper);
+
+        return { page: pageDiv, filePath, error: null };
+      } catch (error) {
+        console.error('PROFILE LOADING ERROR:', filePath, error);
+        return { page: null, filePath, error: error.message || 'Unknown loading error' };
       }
-      return null;
     }
 
     async function loadDynamicStudents() {
       const container = document.getElementById('dynamic-student-pages');
       const loadedFileTracker = new Set();
-      
+      const failedProfiles = [];
+      let loadedProfileCount = 0;
+
+      if (!container) {
+        console.error('Brochure error: #dynamic-student-pages container was not found.');
+        return;
+      }
+
       for (const batch of batchStructures) {
         for (const sec of batch.sections) {
           if (!sec.files || sec.files.length === 0) continue;
 
-          // PARALLEL FAST FETCHING FOR THIS STREAM
           const uniqueFiles = [];
-          for (const f of sec.files) {
-            const normalizedKey = f.toLowerCase().replace(/[^a-z0-9]/g, '');
+          for (const filePath of sec.files) {
+            // Case-insensitive duplicate detection without changing the actual URL.
+            const normalizedKey = filePath.toLowerCase().replace(/[^a-z0-9]/g, '');
             if (!loadedFileTracker.has(normalizedKey)) {
               loadedFileTracker.add(normalizedKey);
-              uniqueFiles.push(f);
+              uniqueFiles.push(filePath);
             }
           }
 
-          // Fetch all profiles in parallel concurrently
-          const results = await Promise.all(uniqueFiles.map(f => fetchSingleProfile(f)));
-          const validPages = results.filter(p => p !== null);
+          const results = await Promise.all(uniqueFiles.map(fetchSingleProfile));
+          const validPages = results.filter(result => result.page !== null);
+          const failures = results.filter(result => result.page === null);
+          loadedProfileCount += validPages.length;
+          failedProfiles.push(...failures);
 
+          // Keep the existing section divider and its artwork/fallback design.
           if (validPages.length > 0) {
-            // Divider artwork page
             const dividerDiv = document.createElement('div');
             dividerDiv.className = 'page-sheet';
             dividerDiv.setAttribute('data-density', 'hard');
@@ -1391,14 +1409,20 @@
             `;
             container.appendChild(dividerDiv);
 
-            for (const page of validPages) {
-              container.appendChild(page);
+            for (const result of validPages) {
+              container.appendChild(result.page);
             }
           }
         }
       }
 
-      // Ensure Even page count for single back cover closing
+      // Print a clear report so missing or incorrectly named files are easy to identify.
+      console.info(`Placement brochure: ${loadedProfileCount} student profile(s) loaded; ${failedProfiles.length} failed.`);
+      if (failedProfiles.length) {
+        console.table(failedProfiles.map(item => ({ file: item.filePath, reason: item.error })));
+      }
+
+      // Ensure an even page count before the existing back cover.
       const allPages = document.querySelectorAll('.page-sheet');
       if (allPages.length % 2 !== 0) {
         const blankPage = document.createElement('div');
@@ -1412,7 +1436,8 @@
           </div>
           <div style="font-size:11px; color:#64748b; text-align:center;">St. Thomas College Palai • BCA Placement Cell</div>
         `;
-        const backCover = document.querySelectorAll('.page-sheet')[document.querySelectorAll('.page-sheet').length - 1];
+        const pagesNow = document.querySelectorAll('.page-sheet');
+        const backCover = pagesNow[pagesNow.length - 1];
         document.getElementById('flipbook').insertBefore(blankPage, backCover);
       }
 
